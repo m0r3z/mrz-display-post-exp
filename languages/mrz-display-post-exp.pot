@@ -1,0 +1,506 @@
+# Copyright (C) 2026 Morez.co
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: MRZ Display Post 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-display-post-exp\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-09T12:44:08+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: mrz-display-post-exp\n"
+
+#. Plugin Name of the plugin
+#: mrz-display-post-exp.php
+msgid "MRZ Display Post"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: mrz-display-post-exp.php
+msgid "https://github.com/m0r3z/mrz-display-post-exp"
+msgstr ""
+
+#. Description of the plugin
+#: mrz-display-post-exp.php
+msgid "Affiche des posts et custom posts avec leurs champs ACF en liste, grille ou slider. Templates HTML personnalisables, filtres et recherche côté client."
+msgstr ""
+
+#. Author of the plugin
+#: mrz-display-post-exp.php
+msgid "Morez.co"
+msgstr ""
+
+#. Author URI of the plugin
+#: mrz-display-post-exp.php
+msgid "https://morez.co"
+msgstr ""
+
+#: admin/views/metabox-display.php:15
+msgid "Format d'affichage"
+msgstr ""
+
+#: admin/views/metabox-display.php:19
+msgid "Liste"
+msgstr ""
+
+#: admin/views/metabox-display.php:20
+msgid "Grille"
+msgstr ""
+
+#: admin/views/metabox-display.php:21
+msgid "Slider"
+msgstr ""
+
+#: admin/views/metabox-display.php:35
+msgid "Largeur min. d'une colonne (px)"
+msgstr ""
+
+#: admin/views/metabox-display.php:39
+msgid "La grille remplit automatiquement autant de colonnes que possible à partir de cette largeur minimale."
+msgstr ""
+
+#: admin/views/metabox-display.php:44
+msgid "Items visibles (slider)"
+msgstr ""
+
+#: admin/views/metabox-display.php:47
+msgid "Bureau :"
+msgstr ""
+
+#: admin/views/metabox-display.php:51
+msgid "Tablette :"
+msgstr ""
+
+#: admin/views/metabox-display.php:55
+msgid "Mobile :"
+msgstr ""
+
+#: admin/views/metabox-display.php:58
+msgid "Bureau > 1024px, tablette ≤ 1024px, mobile ≤ 768px."
+msgstr ""
+
+#: admin/views/metabox-display.php:63
+msgid "Espacement entre items (px)"
+msgstr ""
+
+#: admin/views/metabox-display.php:70
+msgid "Options du slider"
+msgstr ""
+
+#: admin/views/metabox-display.php:75
+msgid "Afficher les flèches précédent / suivant."
+msgstr ""
+
+#: admin/views/metabox-display.php:81
+msgid "Afficher les puces de pagination."
+msgstr ""
+
+#: admin/views/metabox-display.php:87
+msgid "Boucler (revenir au début après le dernier item)."
+msgstr ""
+
+#: admin/views/metabox-display.php:93
+msgid "Défilement automatique."
+msgstr ""
+
+#: admin/views/metabox-display.php:98
+msgid "Délai entre transitions (ms) :"
+msgstr ""
+
+#: admin/views/metabox-display.php:102
+msgid "Le défilement automatique respecte la préférence « réduire les animations » du visiteur et se met en pause au survol."
+msgstr ""
+
+#: admin/views/metabox-display.php:108
+msgid "Layout des filtres"
+msgstr ""
+
+#: admin/views/metabox-display.php:112
+msgid "Au-dessus"
+msgstr ""
+
+#: admin/views/metabox-display.php:113
+msgid "À gauche"
+msgstr ""
+
+#: admin/views/metabox-display.php:114
+msgid "À droite"
+msgstr ""
+
+#: admin/views/metabox-display.php:123
+msgid "N'a d'effet que si des filtres ou la recherche sont activés."
+msgstr ""
+
+#: admin/views/metabox-display.php:127
+msgid "Clic sur un item"
+msgstr ""
+
+#: admin/views/metabox-display.php:131
+msgid "Ne rien faire"
+msgstr ""
+
+#: admin/views/metabox-display.php:132
+msgid "Ouvrir la page du post"
+msgstr ""
+
+#: admin/views/metabox-display.php:144
+msgid "Bouton de réinitialisation"
+msgstr ""
+
+#: admin/views/metabox-display.php:149
+msgid "Afficher un bouton de réinitialisation de tous les filtres."
+msgstr ""
+
+#: admin/views/metabox-display.php:154
+msgid "Texte du bouton :"
+msgstr ""
+
+#: admin/views/metabox-display.php:155
+#: includes/class-data-provider.php:57
+msgid "Effacer"
+msgstr ""
+
+#: admin/views/metabox-filters.php:14
+msgid "Menu déroulant"
+msgstr ""
+
+#: admin/views/metabox-filters.php:15
+msgid "Boutons radio"
+msgstr ""
+
+#: admin/views/metabox-filters.php:16
+msgid "Cases à cocher"
+msgstr ""
+
+#: admin/views/metabox-filters.php:19
+msgid "OU"
+msgstr ""
+
+#: admin/views/metabox-filters.php:20
+msgid "ET"
+msgstr ""
+
+#: admin/views/metabox-filters.php:26
+msgid "Recherche"
+msgstr ""
+
+#: admin/views/metabox-filters.php:30
+msgid "Afficher un champ de recherche (filtrage instantané côté client)."
+msgstr ""
+
+#: admin/views/metabox-filters.php:35
+msgid "Champs ACF à inclure dans la recherche :"
+msgstr ""
+
+#: admin/views/metabox-filters.php:39
+msgid "Liste de noms de champs ACF texte séparés par des virgules. Le titre du post est toujours inclus."
+msgstr ""
+
+#: admin/views/metabox-filters.php:42
+msgid "Position du champ :"
+msgstr ""
+
+#: admin/views/metabox-filters.php:45
+msgid "Dans le bloc filtres"
+msgstr ""
+
+#: admin/views/metabox-filters.php:46
+msgid "En haut, pleine largeur"
+msgstr ""
+
+#: admin/views/metabox-filters.php:58
+msgid "Libellé affiché au-dessus du champ :"
+msgstr ""
+
+#: admin/views/metabox-filters.php:59
+#: includes/class-data-provider.php:75
+msgid "Rechercher"
+msgstr ""
+
+#: admin/views/metabox-filters.php:64
+msgid "Placeholder du champ :"
+msgstr ""
+
+#: admin/views/metabox-filters.php:65
+#: includes/class-data-provider.php:78
+msgid "Rechercher…"
+msgstr ""
+
+#: admin/views/metabox-filters.php:71
+msgid "Options globales"
+msgstr ""
+
+#: admin/views/metabox-filters.php:75
+msgid "Afficher le nombre de résultats à côté de chaque option de filtre."
+msgstr ""
+
+#: admin/views/metabox-filters.php:81
+msgid "Synchroniser les filtres avec l'URL (lien partageable)."
+msgstr ""
+
+#: admin/views/metabox-filters.php:87
+msgid "Filtres par taxonomie"
+msgstr ""
+
+#: admin/views/metabox-filters.php:101
+msgid "Taxonomie"
+msgstr ""
+
+#: admin/views/metabox-filters.php:108
+#: admin/views/metabox-filters.php:157
+#: admin/views/metabox-filters.php:196
+msgid "Libellé affiché"
+msgstr ""
+
+#: admin/views/metabox-filters.php:112
+#: admin/views/metabox-filters.php:161
+#: admin/views/metabox-filters.php:200
+msgid "Type de filtre"
+msgstr ""
+
+#: admin/views/metabox-filters.php:122
+#: admin/views/metabox-filters.php:171
+#: admin/views/metabox-filters.php:208
+msgid "Logique"
+msgstr ""
+
+#: admin/views/metabox-filters.php:123
+msgid "Combinaison entre cases cochées"
+msgstr ""
+
+#: admin/views/metabox-filters.php:134
+msgid "Seules les taxonomies liées au post type sélectionné sont affichées. Le libellé remplace le nom de la taxonomie affiché au-dessus du filtre sur le site."
+msgstr ""
+
+#: admin/views/metabox-filters.php:138
+msgid "Filtres par champ ACF"
+msgstr ""
+
+#: admin/views/metabox-filters.php:140
+msgid "Pour les champs Select, Radio, Checkbox ou Vrai/Faux, les options sont détectées automatiquement depuis la configuration ACF. Pour les autres types (texte, nombre), les valeurs distinctes des posts sont collectées dynamiquement."
+msgstr ""
+
+#: admin/views/metabox-filters.php:153
+#: admin/views/metabox-filters.php:192
+msgid "Nom du champ ACF"
+msgstr ""
+
+#: admin/views/metabox-filters.php:172
+msgid "Combinaison entre cases cochées (sans effet en mode dropdown/radio)"
+msgstr ""
+
+#: admin/views/metabox-filters.php:180
+#: admin/views/metabox-filters.php:215
+msgid "Retirer"
+msgstr ""
+
+#: admin/views/metabox-filters.php:186
+msgid "Ajouter un filtre ACF"
+msgstr ""
+
+#: admin/views/metabox-shortcode.php:15
+msgid "Collez ce shortcode dans vos contenus :"
+msgstr ""
+
+#: admin/views/metabox-shortcode.php:17
+msgid "Exemple avec filtre forcé :"
+msgstr ""
+
+#: admin/views/metabox-source.php:17
+msgid "Date de publication"
+msgstr ""
+
+#: admin/views/metabox-source.php:18
+msgid "Titre"
+msgstr ""
+
+#: admin/views/metabox-source.php:19
+msgid "Ordre manuel (menu_order)"
+msgstr ""
+
+#: admin/views/metabox-source.php:20
+msgid "Aléatoire"
+msgstr ""
+
+#: admin/views/metabox-source.php:21
+msgid "Date de modification"
+msgstr ""
+
+#: admin/views/metabox-source.php:28
+msgid "Post type source"
+msgstr ""
+
+#: admin/views/metabox-source.php:38
+msgid "Le post type dont les entrées seront affichées."
+msgstr ""
+
+#: admin/views/metabox-source.php:43
+msgid "Trier par"
+msgstr ""
+
+#: admin/views/metabox-source.php:54
+msgid "Décroissant"
+msgstr ""
+
+#: admin/views/metabox-source.php:55
+msgid "Croissant"
+msgstr ""
+
+#: admin/views/metabox-source.php:61
+msgid "Nombre max de posts"
+msgstr ""
+
+#: admin/views/metabox-source.php:65
+msgid "Limite de chargement côté serveur. 0 = illimité."
+msgstr ""
+
+#: admin/views/metabox-source.php:70
+msgid "Posts par page"
+msgstr ""
+
+#: admin/views/metabox-source.php:74
+msgid "Pagination côté utilisateur (liste et grille) : nombre de posts par page. 0 = tous affichés. Ignoré en mode slider."
+msgstr ""
+
+#: admin/views/metabox-templates.php:15
+msgid "Placeholders disponibles :"
+msgstr ""
+
+#: admin/views/metabox-templates.php:24
+msgid "Conditionnels :"
+msgstr ""
+
+#: admin/views/metabox-templates.php:37
+msgid "Template de l'item"
+msgstr ""
+
+#: admin/views/metabox-templates.php:41
+msgid "HTML affiché pour chaque entrée (liste, grille ou slider). L'attribut style n'est pas autorisé : mettez en forme via le CSS de votre thème."
+msgstr ""
+
+#: includes/class-activator.php:18
+msgid "MRZ Display Post nécessite Advanced Custom Fields (Pro recommandé). Veuillez installer et activer ACF avant d'activer ce plugin."
+msgstr ""
+
+#: includes/class-activator.php:19
+msgid "Dépendance manquante"
+msgstr ""
+
+#: includes/class-cpt.php:23
+msgctxt "post type general name"
+msgid "Affichages"
+msgstr ""
+
+#: includes/class-cpt.php:24
+msgctxt "post type singular name"
+msgid "Affichage"
+msgstr ""
+
+#: includes/class-cpt.php:25
+msgctxt "admin menu"
+msgid "MRZ Display Post"
+msgstr ""
+
+#: includes/class-cpt.php:26
+msgctxt "add new on admin bar"
+msgid "Affichage"
+msgstr ""
+
+#: includes/class-cpt.php:27
+msgctxt "display block"
+msgid "Ajouter"
+msgstr ""
+
+#: includes/class-cpt.php:28
+msgid "Ajouter un affichage"
+msgstr ""
+
+#: includes/class-cpt.php:29
+msgid "Nouvel affichage"
+msgstr ""
+
+#: includes/class-cpt.php:30
+msgid "Modifier l'affichage"
+msgstr ""
+
+#: includes/class-cpt.php:31
+msgid "Voir l'affichage"
+msgstr ""
+
+#: includes/class-cpt.php:32
+msgid "Tous les affichages"
+msgstr ""
+
+#: includes/class-cpt.php:33
+msgid "Rechercher un affichage"
+msgstr ""
+
+#: includes/class-cpt.php:34
+msgid "Aucun affichage trouvé."
+msgstr ""
+
+#: includes/class-cpt.php:35
+msgid "Aucun affichage dans la corbeille."
+msgstr ""
+
+#: includes/class-cpt.php:92
+#: includes/class-list-config.php:56
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-data-provider.php:330
+msgid "Oui"
+msgstr ""
+
+#: includes/class-data-provider.php:331
+msgid "Non"
+msgstr ""
+
+#: includes/class-list-config.php:52
+msgid "Source des données"
+msgstr ""
+
+#: includes/class-list-config.php:53
+msgid "Template HTML"
+msgstr ""
+
+#: includes/class-list-config.php:54
+msgid "Filtres & recherche"
+msgstr ""
+
+#: includes/class-list-config.php:55
+msgid "Affichage"
+msgstr ""
+
+#: includes/class-plugin.php:60
+msgid "MRZ Display Post nécessite Advanced Custom Fields (Pro recommandé) pour fonctionner."
+msgstr ""
+
+#: public/views/list-wrapper.php:101
+msgid "Filtres"
+msgstr ""
+
+#: public/views/list-wrapper.php:125
+#: public/views/list-wrapper.php:141
+msgid "Tous"
+msgstr ""
+
+#: public/views/list-wrapper.php:196
+msgid "Précédent"
+msgstr ""
+
+#: public/views/list-wrapper.php:197
+msgid "Suivant"
+msgstr ""
+
+#: public/views/list-wrapper.php:215
+msgid "Page précédente"
+msgstr ""
+
+#: public/views/list-wrapper.php:221
+msgid "Page suivante"
+msgstr ""

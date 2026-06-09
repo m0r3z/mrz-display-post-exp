@@ -1,0 +1,52 @@
+=== MRZ Display Post ===
+Contributors: mrzxp
+Tags: acf, custom post type, taxonomy, slider, grid
+Requires at least: 6.3
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 0.1.0
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
+Display posts and custom posts with their ACF fields as a list, grid or slider, with customizable HTML templates, client-side filters and search.
+
+== Description ==
+
+MRZ Display Post is a generic, minimalist plugin to display any post type — standard posts or custom post types — together with their ACF fields. Each item is rendered from a customizable HTML template using placeholders (ACF fields, taxonomies, title, thumbnail…). Everything is configured from the WordPress admin — no theme code required — and styled to match the site through the theme CSS.
+
+= Features =
+
+* Multiple display blocks via a dedicated Custom Post Type — each block has its own configuration and shortcode.
+* Three display formats: list, grid and a dependency-free native CSS slider.
+* Customizable HTML item template with ACF / taxonomy / post placeholders and conditionals.
+* Client-side filters by taxonomy and by ACF field, in dropdown / radio / checkbox mode, with OR / AND logic.
+* Optional client-side text search on titles (and selected ACF text fields).
+* Optional URL filter synchronization — share a pre-filtered link.
+* Responsive layout — filters above, left or right; collapsible filters on mobile.
+* Shortcode with optional forced filter: `[mrz_display_post_exp id="X" filter_taxonomy="genre" filter_term="42"]`.
+* Translation-ready (text-domain `mrz-display-post-exp`, .pot file provided).
+
+= Requirements =
+
+* WordPress 6.3 or later, PHP 7.4 or later.
+* Advanced Custom Fields (Pro recommended) — for the ACF field placeholders and filters.
+
+= Privacy / external calls =
+
+MRZ Display Post makes no external HTTP calls, loads no remote resources, and collects no telemetry. Everything runs locally on your site.
+
+= Source code and contributions =
+
+Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-post-exp
+
+== Installation ==
+
+1. Install and activate Advanced Custom Fields (Pro recommended).
+2. Upload the plugin to `/wp-content/plugins/mrz-display-post-exp` and activate it.
+3. Open the "MRZ Display Post" menu, create a display block, configure its source, template, filters and format.
+4. Copy the generated shortcode and paste it into any page or post.
+
+== Changelog ==
+
+= 0.1.0 =
+* Initial beta — list / grid / slider display of posts and custom posts with ACF placeholders, client-side filters and search.

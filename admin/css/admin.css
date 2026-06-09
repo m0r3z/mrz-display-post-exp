@@ -1,0 +1,15 @@
+/* mrz-display-post-exp — admin styles (minimaux) */
+.mrz-display-post-exp-table th { width: 220px; }
+.mrz-display-post-exp-taxo-list { display: flex; flex-direction: column; gap: 12px; }
+.mrz-display-post-exp-taxo-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; padding: 10px; background: #f6f7f7; border: 1px solid #dcdcde; }
+.mrz-display-post-exp-taxo-row.is-hidden { display: none; }
+.mrz-display-post-exp-taxo-col { display: flex; flex-direction: column; gap: 4px; }
+.mrz-display-post-exp-taxo-col > span { font-size: 12px; color: #646970; }
+.mrz-display-post-exp-taxo-col-activate { min-width: 240px; }
+.mrz-display-post-exp-taxo-activate-row { display: flex; align-items: center; gap: 8px; min-height: 30px; }
+.mrz-display-post-exp-taxo-col-activate .mrz-display-post-exp-taxo-name { font-size: 13px; color: inherit; }
+.mrz-display-post-exp-section-title { margin: 4px 0 10px; }
+.mrz-display-post-exp-acf-filters { display: flex; flex-direction: column; gap: 12px; margin: 12px 0; }
+.mrz-display-post-exp-acf-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; padding: 10px; background: #f6f7f7; border: 1px solid #dcdcde; }
+.mrz-display-post-exp-acf-col { display: flex; flex-direction: column; gap: 4px; }
+.mrz-display-post-exp-acf-col > span { font-size: 12px; color: #646970; }
