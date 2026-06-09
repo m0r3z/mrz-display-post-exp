@@ -6,8 +6,8 @@
  *   - {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (tronqué à N mots)
  *   - {post_thumbnail} (balise <img>), {post_thumbnail_url}
  *   - {%nom_champ_acf%}
- *   - {taxonomy:slug} (liste des termes, virgule)
- *   - {taxonomy:slug:first}
+ *   - {taxonomy:slug} (chaque terme dans un <span class="mrz-dpe-term">, sans séparateur)
+ *   - {taxonomy:slug:first} (premier terme, texte brut)
  *
  * Conditionnels :
  *   - {#if %champ_acf%}...{/if}
@@ -112,8 +112,13 @@ final class TemplateParser {
 				if ( isset( $m[2] ) && 'first' === $m[2] ) {
 					return esc_html( $terms[0]->name );
 				}
-				$names = wp_list_pluck( $terms, 'name' );
-				return esc_html( implode( ', ', $names ) );
+				// Chaque terme dans son propre <span> (aucun séparateur imposé) :
+				// l'espacement / les puces se gèrent en CSS via .mrz-dpe-term.
+				$spans = array();
+				foreach ( $terms as $term ) {
+					$spans[] = '<span class="mrz-dpe-term">' . esc_html( $term->name ) . '</span>';
+				}
+				return implode( ' ', $spans );
 			},
 			$template
 		);
