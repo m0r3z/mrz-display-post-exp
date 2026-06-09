@@ -3,7 +3,7 @@
  * Moteur de templates pour le rendu des items.
  *
  * Placeholders supportés :
- *   - {post_title}, {post_url}, {post_excerpt}
+ *   - {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (tronqué à N mots)
  *   - {post_thumbnail} (balise <img>), {post_thumbnail_url}
  *   - {%nom_champ_acf%}
  *   - {taxonomy:slug} (liste des termes, virgule)
@@ -86,6 +86,17 @@ final class TemplateParser {
 			'/\{%([\w-]+)%\}/',
 			function ( $m ) use ( $post_id ) {
 				return self::escape_acf( $m[1], $post_id );
+			},
+			$template
+		);
+
+		// Extrait tronqué à N mots : {post_excerpt:20}
+		$template = preg_replace_callback(
+			'/\{post_excerpt:(\d+)\}/',
+			function ( $m ) use ( $post_id ) {
+				$words = max( 1, (int) $m[1] );
+				$text  = wp_strip_all_tags( get_the_excerpt( $post_id ) );
+				return esc_html( wp_trim_words( $text, $words, '…' ) );
 			},
 			$template
 		);

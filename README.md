@@ -28,7 +28,8 @@ Plugin WordPress minimaliste pour **afficher des posts et custom posts avec leur
 |---|---|
 | `{post_title}` | Titre |
 | `{post_url}` | Permalien |
-| `{post_excerpt}` | Extrait |
+| `{post_excerpt}` | Extrait complet |
+| `{post_excerpt:N}` | Extrait tronqué à N mots (ex. `{post_excerpt:25}`) |
 | `{post_thumbnail}` | Balise `<img>` (taille medium) |
 | `{post_thumbnail_url}` | URL de la miniature |
 | `{post_id}` | ID du post |

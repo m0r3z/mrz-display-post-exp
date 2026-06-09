@@ -117,7 +117,7 @@ final class ListConfig {
 			'slider_show_arrows'     => 1,
 			'slider_show_dots'       => 1,
 			// Template.
-			'tpl_item'              => "<div class=\"mrz-display-post-exp-item\">\n  <h3>{post_title}</h3>\n</div>",
+			'tpl_item'              => "<div class=\"mrz-display-post-exp-item\">\n  {#if post_thumbnail}<div class=\"mrz-dpe-thumb\">{post_thumbnail}</div>{/if}\n  <div class=\"mrz-dpe-body\">\n    {#if taxonomy:category}<span class=\"mrz-dpe-cat\">{taxonomy:category:first}</span>{/if}\n    <h3 class=\"mrz-dpe-title\">{post_title}</h3>\n    {#if post_excerpt}<p class=\"mrz-dpe-excerpt\">{post_excerpt:25}</p>{/if}\n  </div>\n</div>",
 		);
 
 		$out = array();
