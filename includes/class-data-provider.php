@@ -87,6 +87,7 @@ final class DataProvider {
 				'perViewTablet' => (int) $values['slider_per_view_tablet'],
 				'perViewMobile' => (int) $values['slider_per_view_mobile'],
 				'gap'           => (int) $values['slider_gap'],
+				'speed'         => (int) $values['slider_speed'],
 				'autoplay'      => ! empty( $values['slider_autoplay'] ),
 				'autoplayDelay' => (int) $values['slider_autoplay_delay'],
 				'loop'          => ! empty( $values['slider_loop'] ),

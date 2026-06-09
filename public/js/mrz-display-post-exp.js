@@ -51,7 +51,8 @@
 		var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		var autoplayTimer = null;
 		var animFrame = null;
-		var SCROLL_DURATION = 500;
+		var scrollDuration = parseInt(sliderEl.getAttribute('data-speed'), 10);
+		if (isNaN(scrollDuration)) { scrollDuration = 500; }
 
 		function currentPerView() {
 			if (window.matchMedia('(max-width: 768px)').matches) { return perViewMobile; }
@@ -131,7 +132,7 @@
 			}
 			function step(ts) {
 				if (startTime === null) { startTime = ts; }
-				var t = Math.min(1, (ts - startTime) / SCROLL_DURATION);
+				var t = Math.min(1, (ts - startTime) / scrollDuration);
 				track.scrollLeft = start + dist * easeInOutCubic(t);
 				if (t < 1) {
 					animFrame = requestAnimationFrame(step);

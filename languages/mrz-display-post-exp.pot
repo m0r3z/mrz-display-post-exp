@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-09T14:56:13+00:00\n"
+"POT-Creation-Date: 2026-06-09T15:16:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-display-post-exp\n"
@@ -87,79 +87,87 @@ msgstr ""
 msgid "Espacement entre items (px)"
 msgstr ""
 
-#: admin/views/metabox-display.php:70
-msgid "Options du slider"
+#: admin/views/metabox-display.php:71
+msgid "Vitesse de transition (ms)"
 msgstr ""
 
 #: admin/views/metabox-display.php:75
+msgid "Durée du glissement au clic des flèches / puces et en défilement automatique. Plus la valeur est élevée, plus la transition est lente et douce (défaut : 500 ms). Le glissement au doigt reste natif."
+msgstr ""
+
+#: admin/views/metabox-display.php:79
+msgid "Options du slider"
+msgstr ""
+
+#: admin/views/metabox-display.php:84
 msgid "Afficher les flèches précédent / suivant."
 msgstr ""
 
-#: admin/views/metabox-display.php:81
+#: admin/views/metabox-display.php:90
 msgid "Afficher les puces de pagination."
 msgstr ""
 
-#: admin/views/metabox-display.php:87
+#: admin/views/metabox-display.php:96
 msgid "Boucler (revenir au début après le dernier item)."
 msgstr ""
 
-#: admin/views/metabox-display.php:93
+#: admin/views/metabox-display.php:102
 msgid "Défilement automatique."
 msgstr ""
 
-#: admin/views/metabox-display.php:98
+#: admin/views/metabox-display.php:107
 msgid "Délai entre transitions (ms) :"
 msgstr ""
 
-#: admin/views/metabox-display.php:102
+#: admin/views/metabox-display.php:111
 msgid "Le défilement automatique respecte la préférence « réduire les animations » du visiteur et se met en pause au survol."
 msgstr ""
 
-#: admin/views/metabox-display.php:108
+#: admin/views/metabox-display.php:117
 msgid "Layout des filtres"
 msgstr ""
 
-#: admin/views/metabox-display.php:112
+#: admin/views/metabox-display.php:121
 msgid "Au-dessus"
 msgstr ""
 
-#: admin/views/metabox-display.php:113
+#: admin/views/metabox-display.php:122
 msgid "À gauche"
 msgstr ""
 
-#: admin/views/metabox-display.php:114
+#: admin/views/metabox-display.php:123
 msgid "À droite"
 msgstr ""
 
-#: admin/views/metabox-display.php:123
+#: admin/views/metabox-display.php:132
 msgid "N'a d'effet que si des filtres ou la recherche sont activés."
 msgstr ""
 
-#: admin/views/metabox-display.php:127
+#: admin/views/metabox-display.php:136
 msgid "Clic sur un item"
 msgstr ""
 
-#: admin/views/metabox-display.php:131
+#: admin/views/metabox-display.php:140
 msgid "Ne rien faire"
 msgstr ""
 
-#: admin/views/metabox-display.php:132
+#: admin/views/metabox-display.php:141
 msgid "Ouvrir la page du post"
 msgstr ""
 
-#: admin/views/metabox-display.php:144
+#: admin/views/metabox-display.php:153
 msgid "Bouton de réinitialisation"
 msgstr ""
 
-#: admin/views/metabox-display.php:149
+#: admin/views/metabox-display.php:158
 msgid "Afficher un bouton de réinitialisation de tous les filtres."
 msgstr ""
 
-#: admin/views/metabox-display.php:154
+#: admin/views/metabox-display.php:163
 msgid "Texte du bouton :"
 msgstr ""
 
-#: admin/views/metabox-display.php:155
+#: admin/views/metabox-display.php:164
 #: includes/class-data-provider.php:57
 msgid "Effacer"
 msgstr ""
@@ -448,11 +456,11 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-data-provider.php:330
+#: includes/class-data-provider.php:331
 msgid "Oui"
 msgstr ""
 
-#: includes/class-data-provider.php:331
+#: includes/class-data-provider.php:332
 msgid "Non"
 msgstr ""
 
@@ -485,18 +493,18 @@ msgstr ""
 msgid "Tous"
 msgstr ""
 
-#: public/views/list-wrapper.php:196
+#: public/views/list-wrapper.php:197
 msgid "Précédent"
 msgstr ""
 
-#: public/views/list-wrapper.php:197
+#: public/views/list-wrapper.php:198
 msgid "Suivant"
 msgstr ""
 
-#: public/views/list-wrapper.php:215
+#: public/views/list-wrapper.php:216
 msgid "Page précédente"
 msgstr ""
 
-#: public/views/list-wrapper.php:221
+#: public/views/list-wrapper.php:222
 msgid "Page suivante"
 msgstr ""

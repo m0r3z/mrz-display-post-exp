@@ -111,6 +111,7 @@ final class ListConfig {
 			'slider_per_view_tablet' => 2,
 			'slider_per_view_mobile' => 1,
 			'slider_gap'             => 16,
+			'slider_speed'           => 500,
 			'slider_autoplay'        => 0,
 			'slider_autoplay_delay'  => 4000,
 			'slider_loop'            => 0,
@@ -272,6 +273,7 @@ final class ListConfig {
 		$clean['slider_per_view_tablet'] = isset( $raw['slider_per_view_tablet'] ) ? max( 1, min( 8, absint( $raw['slider_per_view_tablet'] ) ) ) : 2;
 		$clean['slider_per_view_mobile'] = isset( $raw['slider_per_view_mobile'] ) ? max( 1, min( 4, absint( $raw['slider_per_view_mobile'] ) ) ) : 1;
 		$clean['slider_gap']             = isset( $raw['slider_gap'] ) ? max( 0, min( 64, absint( $raw['slider_gap'] ) ) ) : 16;
+		$clean['slider_speed']           = isset( $raw['slider_speed'] ) ? max( 100, min( 2000, absint( $raw['slider_speed'] ) ) ) : 500;
 		$clean['slider_autoplay']        = ! empty( $raw['slider_autoplay'] ) ? 1 : 0;
 		$clean['slider_autoplay_delay']  = isset( $raw['slider_autoplay_delay'] ) ? max( 1000, min( 15000, absint( $raw['slider_autoplay_delay'] ) ) ) : 4000;
 		$clean['slider_loop']            = ! empty( $raw['slider_loop'] ) ? 1 : 0;

@@ -67,6 +67,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</td>
 		</tr>
 		<tr class="mrz-display-post-exp-when-slider">
+			<th scope="row">
+				<label for="mrz_display_post_exp_slider_speed"><?php esc_html_e( 'Vitesse de transition (ms)', 'mrz-display-post-exp' ); ?></label>
+			</th>
+			<td>
+				<input type="number" name="mrz_display_post_exp[slider_speed]" id="mrz_display_post_exp_slider_speed" value="<?php echo esc_attr( $values['slider_speed'] ); ?>" min="100" max="2000" step="50" />
+				<p class="description"><?php esc_html_e( 'Durée du glissement au clic des flèches / puces et en défilement automatique. Plus la valeur est élevée, plus la transition est lente et douce (défaut : 500 ms). Le glissement au doigt reste natif.', 'mrz-display-post-exp' ); ?></p>
+			</td>
+		</tr>
+		<tr class="mrz-display-post-exp-when-slider">
 			<th scope="row"><?php esc_html_e( 'Options du slider', 'mrz-display-post-exp' ); ?></th>
 			<td>
 				<p>

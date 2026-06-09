@@ -189,6 +189,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 				data-per-view-tablet="<?php echo (int) $s['perViewTablet']; ?>"
 				data-per-view-mobile="<?php echo (int) $s['perViewMobile']; ?>"
 				data-gap="<?php echo (int) $s['gap']; ?>"
+				data-speed="<?php echo (int) $s['speed']; ?>"
 				data-loop="<?php echo $s['loop'] ? '1' : '0'; ?>"
 				data-autoplay="<?php echo $s['autoplay'] ? '1' : '0'; ?>"
 				data-autoplay-delay="<?php echo (int) $s['autoplayDelay']; ?>">
