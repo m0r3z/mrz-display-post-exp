@@ -29,6 +29,9 @@ final class ListConfig {
 	public static function search_layouts() {
 		return array( 'inline', 'top' );
 	}
+	public static function slider_arrows_positions() {
+		return array( 'sides', 'top' );
+	}
 	public static function taxo_modes() {
 		return array( 'dropdown', 'radio', 'checkbox' );
 	}
@@ -116,6 +119,7 @@ final class ListConfig {
 			'slider_autoplay_delay'  => 4000,
 			'slider_loop'            => 0,
 			'slider_show_arrows'     => 1,
+			'slider_arrows_position' => 'sides',
 			'slider_show_dots'       => 1,
 			// Template.
 			'tpl_item'              => "<div class=\"mrz-display-post-exp-item\">\n  {#if post_thumbnail}<div class=\"mrz-dpe-thumb\">{post_thumbnail}</div>{/if}\n  <div class=\"mrz-dpe-body\">\n    {#if taxonomy:category}<span class=\"mrz-dpe-cat\">{taxonomy:category:first}</span>{/if}\n    <h3 class=\"mrz-dpe-title\">{post_title}</h3>\n    {#if post_excerpt}<p class=\"mrz-dpe-excerpt\">{post_excerpt:25}</p>{/if}\n  </div>\n</div>",
@@ -278,6 +282,7 @@ final class ListConfig {
 		$clean['slider_autoplay_delay']  = isset( $raw['slider_autoplay_delay'] ) ? max( 1000, min( 15000, absint( $raw['slider_autoplay_delay'] ) ) ) : 4000;
 		$clean['slider_loop']            = ! empty( $raw['slider_loop'] ) ? 1 : 0;
 		$clean['slider_show_arrows']     = ! empty( $raw['slider_show_arrows'] ) ? 1 : 0;
+		$clean['slider_arrows_position'] = ( isset( $raw['slider_arrows_position'] ) && in_array( $raw['slider_arrows_position'], self::slider_arrows_positions(), true ) ) ? $raw['slider_arrows_position'] : 'sides';
 		$clean['slider_show_dots']       = ! empty( $raw['slider_show_dots'] ) ? 1 : 0;
 
 		// Template.

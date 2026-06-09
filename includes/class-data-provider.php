@@ -92,6 +92,7 @@ final class DataProvider {
 				'autoplayDelay' => (int) $values['slider_autoplay_delay'],
 				'loop'          => ! empty( $values['slider_loop'] ),
 				'showArrows'    => ! empty( $values['slider_show_arrows'] ),
+				'arrowsPosition' => (string) $values['slider_arrows_position'],
 				'showDots'      => ! empty( $values['slider_show_dots'] ),
 			),
 			'taxonomies'       => array_values( (array) $values['taxonomies'] ),

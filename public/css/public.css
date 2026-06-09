@@ -82,6 +82,22 @@ a.mrz-display-post-exp-item-wrap { display: block; color: inherit; text-decorati
 }
 .mrz-display-post-exp-dots button[aria-current="true"] { opacity: 1; }
 
+/* Variante : flèches au-dessus du slider, alignées à gauche (track en dessous). */
+.mrz-display-post-exp-slider.is-arrows-top { display: flex; flex-wrap: wrap; align-items: center; }
+.mrz-display-post-exp-slider.is-arrows-top .mrz-display-post-exp-slider-prev,
+.mrz-display-post-exp-slider.is-arrows-top .mrz-display-post-exp-slider-next {
+	position: static;
+	transform: none;
+	top: auto;
+	left: auto;
+	right: auto;
+	margin: 0 6px 10px 0;
+}
+.mrz-display-post-exp-slider.is-arrows-top .mrz-display-post-exp-slider-prev { order: 1; }
+.mrz-display-post-exp-slider.is-arrows-top .mrz-display-post-exp-slider-next { order: 2; }
+.mrz-display-post-exp-slider.is-arrows-top .mrz-display-post-exp-track { order: 3; flex: 0 0 100%; }
+.mrz-display-post-exp-slider.is-arrows-top .mrz-display-post-exp-dots { order: 4; flex: 0 0 100%; }
+
 /* Recherche : champ détaché en haut, pleine largeur (search_layout = top) */
 .mrz-display-post-exp-search-top { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
 .mrz-display-post-exp-wrapper.mrz-display-post-exp-has-search-top.mrz-display-post-exp-filters-side-left,

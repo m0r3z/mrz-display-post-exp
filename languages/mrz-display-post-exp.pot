@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-09T15:16:26+00:00\n"
+"POT-Creation-Date: 2026-06-09T15:21:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-display-post-exp\n"
@@ -103,71 +103,83 @@ msgstr ""
 msgid "Afficher les flèches précédent / suivant."
 msgstr ""
 
-#: admin/views/metabox-display.php:90
+#: admin/views/metabox-display.php:88
+msgid "Position des flèches :"
+msgstr ""
+
+#: admin/views/metabox-display.php:91
+msgid "Sur les côtés"
+msgstr ""
+
+#: admin/views/metabox-display.php:92
+msgid "Au-dessus (alignées à gauche)"
+msgstr ""
+
+#: admin/views/metabox-display.php:105
 msgid "Afficher les puces de pagination."
 msgstr ""
 
-#: admin/views/metabox-display.php:96
+#: admin/views/metabox-display.php:111
 msgid "Boucler (revenir au début après le dernier item)."
 msgstr ""
 
-#: admin/views/metabox-display.php:102
+#: admin/views/metabox-display.php:117
 msgid "Défilement automatique."
 msgstr ""
 
-#: admin/views/metabox-display.php:107
+#: admin/views/metabox-display.php:122
 msgid "Délai entre transitions (ms) :"
 msgstr ""
 
-#: admin/views/metabox-display.php:111
+#: admin/views/metabox-display.php:126
 msgid "Le défilement automatique respecte la préférence « réduire les animations » du visiteur et se met en pause au survol."
 msgstr ""
 
-#: admin/views/metabox-display.php:117
+#: admin/views/metabox-display.php:132
 msgid "Layout des filtres"
 msgstr ""
 
-#: admin/views/metabox-display.php:121
+#: admin/views/metabox-display.php:136
 msgid "Au-dessus"
 msgstr ""
 
-#: admin/views/metabox-display.php:122
+#: admin/views/metabox-display.php:137
 msgid "À gauche"
 msgstr ""
 
-#: admin/views/metabox-display.php:123
+#: admin/views/metabox-display.php:138
 msgid "À droite"
 msgstr ""
 
-#: admin/views/metabox-display.php:132
+#: admin/views/metabox-display.php:147
 msgid "N'a d'effet que si des filtres ou la recherche sont activés."
 msgstr ""
 
-#: admin/views/metabox-display.php:136
+#: admin/views/metabox-display.php:151
 msgid "Clic sur un item"
 msgstr ""
 
-#: admin/views/metabox-display.php:140
+#: admin/views/metabox-display.php:155
 msgid "Ne rien faire"
 msgstr ""
 
-#: admin/views/metabox-display.php:141
+#: admin/views/metabox-display.php:156
 msgid "Ouvrir la page du post"
 msgstr ""
 
-#: admin/views/metabox-display.php:153
+#: admin/views/metabox-display.php:168
 msgid "Bouton de réinitialisation"
 msgstr ""
 
-#: admin/views/metabox-display.php:158
+#: admin/views/metabox-display.php:173
 msgid "Afficher un bouton de réinitialisation de tous les filtres."
 msgstr ""
 
-#: admin/views/metabox-display.php:163
+#: admin/views/metabox-display.php:178
 msgid "Texte du bouton :"
 msgstr ""
 
-#: admin/views/metabox-display.php:164
+#: admin/views/metabox-display.php:179
 #: includes/class-data-provider.php:57
 msgid "Effacer"
 msgstr ""
@@ -452,31 +464,31 @@ msgid "Aucun élément dans la corbeille."
 msgstr ""
 
 #: includes/class-cpt.php:92
-#: includes/class-list-config.php:56
+#: includes/class-list-config.php:59
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-data-provider.php:331
+#: includes/class-data-provider.php:332
 msgid "Oui"
 msgstr ""
 
-#: includes/class-data-provider.php:332
+#: includes/class-data-provider.php:333
 msgid "Non"
 msgstr ""
 
-#: includes/class-list-config.php:52
+#: includes/class-list-config.php:55
 msgid "Source des données"
 msgstr ""
 
-#: includes/class-list-config.php:53
+#: includes/class-list-config.php:56
 msgid "Template HTML"
 msgstr ""
 
-#: includes/class-list-config.php:54
+#: includes/class-list-config.php:57
 msgid "Filtres & recherche"
 msgstr ""
 
-#: includes/class-list-config.php:55
+#: includes/class-list-config.php:58
 msgid "Affichage"
 msgstr ""
 
@@ -493,18 +505,18 @@ msgstr ""
 msgid "Tous"
 msgstr ""
 
-#: public/views/list-wrapper.php:197
+#: public/views/list-wrapper.php:203
 msgid "Précédent"
 msgstr ""
 
-#: public/views/list-wrapper.php:198
+#: public/views/list-wrapper.php:204
 msgid "Suivant"
 msgstr ""
 
-#: public/views/list-wrapper.php:216
+#: public/views/list-wrapper.php:222
 msgid "Page précédente"
 msgstr ""
 
-#: public/views/list-wrapper.php:222
+#: public/views/list-wrapper.php:228
 msgid "Page suivante"
 msgstr ""

@@ -85,6 +85,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</label>
 				</p>
 				<p>
+					<?php esc_html_e( 'Position des flèches :', 'mrz-display-post-exp' ); ?>
+					<?php
+					$arrow_positions = array(
+						'sides' => __( 'Sur les côtés', 'mrz-display-post-exp' ),
+						'top'   => __( 'Au-dessus (alignées à gauche)', 'mrz-display-post-exp' ),
+					);
+					foreach ( $arrow_positions as $val => $label ) :
+						?>
+						<label style="margin-right:16px;">
+							<input type="radio" name="mrz_display_post_exp[slider_arrows_position]" value="<?php echo esc_attr( $val ); ?>" <?php checked( $values['slider_arrows_position'], $val ); ?> />
+							<?php echo esc_html( $label ); ?>
+						</label>
+					<?php endforeach; ?>
+				</p>
+				<p>
 					<label>
 						<input type="checkbox" name="mrz_display_post_exp[slider_show_dots]" value="1" <?php checked( ! empty( $values['slider_show_dots'] ) ); ?> />
 						<?php esc_html_e( 'Afficher les puces de pagination.', 'mrz-display-post-exp' ); ?>

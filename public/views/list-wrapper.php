@@ -183,8 +183,14 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 
 	<div class="mrz-display-post-exp-main">
 		<?php if ( 'slider' === $format ) : ?>
-			<?php $s = $config['slider']; ?>
-			<div class="mrz-display-post-exp-slider"
+			<?php
+			$s             = $config['slider'];
+			$slider_classes = 'mrz-display-post-exp-slider';
+			if ( ! empty( $s['showArrows'] ) && 'top' === $s['arrowsPosition'] ) {
+				$slider_classes .= ' is-arrows-top';
+			}
+			?>
+			<div class="<?php echo esc_attr( $slider_classes ); ?>"
 				data-per-view="<?php echo (int) $s['perView']; ?>"
 				data-per-view-tablet="<?php echo (int) $s['perViewTablet']; ?>"
 				data-per-view-mobile="<?php echo (int) $s['perViewMobile']; ?>"
