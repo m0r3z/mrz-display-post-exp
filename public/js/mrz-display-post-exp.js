@@ -50,6 +50,8 @@
 
 		var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		var autoplayTimer = null;
+		var animFrame = null;
+		var SCROLL_DURATION = 500;
 
 		function currentPerView() {
 			if (window.matchMedia('(max-width: 768px)').matches) { return perViewMobile; }
@@ -106,24 +108,60 @@
 			});
 		}
 
+		// Défilement programmatique adouci (easing ease-in-out). Le snap est
+		// désactivé le temps de l'animation pour ne pas entrer en conflit, puis
+		// rétabli une fois arrivé pile sur un point d'aimantation.
+		function smoothScrollTo(targetLeft) {
+			if (animFrame) {
+				cancelAnimationFrame(animFrame);
+				animFrame = null;
+				track.style.scrollSnapType = '';
+			}
+			var maxScroll = track.scrollWidth - track.clientWidth;
+			targetLeft = Math.max(0, Math.min(targetLeft, maxScroll));
+			var start = track.scrollLeft;
+			var dist = targetLeft - start;
+			if (Math.abs(dist) < 1) { return; }
+			if (reduceMotion) { track.scrollLeft = targetLeft; return; }
+
+			var startTime = null;
+			track.style.scrollSnapType = 'none';
+			function easeInOutCubic(t) {
+				return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+			}
+			function step(ts) {
+				if (startTime === null) { startTime = ts; }
+				var t = Math.min(1, (ts - startTime) / SCROLL_DURATION);
+				track.scrollLeft = start + dist * easeInOutCubic(t);
+				if (t < 1) {
+					animFrame = requestAnimationFrame(step);
+				} else {
+					track.scrollLeft = targetLeft;
+					track.style.scrollSnapType = '';
+					animFrame = null;
+				}
+			}
+			animFrame = requestAnimationFrame(step);
+		}
+
 		function goToPage(idx) {
-			track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+			smoothScrollTo(idx * track.clientWidth);
 		}
 
 		function next() {
 			var maxScroll = track.scrollWidth - track.clientWidth - 1;
 			if (loop && track.scrollLeft >= maxScroll) {
-				track.scrollTo({ left: 0, behavior: 'smooth' });
+				smoothScrollTo(0);
 			} else {
-				track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+				smoothScrollTo(track.scrollLeft + track.clientWidth);
 			}
 		}
 
 		function prev() {
 			if (loop && track.scrollLeft <= 1) {
-				track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+				smoothScrollTo(track.scrollWidth);
 			} else {
-				track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+				smoothScrollTo(track.scrollLeft - track.clientWidth);
 			}
 		}
 
@@ -163,6 +201,11 @@
 		}
 
 		function refresh() {
+			if (animFrame) {
+				cancelAnimationFrame(animFrame);
+				animFrame = null;
+				track.style.scrollSnapType = '';
+			}
 			applyVars();
 			track.scrollLeft = 0;
 			updateArrows();
