@@ -30,7 +30,8 @@ define( 'MRZ_DISPLAY_POST_EXP_FILE', __FILE__ );
 define( 'MRZ_DISPLAY_POST_EXP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MRZ_DISPLAY_POST_EXP_URL', plugin_dir_url( __FILE__ ) );
 define( 'MRZ_DISPLAY_POST_EXP_BASENAME', plugin_basename( __FILE__ ) );
-define( 'MRZ_DISPLAY_POST_EXP_CPT', 'mrz_display_post_exp_list' );
+// Le nom d'un post type est limité à 20 caractères par WordPress, d'où le slug court.
+define( 'MRZ_DISPLAY_POST_EXP_CPT', 'mrz_dpe_list' );
 
 require_once MRZ_DISPLAY_POST_EXP_DIR . 'includes/helpers.php';
 

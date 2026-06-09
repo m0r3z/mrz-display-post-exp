@@ -10,7 +10,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 global $wpdb;
 
 // Supprime tous les posts du CPT et leurs métas associées.
-$cpt      = 'mrz_display_post_exp_list';
+$cpt      = 'mrz_dpe_list';
 $list_ids = $wpdb->get_col(
 	$wpdb->prepare(
 		"SELECT ID FROM {$wpdb->posts} WHERE post_type = %s",
