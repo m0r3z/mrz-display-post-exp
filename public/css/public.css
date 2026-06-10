@@ -40,6 +40,8 @@ a.mrz-display-post-exp-item-wrap { display: block; color: inherit; text-decorati
 
 /* Pagination (liste / grille) */
 .mrz-display-post-exp-pagination { display: flex; align-items: center; gap: 10px; justify-content: center; padding: 8px 0; }
+/* L'attribut hidden doit l'emporter sur le display:flex ci-dessus (une seule page, slider, etc.). */
+.mrz-display-post-exp-pagination[hidden] { display: none; }
 .mrz-display-post-exp-pagination button { cursor: pointer; }
 .mrz-display-post-exp-pagination button[disabled] { opacity: 0.4; cursor: not-allowed; }
 
