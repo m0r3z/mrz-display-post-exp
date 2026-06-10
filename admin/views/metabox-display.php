@@ -66,6 +66,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<p class="description"><?php esc_html_e( 'La grille remplit automatiquement autant de colonnes que possible à partir de cette largeur minimale.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
+		<tr class="mrz-display-post-exp-when-grid">
+			<th scope="row">
+				<label for="mrz_display_post_exp_grid_gap"><?php esc_html_e( 'Espacement entre items (px)', 'mrz-display-post-exp' ); ?></label>
+			</th>
+			<td>
+				<input type="number" name="mrz_display_post_exp[grid_gap]" id="mrz_display_post_exp_grid_gap" value="<?php echo esc_attr( $values['grid_gap'] ); ?>" min="0" max="64" step="1" />
+				<p class="description"><?php esc_html_e( 'Écart horizontal et vertical entre les items de la grille.', 'mrz-display-post-exp' ); ?></p>
+			</td>
+		</tr>
 
 		<tr class="mrz-display-post-exp-when-slider">
 			<th scope="row"><?php esc_html_e( 'Items visibles (slider)', 'mrz-display-post-exp' ); ?></th>

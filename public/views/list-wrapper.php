@@ -218,7 +218,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 				<?php
 				$list_style = '';
 				if ( 'grid' === $format ) {
-					$list_style = ' style="--mrz-grid-min:' . (int) $config['grid']['minWidth'] . 'px;"';
+					$list_style = ' style="--mrz-grid-min:' . (int) $config['grid']['minWidth'] . 'px;--mrz-grid-gap:' . (int) $config['grid']['gap'] . 'px;"';
 				}
 				?>
 				<div class="mrz-display-post-exp-list"<?php echo $list_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — valeur entière interpolée ?>></div>

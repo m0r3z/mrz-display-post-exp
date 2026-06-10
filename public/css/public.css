@@ -21,7 +21,7 @@
 .mrz-display-post-exp-fmt-list .mrz-display-post-exp-list { display: flex; flex-direction: column; gap: 8px; }
 
 /* --- Format GRILLE --- */
-.mrz-display-post-exp-fmt-grid .mrz-display-post-exp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--mrz-grid-min, 240px), 1fr)); gap: 12px; }
+.mrz-display-post-exp-fmt-grid .mrz-display-post-exp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--mrz-grid-min, 240px), 1fr)); gap: var(--mrz-grid-gap, 12px); }
 
 /* Ratio uniforme de l'image à la une ({post_thumbnail}) — recadrage CSS, sans tronquer le fichier. */
 .mrz-display-post-exp-has-thumb-ratio img.wp-post-image {

@@ -117,6 +117,7 @@ final class ListConfig {
 			'show_clear_btn'        => 1,
 			'clear_btn_text'        => '',
 			'grid_min_width'        => 240,
+			'grid_gap'              => 12,
 			'thumb_ratio'           => 'auto',
 			// Slider.
 			'slider_per_view'        => 3,
@@ -282,6 +283,7 @@ final class ListConfig {
 		$clean['show_clear_btn']    = ! empty( $raw['show_clear_btn'] ) ? 1 : 0;
 		$clean['clear_btn_text']    = isset( $raw['clear_btn_text'] ) ? sanitize_text_field( (string) $raw['clear_btn_text'] ) : '';
 		$clean['grid_min_width']    = isset( $raw['grid_min_width'] ) ? max( 120, min( 600, absint( $raw['grid_min_width'] ) ) ) : 240;
+		$clean['grid_gap']          = isset( $raw['grid_gap'] ) ? max( 0, min( 64, absint( $raw['grid_gap'] ) ) ) : 12;
 		$clean['thumb_ratio']       = ( isset( $raw['thumb_ratio'] ) && in_array( $raw['thumb_ratio'], self::thumb_ratios(), true ) ) ? $raw['thumb_ratio'] : 'auto';
 
 		// Slider.

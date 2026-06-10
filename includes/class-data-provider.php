@@ -82,6 +82,7 @@ final class DataProvider {
 			'thumbRatio'       => 'auto' === (string) $values['thumb_ratio'] ? '' : (string) $values['thumb_ratio'],
 			'grid'             => array(
 				'minWidth' => (int) $values['grid_min_width'],
+				'gap'      => (int) $values['grid_gap'],
 			),
 			'slider'           => array(
 				'perView'       => (int) $values['slider_per_view'],
