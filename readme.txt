@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,15 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.0.0 =
+* First stable release.
+* Three display formats: list, grid and a dependency-free native CSS slider (configurable per-view, gap, speed, autoplay, loop, arrow position).
+* Customizable HTML item template with placeholders: {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (word-limited), {post_thumbnail}, {%acf_field%}, {taxonomy:slug} (each term in its own span), conditionals {#if}.
+* Client-side filters (taxonomy + ACF, OR/AND), text search, optional URL filter sync, mobile filter toggle.
+* Sort by an ACF date field with an upcoming/past server-side filter (agenda use-case).
+* CSS aspect-ratio option for the featured image (object-fit, no file cropping).
+* Configurable grid column min-width and gap.
 
 = 0.1.0 =
 * Initial beta — list / grid / slider display of posts and custom posts with ACF placeholders, client-side filters and search.
