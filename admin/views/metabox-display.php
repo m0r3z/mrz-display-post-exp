@@ -30,6 +30,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</td>
 		</tr>
 
+		<tr>
+			<th scope="row">
+				<label for="mrz_display_post_exp_thumb_ratio"><?php esc_html_e( 'Ratio de l\'image à la une', 'mrz-display-post-exp' ); ?></label>
+			</th>
+			<td>
+				<select name="mrz_display_post_exp[thumb_ratio]" id="mrz_display_post_exp_thumb_ratio">
+					<?php
+					$ratio_labels = array(
+						'auto'  => __( 'Auto (image d\'origine)', 'mrz-display-post-exp' ),
+						'1/1'   => __( 'Carré (1:1)', 'mrz-display-post-exp' ),
+						'4/3'   => __( 'Paysage 4:3', 'mrz-display-post-exp' ),
+						'3/2'   => __( 'Paysage 3:2', 'mrz-display-post-exp' ),
+						'16/9'  => __( 'Paysage 16:9', 'mrz-display-post-exp' ),
+						'3/4'   => __( 'Portrait 3:4', 'mrz-display-post-exp' ),
+						'2/3'   => __( 'Portrait 2:3', 'mrz-display-post-exp' ),
+					);
+					foreach ( $ratio_labels as $val => $label ) :
+						?>
+						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( $values['thumb_ratio'], $val ); ?>>
+							<?php echo esc_html( $label ); ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+				<p class="description"><?php esc_html_e( 'S\'applique à l\'image à la une ({post_thumbnail}). L\'image remplit la zone et est recadrée proprement (object-fit) sans déformation, sans modifier le fichier.', 'mrz-display-post-exp' ); ?></p>
+			</td>
+		</tr>
+
 		<tr class="mrz-display-post-exp-when-grid">
 			<th scope="row">
 				<label for="mrz_display_post_exp_grid_min_width"><?php esc_html_e( 'Largeur min. d\'une colonne (px)', 'mrz-display-post-exp' ); ?></label>

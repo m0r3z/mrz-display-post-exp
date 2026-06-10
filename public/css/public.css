@@ -23,6 +23,15 @@
 /* --- Format GRILLE --- */
 .mrz-display-post-exp-fmt-grid .mrz-display-post-exp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--mrz-grid-min, 240px), 1fr)); gap: 12px; }
 
+/* Ratio uniforme de l'image à la une ({post_thumbnail}) — recadrage CSS, sans tronquer le fichier. */
+.mrz-display-post-exp-has-thumb-ratio img.wp-post-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: var(--mrz-img-ratio);
+	object-fit: cover;
+}
+
 /* Item */
 .mrz-display-post-exp-item-wrap { cursor: default; }
 .mrz-display-post-exp-item-wrap.mrz-display-post-exp-item-link { cursor: pointer; }

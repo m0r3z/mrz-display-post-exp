@@ -47,6 +47,9 @@ final class ListConfig {
 	public static function acf_date_scopes() {
 		return array( 'all', 'upcoming', 'past' );
 	}
+	public static function thumb_ratios() {
+		return array( 'auto', '1/1', '4/3', '3/2', '16/9', '3/4', '2/3' );
+	}
 
 	public function register() {
 		add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
@@ -114,6 +117,7 @@ final class ListConfig {
 			'show_clear_btn'        => 1,
 			'clear_btn_text'        => '',
 			'grid_min_width'        => 240,
+			'thumb_ratio'           => 'auto',
 			// Slider.
 			'slider_per_view'        => 3,
 			'slider_per_view_tablet' => 2,
@@ -278,6 +282,7 @@ final class ListConfig {
 		$clean['show_clear_btn']    = ! empty( $raw['show_clear_btn'] ) ? 1 : 0;
 		$clean['clear_btn_text']    = isset( $raw['clear_btn_text'] ) ? sanitize_text_field( (string) $raw['clear_btn_text'] ) : '';
 		$clean['grid_min_width']    = isset( $raw['grid_min_width'] ) ? max( 120, min( 600, absint( $raw['grid_min_width'] ) ) ) : 240;
+		$clean['thumb_ratio']       = ( isset( $raw['thumb_ratio'] ) && in_array( $raw['thumb_ratio'], self::thumb_ratios(), true ) ) ? $raw['thumb_ratio'] : 'auto';
 
 		// Slider.
 		$clean['slider_per_view']        = isset( $raw['slider_per_view'] ) ? max( 1, min( 8, absint( $raw['slider_per_view'] ) ) ) : 3;

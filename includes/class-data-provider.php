@@ -79,6 +79,7 @@ final class DataProvider {
 				'layout'      => (string) $values['search_layout'],
 				'acfFields'   => array_values( $search_fields ),
 			),
+			'thumbRatio'       => 'auto' === (string) $values['thumb_ratio'] ? '' : (string) $values['thumb_ratio'],
 			'grid'             => array(
 				'minWidth' => (int) $values['grid_min_width'],
 			),

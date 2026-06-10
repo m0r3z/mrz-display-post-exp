@@ -21,12 +21,17 @@ $search_layout  = isset( $config['search']['layout'] ) ? (string) $config['searc
 $search_top     = $search_enabled && 'top' === $search_layout;
 $search_inline  = $search_enabled && ! $search_top;
 
+$thumb_ratio = isset( $config['thumbRatio'] ) ? (string) $config['thumbRatio'] : '';
+
 $wrapper_cls = sprintf(
-	'mrz-display-post-exp-wrapper mrz-display-post-exp-filters-%s mrz-display-post-exp-fmt-%s%s',
+	'mrz-display-post-exp-wrapper mrz-display-post-exp-filters-%s mrz-display-post-exp-fmt-%s%s%s',
 	$layout_f,
 	$format,
-	$search_top ? ' mrz-display-post-exp-has-search-top' : ''
+	$search_top ? ' mrz-display-post-exp-has-search-top' : '',
+	'' !== $thumb_ratio ? ' mrz-display-post-exp-has-thumb-ratio' : ''
 );
+
+$wrapper_style = '' !== $thumb_ratio ? ' style="--mrz-img-ratio:' . esc_attr( $thumb_ratio ) . ';"' : '';
 
 /**
  * Retourne la clé unique d'un filtre (taxonomie ou champ ACF).
@@ -75,7 +80,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 	<?php
 };
 ?>
-<div id="<?php echo esc_attr( $uid ); ?>" class="<?php echo esc_attr( $wrapper_cls ); ?>" data-mrz-display-post-exp="1">
+<div id="<?php echo esc_attr( $uid ); ?>" class="<?php echo esc_attr( $wrapper_cls ); ?>"<?php echo $wrapper_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — valeur issue d'une whitelist, déjà échappée via esc_attr ?> data-mrz-display-post-exp="1">
 
 	<?php if ( $search_top ) : ?>
 		<div class="mrz-display-post-exp-search-top">
