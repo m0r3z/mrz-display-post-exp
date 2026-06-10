@@ -16,7 +16,7 @@ $allowed_code = array( 'code' => array() );
 	<?php
 	echo ' ';
 	echo wp_kses(
-		'<code>{post_title}</code>, <code>{post_url}</code>, <code>{post_excerpt}</code>, <code>{post_excerpt:25}</code> (tronqué à 25 mots), <code>{post_thumbnail}</code>, <code>{post_thumbnail_url}</code>, <code>{post_id}</code>, <code>{%nom_champ_acf%}</code>, <code>{taxonomy:slug}</code> (tous les termes, chacun dans un span) <code>{taxonomy:slug:first}</code> (premier terme).',
+		'<code>{post_title}</code>, <code>{post_url}</code>, <code>{post_excerpt}</code>, <code>{post_excerpt:25}</code> (tronqué à 25 mots), <code>{post_thumbnail}</code>, <code>{post_thumbnail_url}</code>, <code>{post_id}</code>, <code>{%nom_champ_acf%}</code>, <code>{taxonomy:slug}</code> (tous les termes, chacun dans un span) <code>{taxonomy:slug:first}</code> (premier terme), <code>{acf_date:champ}</code> (date ACF en spans jour/mois/année — mois en lettres : <code>{acf_date:champ:F}</code>).',
 		$allowed_code
 	);
 	?>

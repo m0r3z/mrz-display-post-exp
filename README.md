@@ -34,6 +34,7 @@ Plugin WordPress minimaliste pour **afficher des posts et custom posts avec leur
 | `{post_thumbnail_url}` | URL de la miniature |
 | `{post_id}` | ID du post |
 | `{%nom_champ_acf%}` | Valeur ACF (échappement selon le type) |
+| `{acf_date:champ}` | Date ACF découpée en spans `mrz-dpe-day` / `mrz-dpe-month` / `mrz-dpe-year`. Mois numérique par défaut ; `{acf_date:champ:F}` = nom complet, `:M` = abrégé, `:n` = numéro sans zéro |
 | `{taxonomy:slug}` | Tous les termes, chacun dans un `<span class="mrz-dpe-term">` (aucun séparateur imposé, à styliser en CSS) |
 | `{taxonomy:slug:first}` | Premier terme (texte brut) |
 

@@ -6,6 +6,7 @@
  *   - {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (tronqué à N mots)
  *   - {post_thumbnail} (balise <img>), {post_thumbnail_url}
  *   - {%nom_champ_acf%}
+ *   - {acf_date:champ} ou {acf_date:champ:F} (date ACF en spans jour/mois/année ; mois = m|n|F|M)
  *   - {taxonomy:slug} (chaque terme dans un <span class="mrz-dpe-term">, sans séparateur)
  *   - {taxonomy:slug:first} (premier terme, texte brut)
  *
@@ -90,6 +91,17 @@ final class TemplateParser {
 			$template
 		);
 
+		// Champ ACF de date découpé en spans : {acf_date:champ} ou {acf_date:champ:F}
+		// Jour (d) et année (Y) fixes ; le mois suit le token optionnel (m|n|F|M).
+		$template = preg_replace_callback(
+			'/\{acf_date:([\w-]+)(?::([a-zA-Z]+))?\}/',
+			function ( $m ) use ( $post_id ) {
+				$month_fmt = ( isset( $m[2] ) && in_array( $m[2], array( 'm', 'n', 'F', 'M' ), true ) ) ? $m[2] : 'm';
+				return self::render_acf_date( $m[1], $post_id, $month_fmt );
+			},
+			$template
+		);
+
 		// Extrait tronqué à N mots : {post_excerpt:20}
 		$template = preg_replace_callback(
 			'/\{post_excerpt:(\d+)\}/',
@@ -134,6 +146,30 @@ final class TemplateParser {
 		);
 
 		return strtr( $template, $native );
+	}
+
+	/**
+	 * Rend un champ ACF de date découpé en spans jour / mois / année.
+	 * $month_fmt : token date() pour le span du mois (m|n|F|M), validé en amont.
+	 */
+	private static function render_acf_date( $field, $post_id, $month_fmt ) {
+		$raw = function_exists( 'get_field' ) ? get_field( $field, $post_id, false ) : null;
+		if ( ! is_string( $raw ) && ! is_numeric( $raw ) ) {
+			return '';
+		}
+		$raw = (string) $raw;
+		if ( '' === $raw ) {
+			return '';
+		}
+		// Les champs date ACF stockent Ymd (date) ou Y-m-d H:i:s (date/heure) ;
+		// strtotime gère les deux.
+		$ts = strtotime( $raw );
+		if ( false === $ts ) {
+			return '';
+		}
+		return '<span class="mrz-dpe-day">' . esc_html( date_i18n( 'd', $ts ) ) . '</span>'
+			. '<span class="mrz-dpe-month">' . esc_html( date_i18n( $month_fmt, $ts ) ) . '</span>'
+			. '<span class="mrz-dpe-year">' . esc_html( date_i18n( 'Y', $ts ) ) . '</span>';
 	}
 
 	private static function get_native_raw( $key, $post_id ) {
