@@ -46,6 +46,9 @@ $date_formats = array(
 );
 ?>
 
+<details class="mrz-display-post-exp-help-toggle">
+<summary><?php esc_html_e( 'Placeholders disponibles, formats de date & conditionnels', 'mrz-display-post-exp' ); ?></summary>
+
 <h4 class="mrz-display-post-exp-section-title"><?php esc_html_e( 'Placeholders disponibles', 'mrz-display-post-exp' ); ?></h4>
 <table class="widefat striped mrz-display-post-exp-help">
 	<tbody>
@@ -90,3 +93,4 @@ $date_formats = array(
 	);
 	?>
 </p>
+</details>
