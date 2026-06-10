@@ -44,6 +44,9 @@ final class ListConfig {
 	public static function orders() {
 		return array( 'ASC', 'DESC' );
 	}
+	public static function acf_date_scopes() {
+		return array( 'all', 'upcoming', 'past' );
+	}
 
 	public function register() {
 		add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
@@ -86,6 +89,7 @@ final class ListConfig {
 			'source_pt'             => 'post',
 			'orderby'               => 'date',
 			'orderby_acf_field'     => '',
+			'acf_date_scope'        => 'all',
 			'order'                 => 'DESC',
 			'limit'                 => 0,
 			'per_page'              => 0,
@@ -173,6 +177,7 @@ final class ListConfig {
 			: 'post';
 		$clean['orderby']           = ( isset( $raw['orderby'] ) && in_array( $raw['orderby'], self::orderbys(), true ) ) ? $raw['orderby'] : 'date';
 		$clean['orderby_acf_field'] = isset( $raw['orderby_acf_field'] ) ? sanitize_key( $raw['orderby_acf_field'] ) : '';
+		$clean['acf_date_scope']    = ( isset( $raw['acf_date_scope'] ) && in_array( $raw['acf_date_scope'], self::acf_date_scopes(), true ) ) ? $raw['acf_date_scope'] : 'all';
 		$clean['order']             = ( isset( $raw['order'] ) && in_array( $raw['order'], self::orders(), true ) ) ? $raw['order'] : 'DESC';
 		$clean['limit']     = isset( $raw['limit'] ) ? max( 0, absint( $raw['limit'] ) ) : 0;
 		$clean['per_page']  = isset( $raw['per_page'] ) ? max( 0, min( 200, absint( $raw['per_page'] ) ) ) : 0;

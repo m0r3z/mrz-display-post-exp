@@ -118,12 +118,29 @@ final class DataProvider {
 			'update_post_term_cache' => true,
 		);
 
-		// Tri par champ ACF de date : les champs date ACF stockent une valeur
-		// triable (date picker → Ymd ; date/heure → Y-m-d H:i:s), d'où meta_value.
-		// Note : seuls les posts possédant ce champ sont remontés (jointure meta).
+		// Tri par champ ACF de date (agenda) + filtre optionnel à venir / passé.
+		// Les champs date ACF stockent une valeur triable (date picker → Ymd ;
+		// date/heure → Y-m-d H:i:s). On utilise une clause meta_query nommée qui
+		// sert à la fois au tri et au filtre. Seuls les posts possédant ce champ
+		// sont remontés (jointure meta).
 		if ( 'acf_date' === (string) $values['orderby'] && '' !== (string) $values['orderby_acf_field'] ) {
-			$args['meta_key'] = (string) $values['orderby_acf_field'];
-			$args['orderby']  = 'meta_value';
+			$field       = (string) $values['orderby_acf_field'];
+			$scope       = (string) $values['acf_date_scope'];
+			$is_datetime = self::acf_date_is_datetime( $field );
+
+			$clause = array(
+				'key'  => $field,
+				'type' => $is_datetime ? 'DATETIME' : 'NUMERIC',
+			);
+			if ( 'upcoming' === $scope || 'past' === $scope ) {
+				$clause['value']   = $is_datetime ? ( current_time( 'Y-m-d' ) . ' 00:00:00' ) : current_time( 'Ymd' );
+				$clause['compare'] = 'upcoming' === $scope ? '>=' : '<';
+			} else {
+				$clause['compare'] = 'EXISTS';
+			}
+
+			$args['meta_query'] = array( 'mrz_date' => $clause ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			$args['orderby']    = array( 'mrz_date' => (string) $values['order'] );
 		} else {
 			$args['orderby'] = 'acf_date' === (string) $values['orderby'] ? 'date' : (string) $values['orderby'];
 		}
@@ -317,6 +334,20 @@ final class DataProvider {
 		}
 
 		return $filters;
+	}
+
+	/**
+	 * Indique si un champ ACF est de type « date/heure » (stockage Y-m-d H:i:s).
+	 * Sinon on considère un sélecteur de date simple (stockage Ymd, numérique).
+	 */
+	private static function acf_date_is_datetime( $field ) {
+		if ( function_exists( 'acf_get_field' ) ) {
+			$obj = acf_get_field( $field );
+			if ( is_array( $obj ) && isset( $obj['type'] ) && 'date_time_picker' === $obj['type'] ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

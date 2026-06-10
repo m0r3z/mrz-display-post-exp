@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-10T06:27:04+00:00\n"
+"POT-Creation-Date: 2026-06-10T06:47:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-display-post-exp\n"
@@ -383,18 +383,38 @@ msgid "Nom du champ ACF de type Date (ou Date/Heure) servant au tri. Seules les 
 msgstr ""
 
 #: admin/views/metabox-source.php:71
-msgid "Nombre max de posts"
+msgid "Afficher"
 msgstr ""
 
 #: admin/views/metabox-source.php:75
-msgid "Limite de chargement côté serveur. 0 = illimité."
+msgid "Toutes les dates"
 msgstr ""
 
-#: admin/views/metabox-source.php:80
-msgid "Posts par page"
+#: admin/views/metabox-source.php:76
+msgid "À venir uniquement (≥ aujourd'hui)"
+msgstr ""
+
+#: admin/views/metabox-source.php:77
+msgid "Passées uniquement (< aujourd'hui)"
+msgstr ""
+
+#: admin/views/metabox-source.php:79
+msgid "Filtre côté serveur sur le champ de date ci-dessus. « À venir » masque les événements passés (idéal agenda)."
 msgstr ""
 
 #: admin/views/metabox-source.php:84
+msgid "Nombre max de posts"
+msgstr ""
+
+#: admin/views/metabox-source.php:88
+msgid "Limite de chargement côté serveur. 0 = illimité."
+msgstr ""
+
+#: admin/views/metabox-source.php:93
+msgid "Posts par page"
+msgstr ""
+
+#: admin/views/metabox-source.php:97
 msgid "Pagination côté utilisateur (liste et grille) : nombre de posts par page. 0 = tous affichés. Ignoré en mode slider."
 msgstr ""
 
@@ -476,31 +496,31 @@ msgid "Aucun élément dans la corbeille."
 msgstr ""
 
 #: includes/class-cpt.php:92
-#: includes/class-list-config.php:59
+#: includes/class-list-config.php:62
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-data-provider.php:341
+#: includes/class-data-provider.php:372
 msgid "Oui"
 msgstr ""
 
-#: includes/class-data-provider.php:342
+#: includes/class-data-provider.php:373
 msgid "Non"
 msgstr ""
 
-#: includes/class-list-config.php:55
+#: includes/class-list-config.php:58
 msgid "Source des données"
 msgstr ""
 
-#: includes/class-list-config.php:56
+#: includes/class-list-config.php:59
 msgid "Template HTML"
 msgstr ""
 
-#: includes/class-list-config.php:57
+#: includes/class-list-config.php:60
 msgid "Filtres & recherche"
 msgstr ""
 
-#: includes/class-list-config.php:58
+#: includes/class-list-config.php:61
 msgid "Affichage"
 msgstr ""
 

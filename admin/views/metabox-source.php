@@ -66,6 +66,19 @@ $orderby_labels = array(
 				<p class="description"><?php esc_html_e( 'Nom du champ ACF de type Date (ou Date/Heure) servant au tri. Seules les entrées possédant ce champ seront affichées.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
+		<tr class="mrz-display-post-exp-when-acfdate">
+			<th scope="row">
+				<label for="mrz_display_post_exp_acf_date_scope"><?php esc_html_e( 'Afficher', 'mrz-display-post-exp' ); ?></label>
+			</th>
+			<td>
+				<select name="mrz_display_post_exp[acf_date_scope]" id="mrz_display_post_exp_acf_date_scope">
+					<option value="all" <?php selected( $values['acf_date_scope'], 'all' ); ?>><?php esc_html_e( 'Toutes les dates', 'mrz-display-post-exp' ); ?></option>
+					<option value="upcoming" <?php selected( $values['acf_date_scope'], 'upcoming' ); ?>><?php esc_html_e( 'À venir uniquement (≥ aujourd\'hui)', 'mrz-display-post-exp' ); ?></option>
+					<option value="past" <?php selected( $values['acf_date_scope'], 'past' ); ?>><?php esc_html_e( 'Passées uniquement (< aujourd\'hui)', 'mrz-display-post-exp' ); ?></option>
+				</select>
+				<p class="description"><?php esc_html_e( 'Filtre côté serveur sur le champ de date ci-dessus. « À venir » masque les événements passés (idéal agenda).', 'mrz-display-post-exp' ); ?></p>
+			</td>
+		</tr>
 		<tr>
 			<th scope="row">
 				<label for="mrz_display_post_exp_limit"><?php esc_html_e( 'Nombre max de posts', 'mrz-display-post-exp' ); ?></label>
