@@ -39,7 +39,7 @@ final class ListConfig {
 		return array( 'or', 'and' );
 	}
 	public static function orderbys() {
-		return array( 'date', 'title', 'menu_order', 'rand', 'modified' );
+		return array( 'date', 'title', 'menu_order', 'rand', 'modified', 'acf_date' );
 	}
 	public static function orders() {
 		return array( 'ASC', 'DESC' );
@@ -85,6 +85,7 @@ final class ListConfig {
 			// Source.
 			'source_pt'             => 'post',
 			'orderby'               => 'date',
+			'orderby_acf_field'     => '',
 			'order'                 => 'DESC',
 			'limit'                 => 0,
 			'per_page'              => 0,
@@ -170,8 +171,9 @@ final class ListConfig {
 		$clean['source_pt'] = ( isset( $raw['source_pt'] ) && in_array( $raw['source_pt'], $public_pts, true ) )
 			? $raw['source_pt']
 			: 'post';
-		$clean['orderby']   = ( isset( $raw['orderby'] ) && in_array( $raw['orderby'], self::orderbys(), true ) ) ? $raw['orderby'] : 'date';
-		$clean['order']     = ( isset( $raw['order'] ) && in_array( $raw['order'], self::orders(), true ) ) ? $raw['order'] : 'DESC';
+		$clean['orderby']           = ( isset( $raw['orderby'] ) && in_array( $raw['orderby'], self::orderbys(), true ) ) ? $raw['orderby'] : 'date';
+		$clean['orderby_acf_field'] = isset( $raw['orderby_acf_field'] ) ? sanitize_key( $raw['orderby_acf_field'] ) : '';
+		$clean['order']             = ( isset( $raw['order'] ) && in_array( $raw['order'], self::orders(), true ) ) ? $raw['order'] : 'DESC';
 		$clean['limit']     = isset( $raw['limit'] ) ? max( 0, absint( $raw['limit'] ) ) : 0;
 		$clean['per_page']  = isset( $raw['per_page'] ) ? max( 0, min( 200, absint( $raw['per_page'] ) ) ) : 0;
 

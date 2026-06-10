@@ -19,6 +19,7 @@ $orderby_labels = array(
 	'menu_order' => __( 'Ordre manuel (menu_order)', 'mrz-display-post-exp' ),
 	'rand'       => __( 'Aléatoire', 'mrz-display-post-exp' ),
 	'modified'   => __( 'Date de modification', 'mrz-display-post-exp' ),
+	'acf_date'   => __( 'Champ ACF de date (agenda)', 'mrz-display-post-exp' ),
 );
 ?>
 <table class="form-table mrz-display-post-exp-table">
@@ -54,6 +55,15 @@ $orderby_labels = array(
 					<option value="DESC" <?php selected( $values['order'], 'DESC' ); ?>><?php esc_html_e( 'Décroissant', 'mrz-display-post-exp' ); ?></option>
 					<option value="ASC" <?php selected( $values['order'], 'ASC' ); ?>><?php esc_html_e( 'Croissant', 'mrz-display-post-exp' ); ?></option>
 				</select>
+			</td>
+		</tr>
+		<tr class="mrz-display-post-exp-when-acfdate">
+			<th scope="row">
+				<label for="mrz_display_post_exp_orderby_acf_field"><?php esc_html_e( 'Champ ACF de date', 'mrz-display-post-exp' ); ?></label>
+			</th>
+			<td>
+				<input type="text" name="mrz_display_post_exp[orderby_acf_field]" id="mrz_display_post_exp_orderby_acf_field" value="<?php echo esc_attr( $values['orderby_acf_field'] ); ?>" class="regular-text" placeholder="date_evenement" />
+				<p class="description"><?php esc_html_e( 'Nom du champ ACF de type Date (ou Date/Heure) servant au tri. Seules les entrées possédant ce champ seront affichées.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 		<tr>

@@ -112,12 +112,21 @@ final class DataProvider {
 			'post_type'              => $source_pt,
 			'post_status'            => 'publish',
 			'posts_per_page'         => $limit > 0 ? $limit : -1,
-			'orderby'                => (string) $values['orderby'],
 			'order'                  => (string) $values['order'],
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => true,
 			'update_post_term_cache' => true,
 		);
+
+		// Tri par champ ACF de date : les champs date ACF stockent une valeur
+		// triable (date picker → Ymd ; date/heure → Y-m-d H:i:s), d'où meta_value.
+		// Note : seuls les posts possédant ce champ sont remontés (jointure meta).
+		if ( 'acf_date' === (string) $values['orderby'] && '' !== (string) $values['orderby_acf_field'] ) {
+			$args['meta_key'] = (string) $values['orderby_acf_field'];
+			$args['orderby']  = 'meta_value';
+		} else {
+			$args['orderby'] = 'acf_date' === (string) $values['orderby'] ? 'date' : (string) $values['orderby'];
+		}
 
 		$query = new \WP_Query( $args );
 		if ( ! $query->have_posts() ) {

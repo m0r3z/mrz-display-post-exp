@@ -21,6 +21,15 @@
 		});
 	}
 
+	// Affiche le champ ACF de date seulement quand le tri « Champ ACF de date » est choisi.
+	function updateOrderbyVisibility() {
+		var sel = document.getElementById('mrz_display_post_exp_orderby');
+		var isAcfDate = sel && sel.value === 'acf_date';
+		document.querySelectorAll('.mrz-display-post-exp-when-acfdate').forEach(function (el) {
+			el.style.display = isAcfDate ? '' : 'none';
+		});
+	}
+
 	// Affiche les réglages propres au format choisi (grille / slider).
 	function updateFormatVisibility() {
 		var checked = document.querySelector('.mrz-display-post-exp-format-input:checked');
@@ -104,6 +113,12 @@
 		var sel = document.getElementById('mrz_display_post_exp_source_pt');
 		if (sel) {
 			sel.addEventListener('change', updateTaxonomyVisibility);
+		}
+
+		updateOrderbyVisibility();
+		var orderbySel = document.getElementById('mrz_display_post_exp_orderby');
+		if (orderbySel) {
+			orderbySel.addEventListener('change', updateOrderbyVisibility);
 		}
 
 		updateFormatVisibility();
