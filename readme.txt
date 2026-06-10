@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,10 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.0.1 =
+* New placeholder {acf_date:field} — splits an ACF date field into day/month/year spans, with an optional month format (m, n, F, M).
+* Admin: the template placeholder help is now displayed below the item template, inside a collapsible toggle, with a dedicated date-format section.
 
 = 1.0.0 =
 * First stable release.
