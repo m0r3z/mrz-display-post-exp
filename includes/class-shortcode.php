@@ -48,8 +48,9 @@ final class Shortcode {
 				array_filter(
 					$data['items'],
 					function ( $p ) use ( $forced_tax, $forced_term ) {
-						return isset( $p['terms'][ $forced_tax ] )
-							&& in_array( $forced_term, $p['terms'][ $forced_tax ], true );
+						// has_term() vérifie directement sur le post : fonctionne même si la
+						// taxonomie n'est pas activée dans les filtres du bloc.
+						return has_term( $forced_term, $forced_tax, (int) $p['id'] );
 					}
 				)
 			);
