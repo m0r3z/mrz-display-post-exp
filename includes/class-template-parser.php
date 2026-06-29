@@ -167,8 +167,8 @@ final class TemplateParser {
 		if ( false === $ts ) {
 			return '';
 		}
-		return '<span class="mrz-dpe-day">' . esc_html( date_i18n( 'd', $ts ) ) . '</span>'
-			. '<span class="mrz-dpe-month">' . esc_html( date_i18n( $month_fmt, $ts ) ) . '</span>'
+		return '<span class="mrz-dpe-month">' . esc_html( date_i18n( $month_fmt, $ts ) ) . '</span>'
+			. '<span class="mrz-dpe-day">' . esc_html( date_i18n( 'd', $ts ) ) . '</span>'
 			. '<span class="mrz-dpe-year">' . esc_html( date_i18n( 'Y', $ts ) ) . '</span>';
 	}
 
