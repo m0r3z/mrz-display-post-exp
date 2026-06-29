@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.0.3 =
+* {acf_date} now outputs the spans in month / day / year order.
 
 = 1.0.2 =
 * Fix: the shortcode forced filter (filter_taxonomy / filter_term) now works even when the taxonomy is not enabled as a front filter (uses has_term on each post).
