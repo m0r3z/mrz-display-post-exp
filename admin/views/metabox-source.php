@@ -97,5 +97,30 @@ $orderby_labels = array(
 				<p class="description"><?php esc_html_e( 'Pagination côté utilisateur (liste et grille) : nombre de posts par page. 0 = tous affichés. Ignoré en mode slider.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
+		<tr>
+			<th scope="row"><?php esc_html_e( 'Contexte courant', 'mrz-display-post-exp' ); ?></th>
+			<td>
+				<label>
+					<input type="checkbox" class="mrz-display-post-exp-current-term-toggle" name="mrz_display_post_exp[restrict_current_term]" value="1" <?php checked( ! empty( $values['restrict_current_term'] ) ); ?> />
+					<?php esc_html_e( 'N\'afficher que les contenus partageant la catégorie de la page courante (single ou archive de catégorie).', 'mrz-display-post-exp' ); ?>
+				</label>
+				<p class="description"><?php esc_html_e( 'Idéal pour un bloc « contenus liés » placé dans un article : sur un single, l\'élément courant est exclu. Sans contexte de catégorie (ex. page), tous les contenus s\'affichent.', 'mrz-display-post-exp' ); ?></p>
+			</td>
+		</tr>
+		<tr class="mrz-display-post-exp-when-current-term">
+			<th scope="row">
+				<label for="mrz_display_post_exp_current_term_taxonomy"><?php esc_html_e( 'Taxonomie du contexte', 'mrz-display-post-exp' ); ?></label>
+			</th>
+			<td>
+				<select name="mrz_display_post_exp[current_term_taxonomy]" id="mrz_display_post_exp_current_term_taxonomy">
+					<?php foreach ( get_taxonomies( array( 'public' => true ), 'objects' ) as $tx ) : ?>
+						<option value="<?php echo esc_attr( $tx->name ); ?>" <?php selected( $values['current_term_taxonomy'], $tx->name ); ?>>
+							<?php echo esc_html( $tx->labels->singular_name . ' (' . $tx->name . ')' ); ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+				<p class="description"><?php esc_html_e( 'Taxonomie partagée entre la page courante et les contenus affichés (par défaut : Catégorie).', 'mrz-display-post-exp' ); ?></p>
+			</td>
+		</tr>
 	</tbody>
 </table>

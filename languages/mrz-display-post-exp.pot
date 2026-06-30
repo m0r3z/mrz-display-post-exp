@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Display Post 1.0.0\n"
+"Project-Id-Version: MRZ Display Post 1.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-display-post-exp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-10T13:45:24+00:00\n"
+"POT-Creation-Date: 2026-06-30T15:07:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-display-post-exp\n"
@@ -278,7 +278,7 @@ msgid "Libellé affiché au-dessus du champ :"
 msgstr ""
 
 #: admin/views/metabox-filters.php:59
-#: includes/class-data-provider.php:75
+#: includes/class-data-provider.php:77
 msgid "Rechercher"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgid "Placeholder du champ :"
 msgstr ""
 
 #: admin/views/metabox-filters.php:65
-#: includes/class-data-provider.php:78
+#: includes/class-data-provider.php:80
 msgid "Rechercher…"
 msgstr ""
 
@@ -459,6 +459,26 @@ msgstr ""
 msgid "Pagination côté utilisateur (liste et grille) : nombre de posts par page. 0 = tous affichés. Ignoré en mode slider."
 msgstr ""
 
+#: admin/views/metabox-source.php:101
+msgid "Contexte courant"
+msgstr ""
+
+#: admin/views/metabox-source.php:105
+msgid "N'afficher que les contenus partageant la catégorie de la page courante (single ou archive de catégorie)."
+msgstr ""
+
+#: admin/views/metabox-source.php:107
+msgid "Idéal pour un bloc « contenus liés » placé dans un article : sur un single, l'élément courant est exclu. Sans contexte de catégorie (ex. page), tous les contenus s'affichent."
+msgstr ""
+
+#: admin/views/metabox-source.php:112
+msgid "Taxonomie du contexte"
+msgstr ""
+
+#: admin/views/metabox-source.php:122
+msgid "Taxonomie partagée entre la page courante et les contenus affichés (par défaut : Catégorie)."
+msgstr ""
+
 #: admin/views/metabox-templates.php:16
 msgid "Template de l'item"
 msgstr ""
@@ -527,27 +547,31 @@ msgstr ""
 msgid "Mois abrégé, localisé : aoû."
 msgstr ""
 
-#: admin/views/metabox-templates.php:49
+#: admin/views/metabox-templates.php:50
+msgid "Placeholders disponibles, formats de date & conditionnels"
+msgstr ""
+
+#: admin/views/metabox-templates.php:52
 msgid "Placeholders disponibles"
 msgstr ""
 
-#: admin/views/metabox-templates.php:61
+#: admin/views/metabox-templates.php:64
 msgid "Formats de date ({acf_date})"
 msgstr ""
 
-#: admin/views/metabox-templates.php:63
+#: admin/views/metabox-templates.php:66
 msgid "Le jour (01) et l'année (2026) sont fixes ; seul le mois change selon le suffixe :"
 msgstr ""
 
-#: admin/views/metabox-templates.php:78
+#: admin/views/metabox-templates.php:81
 msgid "Chaque partie est dans son span : <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — à styliser via le CSS de votre thème."
 msgstr ""
 
-#: admin/views/metabox-templates.php:84
+#: admin/views/metabox-templates.php:87
 msgid "Conditionnels"
 msgstr ""
 
-#: admin/views/metabox-templates.php:88
+#: admin/views/metabox-templates.php:91
 msgid "Affiche un bloc seulement si le champ est renseigné : <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Fonctionne aussi avec <code>{#if post_thumbnail}…{/if}</code> ou <code>{#if taxonomy:category}…{/if}</code>."
 msgstr ""
 
@@ -617,11 +641,11 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-data-provider.php:374
+#: includes/class-data-provider.php:376
 msgid "Oui"
 msgstr ""
 
-#: includes/class-data-provider.php:375
+#: includes/class-data-provider.php:377
 msgid "Non"
 msgstr ""
 

@@ -96,6 +96,8 @@ final class ListConfig {
 			'order'                 => 'DESC',
 			'limit'                 => 0,
 			'per_page'              => 0,
+			'restrict_current_term' => 0,
+			'current_term_taxonomy' => 'category',
 			// Filtres.
 			'taxonomies'            => array(),
 			'taxo_modes'            => array(),
@@ -186,6 +188,10 @@ final class ListConfig {
 		$clean['order']             = ( isset( $raw['order'] ) && in_array( $raw['order'], self::orders(), true ) ) ? $raw['order'] : 'DESC';
 		$clean['limit']     = isset( $raw['limit'] ) ? max( 0, absint( $raw['limit'] ) ) : 0;
 		$clean['per_page']  = isset( $raw['per_page'] ) ? max( 0, min( 200, absint( $raw['per_page'] ) ) ) : 0;
+
+		$public_taxonomies              = array_keys( get_taxonomies( array( 'public' => true ), 'names' ) );
+		$clean['restrict_current_term'] = ! empty( $raw['restrict_current_term'] ) ? 1 : 0;
+		$clean['current_term_taxonomy'] = ( isset( $raw['current_term_taxonomy'] ) && in_array( $raw['current_term_taxonomy'], $public_taxonomies, true ) ) ? $raw['current_term_taxonomy'] : 'category';
 
 		// Taxonomies de filtre.
 		$all_tax = array_keys( get_taxonomies( array( 'public' => true ), 'names' ) );

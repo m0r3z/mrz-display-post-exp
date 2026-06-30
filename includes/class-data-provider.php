@@ -68,6 +68,8 @@ final class DataProvider {
 			'urlFilters'       => ! empty( $values['url_filters_enabled'] ),
 			'perPage'          => (int) $values['per_page'],
 			'sourcePt'         => (string) $values['source_pt'],
+			'restrictCurrentTerm' => ! empty( $values['restrict_current_term'] ),
+			'currentTermTaxonomy' => (string) $values['current_term_taxonomy'],
 			'search'           => array(
 				'enabled'     => ! empty( $values['search_enabled'] ),
 				'label'       => '' !== (string) $values['search_label']

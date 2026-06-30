@@ -30,6 +30,15 @@
 		});
 	}
 
+	// Affiche le sélecteur de taxonomie seulement quand la restriction au contexte est cochée.
+	function updateCurrentTermVisibility() {
+		var cb = document.querySelector('.mrz-display-post-exp-current-term-toggle');
+		var on = cb && cb.checked;
+		document.querySelectorAll('.mrz-display-post-exp-when-current-term').forEach(function (el) {
+			el.style.display = on ? '' : 'none';
+		});
+	}
+
 	// Affiche les réglages propres au format choisi (grille / slider).
 	function updateFormatVisibility() {
 		var checked = document.querySelector('.mrz-display-post-exp-format-input:checked');
@@ -119,6 +128,12 @@
 		var orderbySel = document.getElementById('mrz_display_post_exp_orderby');
 		if (orderbySel) {
 			orderbySel.addEventListener('change', updateOrderbyVisibility);
+		}
+
+		updateCurrentTermVisibility();
+		var currentTermToggle = document.querySelector('.mrz-display-post-exp-current-term-toggle');
+		if (currentTermToggle) {
+			currentTermToggle.addEventListener('change', updateCurrentTermVisibility);
 		}
 
 		updateFormatVisibility();
