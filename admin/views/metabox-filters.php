@@ -10,6 +10,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $all_tax      = get_taxonomies( array( 'public' => true ), 'objects' );
+
+// Ordonne les taxonomies : sélectionnées d'abord (dans l'ordre sauvegardé), puis le reste.
+$ordered_tax = array();
+foreach ( (array) $values['taxonomies'] as $slug ) {
+	if ( isset( $all_tax[ $slug ] ) ) {
+		$ordered_tax[ $slug ] = $all_tax[ $slug ];
+	}
+}
+foreach ( $all_tax as $slug => $tax ) {
+	if ( ! isset( $ordered_tax[ $slug ] ) ) {
+		$ordered_tax[ $slug ] = $tax;
+	}
+}
+
+$sort_handle = '<span class="mrz-display-post-exp-sort-handle" aria-hidden="true" title="' . esc_attr__( 'Glisser pour réordonner', 'mrz-display-post-exp' ) . '">⠿</span>';
 $modes_labels = array(
 	'dropdown' => __( 'Menu déroulant', 'mrz-display-post-exp' ),
 	'radio'    => __( 'Boutons radio', 'mrz-display-post-exp' ),
@@ -87,7 +102,7 @@ $acf_filters = (array) $values['acf_filters'];
 <h3 class="mrz-display-post-exp-section-title"><?php esc_html_e( 'Filtres par taxonomie', 'mrz-display-post-exp' ); ?></h3>
 
 <div class="mrz-display-post-exp-taxo-list">
-	<?php foreach ( $all_tax as $tax ) : ?>
+	<?php foreach ( $ordered_tax as $tax ) : ?>
 		<?php
 		$slug         = $tax->name;
 		$checked      = in_array( $slug, (array) $values['taxonomies'], true );
@@ -97,6 +112,7 @@ $acf_filters = (array) $values['acf_filters'];
 		$object_type  = implode( ',', (array) $tax->object_type );
 		?>
 		<div class="mrz-display-post-exp-taxo-row" data-object-types="<?php echo esc_attr( $object_type ); ?>">
+			<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
 			<label class="mrz-display-post-exp-taxo-col mrz-display-post-exp-taxo-col-activate">
 				<span><?php esc_html_e( 'Taxonomie', 'mrz-display-post-exp' ); ?></span>
 				<span class="mrz-display-post-exp-taxo-activate-row">
@@ -149,6 +165,7 @@ $acf_filters = (array) $values['acf_filters'];
 		$row_logic = isset( $row['logic'] ) ? $row['logic'] : 'or';
 		?>
 		<div class="mrz-display-post-exp-acf-row" data-index="<?php echo (int) $i; ?>">
+			<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
 			<label class="mrz-display-post-exp-acf-col">
 				<span><?php esc_html_e( 'Nom du champ ACF', 'mrz-display-post-exp' ); ?></span>
 				<input type="text" name="mrz_display_post_exp[acf_filters][<?php echo (int) $i; ?>][field]" value="<?php echo esc_attr( $field ); ?>" class="regular-text" placeholder="type_annonce" />
@@ -188,6 +205,7 @@ $acf_filters = (array) $values['acf_filters'];
 
 <template id="mrz-display-post-exp-acf-row-template">
 	<div class="mrz-display-post-exp-acf-row" data-index="__INDEX__">
+		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
 		<label class="mrz-display-post-exp-acf-col">
 			<span><?php esc_html_e( 'Nom du champ ACF', 'mrz-display-post-exp' ); ?></span>
 			<input type="text" name="mrz_display_post_exp[acf_filters][__INDEX__][field]" value="" class="regular-text" placeholder="type_annonce" />

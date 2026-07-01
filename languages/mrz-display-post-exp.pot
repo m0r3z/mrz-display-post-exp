@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Display Post 1.0.3\n"
+"Project-Id-Version: MRZ Display Post 1.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-display-post-exp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-30T15:07:45+00:00\n"
+"POT-Creation-Date: 2026-07-01T08:38:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-display-post-exp\n"
@@ -225,141 +225,145 @@ msgstr ""
 msgid "Effacer"
 msgstr ""
 
-#: admin/views/metabox-filters.php:14
+#: admin/views/metabox-filters.php:27
+msgid "Glisser pour réordonner"
+msgstr ""
+
+#: admin/views/metabox-filters.php:29
 msgid "Menu déroulant"
 msgstr ""
 
-#: admin/views/metabox-filters.php:15
+#: admin/views/metabox-filters.php:30
 msgid "Boutons radio"
 msgstr ""
 
-#: admin/views/metabox-filters.php:16
+#: admin/views/metabox-filters.php:31
 msgid "Cases à cocher"
 msgstr ""
 
-#: admin/views/metabox-filters.php:19
+#: admin/views/metabox-filters.php:34
 msgid "OU"
 msgstr ""
 
-#: admin/views/metabox-filters.php:20
+#: admin/views/metabox-filters.php:35
 msgid "ET"
 msgstr ""
 
-#: admin/views/metabox-filters.php:26
+#: admin/views/metabox-filters.php:41
 msgid "Recherche"
 msgstr ""
 
-#: admin/views/metabox-filters.php:30
+#: admin/views/metabox-filters.php:45
 msgid "Afficher un champ de recherche (filtrage instantané côté client)."
 msgstr ""
 
-#: admin/views/metabox-filters.php:35
+#: admin/views/metabox-filters.php:50
 msgid "Champs ACF à inclure dans la recherche :"
 msgstr ""
 
-#: admin/views/metabox-filters.php:39
+#: admin/views/metabox-filters.php:54
 msgid "Liste de noms de champs ACF texte séparés par des virgules. Le titre du post est toujours inclus."
 msgstr ""
 
-#: admin/views/metabox-filters.php:42
+#: admin/views/metabox-filters.php:57
 msgid "Position du champ :"
 msgstr ""
 
-#: admin/views/metabox-filters.php:45
+#: admin/views/metabox-filters.php:60
 msgid "Dans le bloc filtres"
 msgstr ""
 
-#: admin/views/metabox-filters.php:46
+#: admin/views/metabox-filters.php:61
 msgid "En haut, pleine largeur"
 msgstr ""
 
-#: admin/views/metabox-filters.php:58
+#: admin/views/metabox-filters.php:73
 msgid "Libellé affiché au-dessus du champ :"
 msgstr ""
 
-#: admin/views/metabox-filters.php:59
+#: admin/views/metabox-filters.php:74
 #: includes/class-data-provider.php:77
 msgid "Rechercher"
 msgstr ""
 
-#: admin/views/metabox-filters.php:64
+#: admin/views/metabox-filters.php:79
 msgid "Placeholder du champ :"
 msgstr ""
 
-#: admin/views/metabox-filters.php:65
+#: admin/views/metabox-filters.php:80
 #: includes/class-data-provider.php:80
 msgid "Rechercher…"
 msgstr ""
 
-#: admin/views/metabox-filters.php:71
+#: admin/views/metabox-filters.php:86
 msgid "Options globales"
 msgstr ""
 
-#: admin/views/metabox-filters.php:75
+#: admin/views/metabox-filters.php:90
 msgid "Afficher le nombre de résultats à côté de chaque option de filtre."
 msgstr ""
 
-#: admin/views/metabox-filters.php:81
+#: admin/views/metabox-filters.php:96
 msgid "Synchroniser les filtres avec l'URL (lien partageable)."
 msgstr ""
 
-#: admin/views/metabox-filters.php:87
+#: admin/views/metabox-filters.php:102
 msgid "Filtres par taxonomie"
 msgstr ""
 
-#: admin/views/metabox-filters.php:101
+#: admin/views/metabox-filters.php:117
 msgid "Taxonomie"
 msgstr ""
 
-#: admin/views/metabox-filters.php:108
-#: admin/views/metabox-filters.php:157
-#: admin/views/metabox-filters.php:196
+#: admin/views/metabox-filters.php:124
+#: admin/views/metabox-filters.php:174
+#: admin/views/metabox-filters.php:214
 msgid "Libellé affiché"
 msgstr ""
 
-#: admin/views/metabox-filters.php:112
-#: admin/views/metabox-filters.php:161
-#: admin/views/metabox-filters.php:200
+#: admin/views/metabox-filters.php:128
+#: admin/views/metabox-filters.php:178
+#: admin/views/metabox-filters.php:218
 msgid "Type de filtre"
 msgstr ""
 
-#: admin/views/metabox-filters.php:122
-#: admin/views/metabox-filters.php:171
-#: admin/views/metabox-filters.php:208
+#: admin/views/metabox-filters.php:138
+#: admin/views/metabox-filters.php:188
+#: admin/views/metabox-filters.php:226
 msgid "Logique"
 msgstr ""
 
-#: admin/views/metabox-filters.php:123
+#: admin/views/metabox-filters.php:139
 msgid "Combinaison entre cases cochées"
 msgstr ""
 
-#: admin/views/metabox-filters.php:134
+#: admin/views/metabox-filters.php:150
 msgid "Seules les taxonomies liées au post type sélectionné sont affichées. Le libellé remplace le nom de la taxonomie affiché au-dessus du filtre sur le site."
 msgstr ""
 
-#: admin/views/metabox-filters.php:138
+#: admin/views/metabox-filters.php:154
 msgid "Filtres par champ ACF"
 msgstr ""
 
-#: admin/views/metabox-filters.php:140
+#: admin/views/metabox-filters.php:156
 msgid "Pour les champs Select, Radio, Checkbox ou Vrai/Faux, les options sont détectées automatiquement depuis la configuration ACF. Pour les autres types (texte, nombre), les valeurs distinctes des posts sont collectées dynamiquement."
 msgstr ""
 
-#: admin/views/metabox-filters.php:153
-#: admin/views/metabox-filters.php:192
+#: admin/views/metabox-filters.php:170
+#: admin/views/metabox-filters.php:210
 msgid "Nom du champ ACF"
 msgstr ""
 
-#: admin/views/metabox-filters.php:172
+#: admin/views/metabox-filters.php:189
 msgid "Combinaison entre cases cochées (sans effet en mode dropdown/radio)"
 msgstr ""
 
-#: admin/views/metabox-filters.php:180
-#: admin/views/metabox-filters.php:215
+#: admin/views/metabox-filters.php:197
+#: admin/views/metabox-filters.php:233
 msgid "Retirer"
 msgstr ""
 
-#: admin/views/metabox-filters.php:186
+#: admin/views/metabox-filters.php:203
 msgid "Ajouter un filtre ACF"
 msgstr ""
 

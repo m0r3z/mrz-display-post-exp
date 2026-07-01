@@ -374,7 +374,7 @@ final class ListConfig {
 		wp_enqueue_script(
 			'mrz-display-post-exp-admin',
 			MRZ_DISPLAY_POST_EXP_URL . 'admin/js/admin.js',
-			array( 'jquery' ),
+			array( 'jquery', 'jquery-ui-sortable' ),
 			MRZ_DISPLAY_POST_EXP_VERSION,
 			true
 		);

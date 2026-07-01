@@ -13,6 +13,10 @@
 .mrz-display-post-exp-acf-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; padding: 10px; background: #f6f7f7; border: 1px solid #dcdcde; }
 .mrz-display-post-exp-acf-col { display: flex; flex-direction: column; gap: 4px; }
 .mrz-display-post-exp-acf-col > span { font-size: 12px; color: #646970; }
+.mrz-display-post-exp-sort-handle { align-self: center; cursor: move; color: #a7aaad; font-size: 18px; line-height: 1; padding: 0 4px; user-select: none; }
+.mrz-display-post-exp-sort-handle:hover { color: #646970; }
+.mrz-display-post-exp-taxo-list .ui-sortable-placeholder,
+.mrz-display-post-exp-acf-filters .ui-sortable-placeholder { visibility: hidden; }
 .mrz-display-post-exp-help-toggle { margin-top: 8px; }
 .mrz-display-post-exp-help-toggle > summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .mrz-display-post-exp-help-toggle .mrz-display-post-exp-help { margin: 8px 0; max-width: 720px; }

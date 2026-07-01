@@ -143,5 +143,26 @@
 
 		initAcfRepeater();
 		initTaxoLogicToggle();
+		initSortableFilters();
 	});
+
+	// Rend les listes de filtres réordonnables (taxonomies et ACF, chacune de son côté).
+	// L'ordre du DOM est repris tel quel à la sauvegarde par le PHP.
+	function initSortableFilters() {
+		if (!window.jQuery || !jQuery.fn.sortable) { return; }
+		jQuery('.mrz-display-post-exp-taxo-list').sortable({
+			handle: '.mrz-display-post-exp-sort-handle',
+			items: '> .mrz-display-post-exp-taxo-row',
+			axis: 'y',
+			cursor: 'move',
+			opacity: 0.7
+		});
+		jQuery('.mrz-display-post-exp-acf-filters').sortable({
+			handle: '.mrz-display-post-exp-sort-handle',
+			items: '> .mrz-display-post-exp-acf-row',
+			axis: 'y',
+			cursor: 'move',
+			opacity: 0.7
+		});
+	}
 })();
