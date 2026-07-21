@@ -1,10 +1,10 @@
-=== MRZ Display Post ===
-Contributors: mrzxp
+=== MRZ Display Post Exp ===
+Contributors: m0r3z
 Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Display posts and custom posts with their ACF fields as a list, grid or slider, 
 
 == Description ==
 
-MRZ Display Post is a generic, minimalist plugin to display any post type — standard posts or custom post types — together with their ACF fields. Each item is rendered from a customizable HTML template using placeholders (ACF fields, taxonomies, title, thumbnail…). Everything is configured from the WordPress admin — no theme code required — and styled to match the site through the theme CSS.
+MRZ Display Post Exp is a generic, minimalist plugin to display any post type — standard posts or custom post types — together with their ACF fields. Each item is rendered from a customizable HTML template using placeholders (ACF fields, taxonomies, title, thumbnail…). Everything is configured from the WordPress admin — no theme code required — and styled to match the site through the theme CSS.
 
 = Features =
 
@@ -33,7 +33,7 @@ MRZ Display Post is a generic, minimalist plugin to display any post type — st
 
 = Privacy / external calls =
 
-MRZ Display Post makes no external HTTP calls, loads no remote resources, and collects no telemetry. Everything runs locally on your site.
+MRZ Display Post Exp makes no external HTTP calls, loads no remote resources, and collects no telemetry. Everything runs locally on your site.
 
 = Source code and contributions =
 
@@ -47,6 +47,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.0.6 =
+* WordPress.org release preparation: public plugin name set to "MRZ Display Post Exp" (slug mrz-display-post-exp), contributor updated. No functional change.
 
 = 1.0.5 =
 * New: drag-and-drop reordering of the taxonomy and ACF filters in the admin — the front displays them in the chosen order (taxonomy group stays above the ACF group).
