@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.6
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.1.0 =
+* Renamed the internal PHP prefix to "mrzdpe" (constants, namespace, functions, hooks, shortcode, CPT, meta keys) to meet WordPress.org's unique-prefix requirement. The public shortcode is now [mrzdpe]. A one-time automatic migration updates existing blocks and shortcodes on upgrade — no manual action needed. CSS classes and the text domain are unchanged.
 
 = 1.0.6 =
 * WordPress.org release preparation: public plugin name set to "MRZ Display Post Exp" (slug mrz-display-post-exp), contributor updated. No functional change.

@@ -3,7 +3,7 @@
  * Agrège les données d'un bloc d'affichage pour le rendu front.
  */
 
-namespace MrzDisplayPostExp;
+namespace Mrzdpe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 final class DataProvider {
 
-	const CACHE_PREFIX = 'mrz_display_post_exp_';
+	const CACHE_PREFIX = 'mrzdpe_';
 
 	public static function invalidate( $list_id ) {
 		delete_transient( self::CACHE_PREFIX . (int) $list_id );
@@ -19,7 +19,7 @@ final class DataProvider {
 
 	public static function get_list_data( $list_id ) {
 		$list_id = (int) $list_id;
-		if ( $list_id <= 0 || get_post_type( $list_id ) !== MRZ_DISPLAY_POST_EXP_CPT ) {
+		if ( $list_id <= 0 || get_post_type( $list_id ) !== MRZDPE_CPT ) {
 			return null;
 		}
 
@@ -43,7 +43,7 @@ final class DataProvider {
 		$data['items']   = $items;
 		$data['filters'] = self::build_filters( $values, $items );
 
-		$ttl = (int) apply_filters( 'mrz_display_post_exp_cache_ttl', 5 * MINUTE_IN_SECONDS );
+		$ttl = (int) apply_filters( 'mrzdpe_cache_ttl', 5 * MINUTE_IN_SECONDS );
 		if ( $ttl > 0 ) {
 			set_transient( $cache_key, $data, $ttl );
 		}

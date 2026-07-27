@@ -3,7 +3,7 @@
  * Plugin Name:       MRZ Display Post Exp
  * Plugin URI:        https://github.com/m0r3z/mrz-display-post-exp
  * Description:       Affiche des posts et custom posts avec leurs champs ACF en liste, grille ou slider. Templates HTML personnalisables, filtres et recherche côté client.
- * Version:           1.0.6
+ * Version:           1.1.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Morez.co
@@ -25,23 +25,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRZ_DISPLAY_POST_EXP_VERSION', '1.0.6' );
-define( 'MRZ_DISPLAY_POST_EXP_FILE', __FILE__ );
-define( 'MRZ_DISPLAY_POST_EXP_DIR', plugin_dir_path( __FILE__ ) );
-define( 'MRZ_DISPLAY_POST_EXP_URL', plugin_dir_url( __FILE__ ) );
-define( 'MRZ_DISPLAY_POST_EXP_BASENAME', plugin_basename( __FILE__ ) );
+define( 'MRZDPE_VERSION', '1.1.0' );
+define( 'MRZDPE_FILE', __FILE__ );
+define( 'MRZDPE_DIR', plugin_dir_path( __FILE__ ) );
+define( 'MRZDPE_URL', plugin_dir_url( __FILE__ ) );
+define( 'MRZDPE_BASENAME', plugin_basename( __FILE__ ) );
 // Le nom d'un post type est limité à 20 caractères par WordPress, d'où le slug court.
-define( 'MRZ_DISPLAY_POST_EXP_CPT', 'mrz_dpe_list' );
+define( 'MRZDPE_CPT', 'mrzdpe_list' );
 
-require_once MRZ_DISPLAY_POST_EXP_DIR . 'includes/helpers.php';
+require_once MRZDPE_DIR . 'includes/helpers.php';
 
 spl_autoload_register(
 	static function ( $class ) {
-		if ( strpos( $class, 'MrzDisplayPostExp\\' ) !== 0 ) {
+		if ( strpos( $class, 'Mrzdpe\\' ) !== 0 ) {
 			return;
 		}
 
-		$relative = substr( $class, strlen( 'MrzDisplayPostExp\\' ) );
+		$relative = substr( $class, strlen( 'Mrzdpe\\' ) );
 		$relative = str_replace( '\\', '/', $relative );
 		$parts    = explode( '/', $relative );
 		$last     = array_pop( $parts );
@@ -50,7 +50,7 @@ spl_autoload_register(
 		$last     = preg_replace( '/(?<=[a-z0-9])[A-Z]|(?<=[A-Z])[A-Z](?=[a-z])/', '-$0', $last );
 		$last     = strtolower( $last );
 		$prefix   = empty( $parts ) ? '' : strtolower( implode( '/', $parts ) ) . '/';
-		$path     = MRZ_DISPLAY_POST_EXP_DIR . 'includes/' . $prefix . 'class-' . $last . '.php';
+		$path     = MRZDPE_DIR . 'includes/' . $prefix . 'class-' . $last . '.php';
 
 		if ( file_exists( $path ) ) {
 			require_once $path;
@@ -58,12 +58,12 @@ spl_autoload_register(
 	}
 );
 
-register_activation_hook( __FILE__, array( 'MrzDisplayPostExp\\Activator', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'MrzDisplayPostExp\\Deactivator', 'deactivate' ) );
+register_activation_hook( __FILE__, array( 'Mrzdpe\\Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'Mrzdpe\\Deactivator', 'deactivate' ) );
 
 add_action(
 	'plugins_loaded',
 	static function () {
-		MrzDisplayPostExp\Plugin::instance()->boot();
+		Mrzdpe\Plugin::instance()->boot();
 	}
 );

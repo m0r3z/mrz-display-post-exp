@@ -3,7 +3,7 @@
  * Actions exécutées à la désactivation du plugin.
  */
 
-namespace MrzDisplayPostExp;
+namespace Mrzdpe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

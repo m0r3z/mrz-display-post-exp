@@ -17,7 +17,7 @@
  * Aucune exécution de code : pas d'eval/extract. Échappement par type à la substitution.
  */
 
-namespace MrzDisplayPostExp;
+namespace Mrzdpe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -263,7 +263,7 @@ final class TemplateParser {
 		}
 
 		$value = (string) $raw;
-		$value = apply_filters( 'mrz_display_post_exp_template_value', $value, $name, $post_id, $type );
+		$value = apply_filters( 'mrzdpe_template_value', $value, $name, $post_id, $type );
 
 		switch ( $type ) {
 			case 'url':

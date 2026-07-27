@@ -1,9 +1,9 @@
 <?php
 /**
- * Shortcode [mrz_display_post_exp id="X"].
+ * Shortcode [mrzdpe id="X"].
  */
 
-namespace MrzDisplayPostExp;
+namespace Mrzdpe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Shortcode {
 
 	public function register() {
-		add_shortcode( 'mrz_display_post_exp', array( $this, 'render' ) );
+		add_shortcode( 'mrzdpe', array( $this, 'render' ) );
 	}
 
 	public function render( $atts ) {
@@ -24,11 +24,11 @@ final class Shortcode {
 				'hide_forced_filter' => 'false',
 			),
 			$atts,
-			'mrz_display_post_exp'
+			'mrzdpe'
 		);
 
 		$list_id = absint( $atts['id'] );
-		if ( $list_id <= 0 || get_post_type( $list_id ) !== MRZ_DISPLAY_POST_EXP_CPT ) {
+		if ( $list_id <= 0 || get_post_type( $list_id ) !== MRZDPE_CPT ) {
 			return '';
 		}
 
@@ -104,7 +104,7 @@ final class Shortcode {
 		$uid = 'mrz-display-post-exp-' . $list_id . '-' . wp_generate_uuid4();
 
 		ob_start();
-		include MRZ_DISPLAY_POST_EXP_DIR . 'public/views/list-wrapper.php';
+		include MRZDPE_DIR . 'public/views/list-wrapper.php';
 		return ob_get_clean();
 	}
 }

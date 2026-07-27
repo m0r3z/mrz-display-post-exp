@@ -3,7 +3,7 @@
  * Enregistrement centralisé des assets front.
  */
 
-namespace MrzDisplayPostExp;
+namespace Mrzdpe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,16 +25,16 @@ final class Assets {
 	public function register_assets() {
 		wp_register_style(
 			self::HANDLE_STYLE,
-			MRZ_DISPLAY_POST_EXP_URL . 'public/css/public.css',
+			MRZDPE_URL . 'public/css/public.css',
 			array(),
-			MRZ_DISPLAY_POST_EXP_VERSION
+			MRZDPE_VERSION
 		);
 
 		wp_register_script(
 			self::HANDLE_SCRIPT,
-			MRZ_DISPLAY_POST_EXP_URL . 'public/js/mrz-display-post-exp.js',
+			MRZDPE_URL . 'public/js/mrz-display-post-exp.js',
 			array(),
-			MRZ_DISPLAY_POST_EXP_VERSION,
+			MRZDPE_VERSION,
 			true
 		);
 	}
@@ -59,7 +59,7 @@ final class Assets {
 	}
 
 	public function invalidate_on_post_save( $post_id, $post ) {
-		if ( MRZ_DISPLAY_POST_EXP_CPT === $post->post_type ) {
+		if ( MRZDPE_CPT === $post->post_type ) {
 			DataProvider::invalidate( $post_id );
 			return;
 		}
@@ -70,7 +70,7 @@ final class Assets {
 	public function invalidate_all() {
 		$lists = get_posts(
 			array(
-				'post_type'      => MRZ_DISPLAY_POST_EXP_CPT,
+				'post_type'      => MRZDPE_CPT,
 				'post_status'    => 'any',
 				'posts_per_page' => -1,
 				'fields'         => 'ids',

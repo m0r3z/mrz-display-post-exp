@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tbody>
 		<tr>
 			<th scope="row">
-				<label for="mrz_display_post_exp_tpl_item"><?php esc_html_e( 'Template de l\'item', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_tpl_item"><?php esc_html_e( 'Template de l\'item', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
-				<textarea name="mrz_display_post_exp[tpl_item]" id="mrz_display_post_exp_tpl_item" rows="10" class="large-text code"><?php echo esc_textarea( $values['tpl_item'] ); ?></textarea>
+				<textarea name="mrzdpe[tpl_item]" id="mrzdpe_tpl_item" rows="10" class="large-text code"><?php echo esc_textarea( $values['tpl_item'] ); ?></textarea>
 				<p class="description"><?php esc_html_e( 'HTML affiché pour chaque entrée (liste, grille ou slider). L\'attribut style n\'est pas autorisé : mettez en forme via le CSS de votre thème.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>

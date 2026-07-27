@@ -1,4 +1,4 @@
-# MRZ Display Post
+# MRZ Display Post Exp
 
 Plugin WordPress minimaliste pour **afficher des posts et custom posts avec leurs champs ACF** en **liste**, **grille** ou **slider**. Chaque item est rendu depuis un **template HTML personnalisable** à placeholders (champs ACF, taxonomies, titre, miniature…), avec **filtres et recherche côté client** activables. Tout se configure depuis l'admin ; l'apparence s'adapte au site via le CSS du thème.
 
@@ -15,7 +15,7 @@ Plugin WordPress minimaliste pour **afficher des posts et custom posts avec leur
 - Recherche texte client-side sur le titre (et champs ACF texte choisis).
 - Synchronisation optionnelle des filtres dans l'URL (liens partageables).
 - Mise en page responsive ; filtres repliables sur mobile.
-- Shortcode : `[mrz_display_post_exp id="X"]` (filtre forçable via `filter_taxonomy` / `filter_term`).
+- Shortcode : `[mrzdpe id="X"]` (filtre forçable via `filter_taxonomy` / `filter_term`).
 
 ## Prérequis
 

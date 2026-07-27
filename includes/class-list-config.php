@@ -3,7 +3,7 @@
  * Métaboxes de configuration d'un bloc d'affichage + sauvegarde sécurisée.
  */
 
-namespace MrzDisplayPostExp;
+namespace Mrzdpe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 final class ListConfig {
 
-	const NONCE_ACTION = 'mrz_display_post_exp_save';
-	const NONCE_NAME   = '_mrz_display_post_exp_nonce';
+	const NONCE_ACTION = 'mrzdpe_save';
+	const NONCE_NAME   = '_mrzdpe_nonce';
 
 	/**
 	 * Définition des valeurs autorisées pour les champs à choix fermé.
@@ -53,16 +53,16 @@ final class ListConfig {
 
 	public function register() {
 		add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
-		add_action( 'save_post_' . MRZ_DISPLAY_POST_EXP_CPT, array( $this, 'save' ), 10, 2 );
+		add_action( 'save_post_' . MRZDPE_CPT, array( $this, 'save' ), 10, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ) );
 	}
 
 	public function add_metaboxes() {
-		add_meta_box( 'mrz_display_post_exp_source', __( 'Source des données', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZ_DISPLAY_POST_EXP_CPT, 'normal', 'high', array( 'view' => 'source' ) );
-		add_meta_box( 'mrz_display_post_exp_templates', __( 'Template HTML', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZ_DISPLAY_POST_EXP_CPT, 'normal', 'high', array( 'view' => 'templates' ) );
-		add_meta_box( 'mrz_display_post_exp_filters', __( 'Filtres & recherche', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZ_DISPLAY_POST_EXP_CPT, 'normal', 'high', array( 'view' => 'filters' ) );
-		add_meta_box( 'mrz_display_post_exp_display', __( 'Affichage', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZ_DISPLAY_POST_EXP_CPT, 'normal', 'high', array( 'view' => 'display' ) );
-		add_meta_box( 'mrz_display_post_exp_shortcode', __( 'Shortcode', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZ_DISPLAY_POST_EXP_CPT, 'side', 'high', array( 'view' => 'shortcode' ) );
+		add_meta_box( 'mrzdpe_source', __( 'Source des données', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'source' ) );
+		add_meta_box( 'mrzdpe_templates', __( 'Template HTML', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'templates' ) );
+		add_meta_box( 'mrzdpe_filters', __( 'Filtres & recherche', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'filters' ) );
+		add_meta_box( 'mrzdpe_display', __( 'Affichage', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'display' ) );
+		add_meta_box( 'mrzdpe_shortcode', __( 'Shortcode', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'side', 'high', array( 'view' => 'shortcode' ) );
 	}
 
 	public function render( $post, $metabox ) {
@@ -73,7 +73,7 @@ final class ListConfig {
 		}
 
 		$view = isset( $metabox['args']['view'] ) ? $metabox['args']['view'] : '';
-		$file = MRZ_DISPLAY_POST_EXP_DIR . 'admin/views/metabox-' . $view . '.php';
+		$file = MRZDPE_DIR . 'admin/views/metabox-' . $view . '.php';
 
 		if ( ! file_exists( $file ) ) {
 			return;
@@ -139,7 +139,7 @@ final class ListConfig {
 
 		$out = array();
 		foreach ( $defaults as $key => $default ) {
-			$stored = get_post_meta( $post_id, '_mrz_display_post_exp_' . $key, true );
+			$stored = get_post_meta( $post_id, '_mrzdpe_' . $key, true );
 			if ( '' === $stored || null === $stored ) {
 				$out[ $key ] = $default;
 			} elseif ( is_array( $default ) ) {
@@ -171,8 +171,8 @@ final class ListConfig {
 			return;
 		}
 
-		$raw = isset( $_POST['mrz_display_post_exp'] ) && is_array( $_POST['mrz_display_post_exp'] )
-			? wp_unslash( $_POST['mrz_display_post_exp'] )
+		$raw = isset( $_POST['mrzdpe'] ) && is_array( $_POST['mrzdpe'] )
+			? wp_unslash( $_POST['mrzdpe'] )
 			: array();
 
 		$clean = array();
@@ -310,11 +310,11 @@ final class ListConfig {
 		$clean['tpl_item'] = isset( $raw['tpl_item'] ) ? wp_kses( (string) $raw['tpl_item'], $allowed ) : '';
 
 		foreach ( $clean as $key => $value ) {
-			update_post_meta( $post_id, '_mrz_display_post_exp_' . $key, $value );
+			update_post_meta( $post_id, '_mrzdpe_' . $key, $value );
 		}
 
 		// Invalide le cache transient.
-		delete_transient( 'mrz_display_post_exp_' . (int) $post_id );
+		delete_transient( 'mrzdpe_' . (int) $post_id );
 	}
 
 	/**
@@ -349,7 +349,7 @@ final class ListConfig {
 			}
 		}
 
-		return apply_filters( 'mrz_display_post_exp_template_kses_allowed', $allowed );
+		return apply_filters( 'mrzdpe_template_kses_allowed', $allowed );
 	}
 
 	/**
@@ -360,22 +360,22 @@ final class ListConfig {
 			return;
 		}
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-		if ( ! $screen || MRZ_DISPLAY_POST_EXP_CPT !== $screen->post_type ) {
+		if ( ! $screen || MRZDPE_CPT !== $screen->post_type ) {
 			return;
 		}
 
 		wp_enqueue_style(
 			'mrz-display-post-exp-admin',
-			MRZ_DISPLAY_POST_EXP_URL . 'admin/css/admin.css',
+			MRZDPE_URL . 'admin/css/admin.css',
 			array(),
-			MRZ_DISPLAY_POST_EXP_VERSION
+			MRZDPE_VERSION
 		);
 
 		wp_enqueue_script(
 			'mrz-display-post-exp-admin',
-			MRZ_DISPLAY_POST_EXP_URL . 'admin/js/admin.js',
+			MRZDPE_URL . 'admin/js/admin.js',
 			array( 'jquery', 'jquery-ui-sortable' ),
-			MRZ_DISPLAY_POST_EXP_VERSION,
+			MRZDPE_VERSION,
 			true
 		);
 	}

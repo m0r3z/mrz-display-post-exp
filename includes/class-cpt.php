@@ -3,7 +3,7 @@
  * Enregistre le Custom Post Type des blocs d'affichage.
  */
 
-namespace MrzDisplayPostExp;
+namespace Mrzdpe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,8 +13,8 @@ final class CPT {
 
 	public function register() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_filter( 'manage_' . MRZ_DISPLAY_POST_EXP_CPT . '_posts_columns', array( $this, 'columns' ) );
-		add_action( 'manage_' . MRZ_DISPLAY_POST_EXP_CPT . '_posts_custom_column', array( $this, 'column_content' ), 10, 2 );
+		add_filter( 'manage_' . MRZDPE_CPT . '_posts_columns', array( $this, 'columns' ) );
+		add_action( 'manage_' . MRZDPE_CPT . '_posts_custom_column', array( $this, 'column_content' ), 10, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_menu_icon_style' ) );
 	}
 
@@ -55,7 +55,7 @@ final class CPT {
 			'query_var'          => false,
 		);
 
-		register_post_type( MRZ_DISPLAY_POST_EXP_CPT, $args );
+		register_post_type( MRZDPE_CPT, $args );
 	}
 
 	/**
@@ -65,13 +65,13 @@ final class CPT {
 	 */
 	public function enqueue_menu_icon_style() {
 		$handle = 'mrz-display-post-exp-menu-icon';
-		wp_register_style( $handle, false, array(), MRZ_DISPLAY_POST_EXP_VERSION );
+		wp_register_style( $handle, false, array(), MRZDPE_VERSION );
 		wp_enqueue_style( $handle );
 
-		$url = esc_url( MRZ_DISPLAY_POST_EXP_URL . 'assets/menu-icon.svg?ver=' . MRZ_DISPLAY_POST_EXP_VERSION );
+		$url = esc_url( MRZDPE_URL . 'assets/menu-icon.svg?ver=' . MRZDPE_VERSION );
 		// L'ID exact du <li> varie selon la façon dont WP sanitise le menu_file.
 		// Sélecteur tolérant : tout menu_top dont l'ID contient le slug du CPT.
-		$sel = '#adminmenu li.menu-top[id*="' . MRZ_DISPLAY_POST_EXP_CPT . '"]';
+		$sel = '#adminmenu li.menu-top[id*="' . MRZDPE_CPT . '"]';
 
 		$css  = $sel . ' .wp-menu-image{background:none!important;background-color:rgba(240,246,252,.6)!important;';
 		$css .= '-webkit-mask:url(\'' . $url . '\') no-repeat 9px 7px/20px;mask:url(\'' . $url . '\') no-repeat 9px 7px/20px;}';
@@ -89,18 +89,18 @@ final class CPT {
 		foreach ( $columns as $key => $label ) {
 			$new[ $key ] = $label;
 			if ( 'title' === $key ) {
-				$new['mrz_display_post_exp_shortcode'] = __( 'Shortcode', 'mrz-display-post-exp' );
+				$new['mrzdpe_shortcode'] = __( 'Shortcode', 'mrz-display-post-exp' );
 			}
 		}
 		return $new;
 	}
 
 	public function column_content( $column, $post_id ) {
-		if ( 'mrz_display_post_exp_shortcode' !== $column ) {
+		if ( 'mrzdpe_shortcode' !== $column ) {
 			return;
 		}
 		printf(
-			'<code>[mrz_display_post_exp id="%d"]</code>',
+			'<code>[mrzdpe id="%d"]</code>',
 			(int) $post_id
 		);
 	}

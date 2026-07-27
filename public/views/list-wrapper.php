@@ -1,6 +1,6 @@
 <?php
 /**
- * Wrapper HTML du shortcode [mrz_display_post_exp].
+ * Wrapper HTML du shortcode [mrzdpe].
  *
  * @var string $uid
  * @var array  $data

@@ -10,7 +10,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 global $wpdb;
 
 // Supprime tous les posts du CPT et leurs métas associées.
-$cpt      = 'mrz_dpe_list';
+$cpt      = 'mrzdpe_list';
 $list_ids = $wpdb->get_col(
 	$wpdb->prepare(
 		"SELECT ID FROM {$wpdb->posts} WHERE post_type = %s",
@@ -24,8 +24,8 @@ if ( ! empty( $list_ids ) ) {
 	}
 }
 
-// Supprime les post_meta orphelines éventuelles (_mrz_display_post_exp_*).
-$meta_like = $wpdb->esc_like( '_mrz_display_post_exp_' ) . '%';
+// Supprime les post_meta orphelines éventuelles (_mrzdpe_*).
+$meta_like = $wpdb->esc_like( '_mrzdpe_' ) . '%';
 $wpdb->query(
 	$wpdb->prepare(
 		"DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s",
@@ -34,12 +34,37 @@ $wpdb->query(
 );
 
 // Supprime les transients de cache.
-$transient_like         = $wpdb->esc_like( '_transient_mrz_display_post_exp_' ) . '%';
-$transient_timeout_like = $wpdb->esc_like( '_transient_timeout_mrz_display_post_exp_' ) . '%';
+$transient_like         = $wpdb->esc_like( '_transient_mrzdpe_' ) . '%';
+$transient_timeout_like = $wpdb->esc_like( '_transient_timeout_mrzdpe_' ) . '%';
 $wpdb->query(
 	$wpdb->prepare(
 		"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
 		$transient_like,
 		$transient_timeout_like
+	)
+);
+
+// Drapeau de migration.
+delete_option( 'mrzdpe_migrated_1' );
+
+// Défensif : nettoie aussi d'éventuelles données de l'ancien préfixe (site
+// supprimé avant que la migration n'ait eu lieu).
+$legacy_ids = $wpdb->get_col(
+	$wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_type = %s", 'mrz_dpe_list' )
+);
+if ( ! empty( $legacy_ids ) ) {
+	foreach ( $legacy_ids as $legacy_id ) {
+		wp_delete_post( (int) $legacy_id, true );
+	}
+}
+$legacy_meta_like      = $wpdb->esc_like( '_mrz_display_post_exp_' ) . '%';
+$legacy_transient_like = $wpdb->esc_like( '_transient_mrz_display_post_exp_' ) . '%';
+$legacy_timeout_like   = $wpdb->esc_like( '_transient_timeout_mrz_display_post_exp_' ) . '%';
+$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s", $legacy_meta_like ) );
+$wpdb->query(
+	$wpdb->prepare(
+		"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
+		$legacy_transient_like,
+		$legacy_timeout_like
 	)
 );
