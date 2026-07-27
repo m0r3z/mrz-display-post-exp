@@ -37,7 +37,9 @@ final class Plugin {
 		$this->booted = true;
 
 		// Migration unique depuis l'ancien préfixe (mrz_display_post_exp / mrz_dpe).
-		add_action( 'admin_init', array( $this, 'maybe_migrate_legacy' ) );
+		// Sur « init » (front + admin) et tôt, pour que la première visite après
+		// mise à jour soit déjà correcte (CPT + shortcodes renommés avant le rendu).
+		add_action( 'init', array( $this, 'maybe_migrate_legacy' ), 5 );
 
 		// Pas de load_plugin_textdomain() : depuis WordPress 4.6, les traductions
 		// hébergées sur translate.wordpress.org sont chargées automatiquement par
