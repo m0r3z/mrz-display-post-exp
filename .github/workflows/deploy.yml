@@ -1,0 +1,22 @@
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      # Tags de version « purs » (sans préfixe v) : 1.1.0, 1.1.1, 2.0.0…
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  deploy:
+    name: Deploy to wordpress.org
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: WordPress Plugin Deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: mrz-display-post-exp
