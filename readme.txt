@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,7 +23,7 @@ MRZ Display Post Exp is a generic, minimalist plugin to display any post type �
 * Optional client-side text search on titles (and selected ACF text fields).
 * Optional URL filter synchronization — share a pre-filtered link.
 * Responsive layout — filters above, left or right; collapsible filters on mobile.
-* Shortcode with optional forced filter: `[mrz_display_post_exp id="X" filter_taxonomy="genre" filter_term="42"]`.
+* Shortcode with optional forced filter: `[mrzdpe id="X" filter_taxonomy="genre" filter_term="42"]`.
 * Translation-ready (text-domain `mrz-display-post-exp`, .pot file provided).
 
 = Requirements =
@@ -47,6 +47,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.1.1 =
+* Fix: the taxonomy filter rows were no longer displayed in the block admin screen after the 1.1.0 prefix rename (admin.js still referenced the old field IDs). No effect on the front end.
 
 = 1.1.0 =
 * Renamed the internal PHP prefix to "mrzdpe" (constants, namespace, functions, hooks, shortcode, CPT, meta keys) to meet WordPress.org's unique-prefix requirement. The public shortcode is now [mrzdpe]. A one-time automatic migration updates existing blocks and shortcodes on upgrade — no manual action needed. CSS classes and the text domain are unchanged.
