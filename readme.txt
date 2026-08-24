@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.1.2 =
+* New placeholder {taxonomy:slug:slug} — outputs the first term's slug (plain text), handy as a CSS class modifier.
 
 = 1.1.1 =
 * Fix: the taxonomy filter rows were no longer displayed in the block admin screen after the 1.1.0 prefix rename (admin.js still referenced the old field IDs). No effect on the front end.

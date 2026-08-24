@@ -8,7 +8,8 @@
  *   - {%nom_champ_acf%}
  *   - {acf_date:champ} ou {acf_date:champ:F} (date ACF en spans jour/mois/année ; mois = m|n|F|M)
  *   - {taxonomy:slug} (chaque terme dans un <span class="mrz-dpe-term">, sans séparateur)
- *   - {taxonomy:slug:first} (premier terme, texte brut)
+ *   - {taxonomy:slug:first} (nom du premier terme, texte brut)
+ *   - {taxonomy:slug:slug} (slug du premier terme, ex. pour un modificateur de classe CSS)
  *
  * Conditionnels :
  *   - {#if %champ_acf%}...{/if}
@@ -113,16 +114,21 @@ final class TemplateParser {
 			$template
 		);
 
-		// Taxonomies : {taxonomy:slug} ou {taxonomy:slug:first}
+		// Taxonomies : {taxonomy:slug}, {taxonomy:slug:first} ou {taxonomy:slug:slug}
 		$template = preg_replace_callback(
-			'/\{taxonomy:([\w-]+)(?::(first))?\}/',
+			'/\{taxonomy:([\w-]+)(?::(first|slug))?\}/',
 			function ( $m ) use ( $post_id ) {
 				$terms = get_the_terms( $post_id, $m[1] );
 				if ( empty( $terms ) || is_wp_error( $terms ) ) {
 					return '';
 				}
-				if ( isset( $m[2] ) && 'first' === $m[2] ) {
+				$mod = isset( $m[2] ) ? $m[2] : '';
+				if ( 'first' === $mod ) {
 					return esc_html( $terms[0]->name );
+				}
+				if ( 'slug' === $mod ) {
+					// Slug du premier terme (texte brut, idéal comme modificateur de classe CSS).
+					return esc_attr( $terms[0]->slug );
 				}
 				// Chaque terme dans son propre <span> (aucun séparateur imposé) :
 				// l'espacement / les puces se gèrent en CSS via .mrz-dpe-term.

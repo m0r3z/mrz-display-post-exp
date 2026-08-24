@@ -34,7 +34,8 @@ $placeholders = array(
 	array( '{post_id}', __( 'Identifiant du post.', 'mrz-display-post-exp' ) ),
 	array( '{%nom_champ_acf%}', __( 'Valeur d\'un champ ACF (remplacez « nom_champ_acf » par le nom de votre champ).', 'mrz-display-post-exp' ) ),
 	array( '{taxonomy:slug}', __( 'Tous les termes de la taxonomie, chacun dans un <span class="mrz-dpe-term">.', 'mrz-display-post-exp' ) ),
-	array( '{taxonomy:slug:first}', __( 'Uniquement le premier terme (texte brut).', 'mrz-display-post-exp' ) ),
+	array( '{taxonomy:slug:first}', __( 'Nom du premier terme uniquement (texte brut).', 'mrz-display-post-exp' ) ),
+	array( '{taxonomy:slug:slug}', __( 'Slug du premier terme (ex. « recherche-developpement ») — idéal comme modificateur de classe CSS.', 'mrz-display-post-exp' ) ),
 	array( '{acf_date:champ}', __( 'Champ ACF de date découpé en 3 spans : jour / mois / année (voir formats ci-dessous).', 'mrz-display-post-exp' ) ),
 );
 

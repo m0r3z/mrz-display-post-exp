@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Display Post Exp 1.1.0\n"
+"Project-Id-Version: MRZ Display Post Exp 1.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-display-post-exp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-27T13:59:44+00:00\n"
+"POT-Creation-Date: 2026-08-24T08:17:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-display-post-exp\n"
@@ -528,54 +528,58 @@ msgid "Tous les termes de la taxonomie, chacun dans un <span class=\"mrz-dpe-ter
 msgstr ""
 
 #: admin/views/metabox-templates.php:37
-msgid "Uniquement le premier terme (texte brut)."
+msgid "Nom du premier terme uniquement (texte brut)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:38
+msgid "Slug du premier terme (ex. « recherche-developpement ») — idéal comme modificateur de classe CSS."
+msgstr ""
+
+#: admin/views/metabox-templates.php:39
 msgid "Champ ACF de date découpé en 3 spans : jour / mois / année (voir formats ci-dessous)."
 msgstr ""
 
-#: admin/views/metabox-templates.php:42
+#: admin/views/metabox-templates.php:43
 msgid "Mois en numéro : 08 (par défaut)."
 msgstr ""
 
-#: admin/views/metabox-templates.php:43
+#: admin/views/metabox-templates.php:44
 msgid "Mois en numéro sans zéro : 8."
 msgstr ""
 
-#: admin/views/metabox-templates.php:44
+#: admin/views/metabox-templates.php:45
 msgid "Mois en toutes lettres, localisé : août."
 msgstr ""
 
-#: admin/views/metabox-templates.php:45
+#: admin/views/metabox-templates.php:46
 msgid "Mois abrégé, localisé : aoû."
 msgstr ""
 
-#: admin/views/metabox-templates.php:50
+#: admin/views/metabox-templates.php:51
 msgid "Placeholders disponibles, formats de date & conditionnels"
 msgstr ""
 
-#: admin/views/metabox-templates.php:52
+#: admin/views/metabox-templates.php:53
 msgid "Placeholders disponibles"
 msgstr ""
 
-#: admin/views/metabox-templates.php:64
+#: admin/views/metabox-templates.php:65
 msgid "Formats de date ({acf_date})"
 msgstr ""
 
-#: admin/views/metabox-templates.php:66
+#: admin/views/metabox-templates.php:67
 msgid "Le jour (01) et l'année (2026) sont fixes ; seul le mois change selon le suffixe :"
 msgstr ""
 
-#: admin/views/metabox-templates.php:81
+#: admin/views/metabox-templates.php:82
 msgid "Chaque partie est dans son span : <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — à styliser via le CSS de votre thème."
 msgstr ""
 
-#: admin/views/metabox-templates.php:87
+#: admin/views/metabox-templates.php:88
 msgid "Conditionnels"
 msgstr ""
 
-#: admin/views/metabox-templates.php:91
+#: admin/views/metabox-templates.php:92
 msgid "Affiche un bloc seulement si le champ est renseigné : <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Fonctionne aussi avec <code>{#if post_thumbnail}…{/if}</code> ou <code>{#if taxonomy:category}…{/if}</code>."
 msgstr ""
 
@@ -669,7 +673,7 @@ msgstr ""
 msgid "Affichage"
 msgstr ""
 
-#: includes/class-plugin.php:109
+#: includes/class-plugin.php:111
 msgid "MRZ Display Post nécessite Advanced Custom Fields (Pro recommandé) pour fonctionner."
 msgstr ""
 
