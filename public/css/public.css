@@ -32,9 +32,7 @@
 	object-fit: cover;
 }
 
-/* Item */
-.mrz-display-post-exp-item-wrap { cursor: default; }
-.mrz-display-post-exp-item-wrap.mrz-display-post-exp-item-link { cursor: pointer; }
+/* Item — aucune propriété cursor : le thème/site gère le curseur. */
 a.mrz-display-post-exp-item-wrap { display: block; color: inherit; text-decoration: none; }
 .mrz-display-post-exp-list-wrap { display: flex; flex-direction: column; gap: 10px; }
 
@@ -42,8 +40,7 @@ a.mrz-display-post-exp-item-wrap { display: block; color: inherit; text-decorati
 .mrz-display-post-exp-pagination { display: flex; align-items: center; gap: 10px; justify-content: center; padding: 8px 0; }
 /* L'attribut hidden doit l'emporter sur le display:flex ci-dessus (une seule page, slider, etc.). */
 .mrz-display-post-exp-pagination[hidden] { display: none; }
-.mrz-display-post-exp-pagination button { cursor: pointer; }
-.mrz-display-post-exp-pagination button[disabled] { opacity: 0.4; cursor: not-allowed; }
+.mrz-display-post-exp-pagination button[disabled] { opacity: 0.4; }
 
 /* --- Format SLIDER (scroll-snap natif) --- */
 .mrz-display-post-exp-slider { position: relative; }
@@ -74,12 +71,11 @@ a.mrz-display-post-exp-item-wrap { display: block; color: inherit; text-decorati
 	border-radius: 50%;
 	font-size: 20px;
 	line-height: 1;
-	cursor: pointer;
 }
 .mrz-display-post-exp-slider-prev { left: 4px; }
 .mrz-display-post-exp-slider-next { right: 4px; }
 .mrz-display-post-exp-slider-prev[disabled],
-.mrz-display-post-exp-slider-next[disabled] { opacity: 0.35; cursor: not-allowed; }
+.mrz-display-post-exp-slider-next[disabled] { opacity: 0.35; }
 .mrz-display-post-exp-dots { display: flex; gap: 6px; justify-content: center; margin-top: 10px; }
 .mrz-display-post-exp-dots button {
 	width: 10px;
@@ -89,7 +85,6 @@ a.mrz-display-post-exp-item-wrap { display: block; color: inherit; text-decorati
 	border-radius: 50%;
 	background: currentColor;
 	opacity: 0.35;
-	cursor: pointer;
 }
 .mrz-display-post-exp-dots button[aria-current="true"] { opacity: 1; }
 
@@ -159,7 +154,7 @@ a.mrz-display-post-exp-item-wrap { display: block; color: inherit; text-decorati
 		border: 1px solid #dcdcde;
 		border-radius: 4px;
 		font-weight: 600;
-		cursor: pointer;
+		margin-bottom: 10px;
 	}
 	.mrz-display-post-exp-filters-toggle::after {
 		content: '▾';
