@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 
 == Changelog ==
 
+= 1.1.4 =
+* New placeholder {post_date} — outputs the post's publication date, formatted with the site's date format. Also usable in {#if post_date} conditionals.
+
 = 1.1.3 =
 * Front CSS no longer forces any cursor state (the theme/site controls the cursor, including custom cursors).
 * A small bottom margin is added under the mobile "Filters" toggle button.
@@ -83,7 +86,7 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 = 1.0.0 =
 * First stable release.
 * Three display formats: list, grid and a dependency-free native CSS slider (configurable per-view, gap, speed, autoplay, loop, arrow position).
-* Customizable HTML item template with placeholders: {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (word-limited), {post_thumbnail}, {%acf_field%}, {taxonomy:slug} (each term in its own span), conditionals {#if}.
+* Customizable HTML item template with placeholders: {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (word-limited), {post_thumbnail}, {post_date}, {%acf_field%}, {taxonomy:slug} (each term in its own span), conditionals {#if}.
 * Client-side filters (taxonomy + ACF, OR/AND), text search, optional URL filter sync, mobile filter toggle.
 * Sort by an ACF date field with an upcoming/past server-side filter (agenda use-case).
 * CSS aspect-ratio option for the featured image (object-fit, no file cropping).

@@ -32,6 +32,7 @@ $placeholders = array(
 	array( '{post_thumbnail}', __( 'Image à la une (balise <img>).', 'mrz-display-post-exp' ) ),
 	array( '{post_thumbnail_url}', __( 'URL de l\'image à la une.', 'mrz-display-post-exp' ) ),
 	array( '{post_id}', __( 'Identifiant du post.', 'mrz-display-post-exp' ) ),
+	array( '{post_date}', __( 'Date de publication du post (format de date du site).', 'mrz-display-post-exp' ) ),
 	array( '{%nom_champ_acf%}', __( 'Valeur d\'un champ ACF (remplacez « nom_champ_acf » par le nom de votre champ).', 'mrz-display-post-exp' ) ),
 	array( '{taxonomy:slug}', __( 'Tous les termes de la taxonomie, chacun dans un <span class="mrz-dpe-term">.', 'mrz-display-post-exp' ) ),
 	array( '{taxonomy:slug:first}', __( 'Nom du premier terme uniquement (texte brut).', 'mrz-display-post-exp' ) ),

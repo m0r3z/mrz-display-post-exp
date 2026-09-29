@@ -5,6 +5,7 @@
  * Placeholders supportés :
  *   - {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (tronqué à N mots)
  *   - {post_thumbnail} (balise <img>), {post_thumbnail_url}
+ *   - {post_date} (date de publication, au format de date du site)
  *   - {%nom_champ_acf%}
  *   - {acf_date:champ} ou {acf_date:champ:F} (date ACF en spans jour/mois/année ; mois = m|n|F|M)
  *   - {taxonomy:slug} (chaque terme dans un <span class="mrz-dpe-term">, sans séparateur)
@@ -148,6 +149,7 @@ final class TemplateParser {
 			'{post_excerpt}'       => esc_html( wp_strip_all_tags( get_the_excerpt( $post_id ) ) ),
 			'{post_thumbnail}'     => wp_kses_post( get_the_post_thumbnail( $post_id, 'medium' ) ),
 			'{post_thumbnail_url}' => esc_url( (string) get_the_post_thumbnail_url( $post_id, 'medium' ) ),
+			'{post_date}'          => esc_html( get_the_date( '', $post_id ) ),
 			'{post_id}'            => (string) $post_id,
 		);
 
@@ -186,6 +188,8 @@ final class TemplateParser {
 				return get_permalink( $post_id );
 			case 'post_excerpt':
 				return wp_strip_all_tags( get_the_excerpt( $post_id ) );
+			case 'post_date':
+				return get_the_date( '', $post_id );
 			case 'post_thumbnail':
 			case 'post_thumbnail_url':
 				return (string) get_the_post_thumbnail_url( $post_id, 'medium' );
