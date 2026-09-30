@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.4
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,10 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.2.0 =
+* Taxonomy and ACF filters now live in a single sortable list in the admin: drag them in any order (e.g. ACF, taxonomy, ACF, taxonomy) and the front-end filters follow that order.
+* Existing blocks keep their current order (taxonomies then ACF) until reordered and saved.
 
 = 1.1.4 =
 * New placeholder {post_date} — outputs the post's publication date, formatted with the site's date format. Also usable in {#if post_date} conditionals.
