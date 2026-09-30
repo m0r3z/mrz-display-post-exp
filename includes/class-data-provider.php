@@ -271,8 +271,8 @@ final class DataProvider {
 				);
 			}
 
-			$custom_label = isset( $tax_labels[ $slug ] ) ? (string) $tax_labels[ $slug ] : '';
-			$filters[]    = array(
+			$custom_label              = isset( $tax_labels[ $slug ] ) ? (string) $tax_labels[ $slug ] : '';
+			$filters[ 'tax:' . $slug ] = array(
 				'type'     => 'tax',
 				'taxonomy' => $slug,
 				'label'    => '' !== $custom_label ? $custom_label : $tax_obj->labels->singular_name,
@@ -327,7 +327,10 @@ final class DataProvider {
 				}
 			);
 
-			$filters[] = array(
+			if ( isset( $filters[ 'acf:' . $field ] ) ) {
+				continue;
+			}
+			$filters[ 'acf:' . $field ] = array(
 				'type'    => 'acf',
 				'field'   => $field,
 				'label'   => '' !== $spec['label'] ? $spec['label'] : $field,
@@ -337,7 +340,16 @@ final class DataProvider {
 			);
 		}
 
-		return $filters;
+		// Réordonne selon l'ordre défini en admin ; les filtres absents de
+		// l'ordre (blocs antérieurs à 1.2.0) gardent l'ordre taxonomies puis ACF.
+		$ordered = array();
+		foreach ( (array) $values['filters_order'] as $key ) {
+			if ( isset( $filters[ $key ] ) ) {
+				$ordered[ $key ] = $filters[ $key ];
+			}
+		}
+
+		return array_values( $ordered + $filters );
 	}
 
 	/**

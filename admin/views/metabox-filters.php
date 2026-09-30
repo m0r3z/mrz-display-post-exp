@@ -9,19 +9,51 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$all_tax      = get_taxonomies( array( 'public' => true ), 'objects' );
+$all_tax     = get_taxonomies( array( 'public' => true ), 'objects' );
+$active_tax  = (array) $values['taxonomies'];
+$acf_filters = (array) $values['acf_filters'];
 
-// Ordonne les taxonomies : sélectionnées d'abord (dans l'ordre sauvegardé), puis le reste.
-$ordered_tax = array();
-foreach ( (array) $values['taxonomies'] as $slug ) {
-	if ( isset( $all_tax[ $slug ] ) ) {
-		$ordered_tax[ $slug ] = $all_tax[ $slug ];
+// Liste unique des lignes de filtre, dans l'ordre d'affichage admin :
+// 1. filtres actifs selon filters_order, 2. actifs absents de l'ordre
+// (rétrocompat : taxonomies puis ACF), 3. taxonomies non cochées.
+$filter_rows = array();
+$placed      = array();
+
+$acf_index_by_key = array();
+foreach ( $acf_filters as $i => $row ) {
+	if ( ! empty( $row['field'] ) && ! isset( $acf_index_by_key[ 'acf:' . $row['field'] ] ) ) {
+		$acf_index_by_key[ 'acf:' . $row['field'] ] = $i;
 	}
 }
-foreach ( $all_tax as $slug => $tax ) {
-	if ( ! isset( $ordered_tax[ $slug ] ) ) {
-		$ordered_tax[ $slug ] = $tax;
+
+$place_tax = static function ( $slug ) use ( &$filter_rows, &$placed, $all_tax ) {
+	if ( isset( $all_tax[ $slug ] ) && ! isset( $placed[ 'tax:' . $slug ] ) ) {
+		$filter_rows[]            = array( 'type' => 'tax', 'tax' => $all_tax[ $slug ] );
+		$placed[ 'tax:' . $slug ] = true;
 	}
+};
+$place_acf = static function ( $i ) use ( &$filter_rows, &$placed, $acf_filters ) {
+	if ( isset( $acf_filters[ $i ] ) && ! isset( $placed[ 'acf#' . $i ] ) ) {
+		$filter_rows[]         = array( 'type' => 'acf', 'index' => $i, 'row' => $acf_filters[ $i ] );
+		$placed[ 'acf#' . $i ] = true;
+	}
+};
+
+foreach ( (array) $values['filters_order'] as $key ) {
+	if ( 0 === strpos( $key, 'tax:' ) && in_array( substr( $key, 4 ), $active_tax, true ) ) {
+		$place_tax( substr( $key, 4 ) );
+	} elseif ( isset( $acf_index_by_key[ $key ] ) ) {
+		$place_acf( $acf_index_by_key[ $key ] );
+	}
+}
+foreach ( $active_tax as $slug ) {
+	$place_tax( $slug );
+}
+foreach ( array_keys( $acf_filters ) as $i ) {
+	$place_acf( $i );
+}
+foreach ( array_keys( $all_tax ) as $slug ) {
+	$place_tax( $slug );
 }
 
 $sort_handle = '<span class="mrz-display-post-exp-sort-handle" aria-hidden="true" title="' . esc_attr__( 'Glisser pour réordonner', 'mrz-display-post-exp' ) . '">⠿</span>';
@@ -35,7 +67,100 @@ $logic_labels = array(
 	'and' => __( 'ET', 'mrz-display-post-exp' ),
 );
 
-$acf_filters = (array) $values['acf_filters'];
+/**
+ * Rend une ligne de filtre taxonomie.
+ */
+$render_tax_row = static function ( $tax ) use ( $values, $sort_handle, $modes_labels, $logic_labels ) {
+	$slug         = $tax->name;
+	$checked      = in_array( $slug, (array) $values['taxonomies'], true );
+	$mode         = isset( $values['taxo_modes'][ $slug ] ) ? $values['taxo_modes'][ $slug ] : 'dropdown';
+	$logic        = isset( $values['taxo_logic'][ $slug ] ) ? $values['taxo_logic'][ $slug ] : 'or';
+	$custom_label = isset( $values['taxo_labels'][ $slug ] ) ? $values['taxo_labels'][ $slug ] : '';
+	$object_type  = implode( ',', (array) $tax->object_type );
+	?>
+	<div class="mrz-display-post-exp-taxo-row" data-object-types="<?php echo esc_attr( $object_type ); ?>">
+		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
+		<input type="hidden" name="mrzdpe[filters_order][]" value="<?php echo esc_attr( 'tax:' . $slug ); ?>" />
+		<label class="mrz-display-post-exp-taxo-col mrz-display-post-exp-taxo-col-activate">
+			<span class="mrz-display-post-exp-filter-type"><?php esc_html_e( 'Taxonomie', 'mrz-display-post-exp' ); ?></span>
+			<span class="mrz-display-post-exp-taxo-activate-row">
+				<input type="checkbox" name="mrzdpe[taxonomies][]" value="<?php echo esc_attr( $slug ); ?>" <?php checked( $checked ); ?> />
+				<span class="mrz-display-post-exp-taxo-name"><?php echo esc_html( $tax->labels->singular_name . ' (' . $slug . ')' ); ?></span>
+			</span>
+		</label>
+		<label class="mrz-display-post-exp-taxo-col">
+			<span><?php esc_html_e( 'Libellé affiché', 'mrz-display-post-exp' ); ?></span>
+			<input type="text" name="mrzdpe[taxo_labels][<?php echo esc_attr( $slug ); ?>]" value="<?php echo esc_attr( $custom_label ); ?>" class="regular-text" placeholder="<?php echo esc_attr( $tax->labels->singular_name ); ?>" />
+		</label>
+		<label class="mrz-display-post-exp-taxo-col">
+			<span><?php esc_html_e( 'Type de filtre', 'mrz-display-post-exp' ); ?></span>
+			<select name="mrzdpe[taxo_modes][<?php echo esc_attr( $slug ); ?>]" class="mrz-display-post-exp-taxo-mode">
+				<?php foreach ( $modes_labels as $value => $label ) : ?>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $mode, $value ); ?>>
+						<?php echo esc_html( $label ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+		<label class="mrz-display-post-exp-taxo-col">
+			<span><?php esc_html_e( 'Logique', 'mrz-display-post-exp' ); ?></span>
+			<select name="mrzdpe[taxo_logic][<?php echo esc_attr( $slug ); ?>]" class="mrz-display-post-exp-taxo-logic" title="<?php esc_attr_e( 'Combinaison entre cases cochées', 'mrz-display-post-exp' ); ?>">
+				<?php foreach ( $logic_labels as $value => $label ) : ?>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $logic, $value ); ?>>
+						<?php echo esc_html( $label ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+	</div>
+	<?php
+};
+
+/**
+ * Rend une ligne de filtre ACF. $index vaut « __INDEX__ » pour le template JS.
+ */
+$render_acf_row = static function ( $index, $row ) use ( $sort_handle, $modes_labels, $logic_labels ) {
+	$field     = isset( $row['field'] ) ? $row['field'] : '';
+	$label     = isset( $row['label'] ) ? $row['label'] : '';
+	$mode      = isset( $row['mode'] ) ? $row['mode'] : 'dropdown';
+	$row_logic = isset( $row['logic'] ) ? $row['logic'] : 'or';
+	$base_name = 'mrzdpe[acf_filters][' . $index . ']';
+	?>
+	<div class="mrz-display-post-exp-acf-row" data-index="<?php echo esc_attr( $index ); ?>">
+		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
+		<input type="hidden" name="mrzdpe[filters_order][]" value="<?php echo esc_attr( 'acf:' . $index ); ?>" />
+		<label class="mrz-display-post-exp-acf-col">
+			<span class="mrz-display-post-exp-filter-type"><?php esc_html_e( 'Champ ACF', 'mrz-display-post-exp' ); ?></span>
+			<input type="text" name="<?php echo esc_attr( $base_name . '[field]' ); ?>" value="<?php echo esc_attr( $field ); ?>" class="regular-text" placeholder="type_annonce" />
+		</label>
+		<label class="mrz-display-post-exp-acf-col">
+			<span><?php esc_html_e( 'Libellé affiché', 'mrz-display-post-exp' ); ?></span>
+			<input type="text" name="<?php echo esc_attr( $base_name . '[label]' ); ?>" value="<?php echo esc_attr( $label ); ?>" class="regular-text" placeholder="Type d'annonce" />
+		</label>
+		<label class="mrz-display-post-exp-acf-col">
+			<span><?php esc_html_e( 'Type de filtre', 'mrz-display-post-exp' ); ?></span>
+			<select name="<?php echo esc_attr( $base_name . '[mode]' ); ?>">
+				<?php foreach ( $modes_labels as $value => $mlabel ) : ?>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $mode, $value ); ?>>
+						<?php echo esc_html( $mlabel ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+		<label class="mrz-display-post-exp-acf-col">
+			<span><?php esc_html_e( 'Logique', 'mrz-display-post-exp' ); ?></span>
+			<select name="<?php echo esc_attr( $base_name . '[logic]' ); ?>" title="<?php esc_attr_e( 'Combinaison entre cases cochées (sans effet en mode dropdown/radio)', 'mrz-display-post-exp' ); ?>">
+				<?php foreach ( $logic_labels as $value => $llabel ) : ?>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $row_logic, $value ); ?>>
+						<?php echo esc_html( $llabel ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+		<button type="button" class="button mrz-display-post-exp-acf-remove"><?php esc_html_e( 'Retirer', 'mrz-display-post-exp' ); ?></button>
+	</div>
+	<?php
+};
 ?>
 
 <h3 class="mrz-display-post-exp-section-title"><?php esc_html_e( 'Recherche', 'mrz-display-post-exp' ); ?></h3>
@@ -99,137 +224,31 @@ $acf_filters = (array) $values['acf_filters'];
 
 <hr />
 
-<h3 class="mrz-display-post-exp-section-title"><?php esc_html_e( 'Filtres par taxonomie', 'mrz-display-post-exp' ); ?></h3>
-
-<div class="mrz-display-post-exp-taxo-list">
-	<?php foreach ( $ordered_tax as $tax ) : ?>
-		<?php
-		$slug         = $tax->name;
-		$checked      = in_array( $slug, (array) $values['taxonomies'], true );
-		$mode         = isset( $values['taxo_modes'][ $slug ] ) ? $values['taxo_modes'][ $slug ] : 'dropdown';
-		$logic        = isset( $values['taxo_logic'][ $slug ] ) ? $values['taxo_logic'][ $slug ] : 'or';
-		$custom_label = isset( $values['taxo_labels'][ $slug ] ) ? $values['taxo_labels'][ $slug ] : '';
-		$object_type  = implode( ',', (array) $tax->object_type );
-		?>
-		<div class="mrz-display-post-exp-taxo-row" data-object-types="<?php echo esc_attr( $object_type ); ?>">
-			<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
-			<label class="mrz-display-post-exp-taxo-col mrz-display-post-exp-taxo-col-activate">
-				<span><?php esc_html_e( 'Taxonomie', 'mrz-display-post-exp' ); ?></span>
-				<span class="mrz-display-post-exp-taxo-activate-row">
-					<input type="checkbox" name="mrzdpe[taxonomies][]" value="<?php echo esc_attr( $slug ); ?>" <?php checked( $checked ); ?> />
-					<span class="mrz-display-post-exp-taxo-name"><?php echo esc_html( $tax->labels->singular_name . ' (' . $slug . ')' ); ?></span>
-				</span>
-			</label>
-			<label class="mrz-display-post-exp-taxo-col">
-				<span><?php esc_html_e( 'Libellé affiché', 'mrz-display-post-exp' ); ?></span>
-				<input type="text" name="mrzdpe[taxo_labels][<?php echo esc_attr( $slug ); ?>]" value="<?php echo esc_attr( $custom_label ); ?>" class="regular-text" placeholder="<?php echo esc_attr( $tax->labels->singular_name ); ?>" />
-			</label>
-			<label class="mrz-display-post-exp-taxo-col">
-				<span><?php esc_html_e( 'Type de filtre', 'mrz-display-post-exp' ); ?></span>
-				<select name="mrzdpe[taxo_modes][<?php echo esc_attr( $slug ); ?>]" class="mrz-display-post-exp-taxo-mode">
-					<?php foreach ( $modes_labels as $value => $label ) : ?>
-						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $mode, $value ); ?>>
-							<?php echo esc_html( $label ); ?>
-						</option>
-					<?php endforeach; ?>
-				</select>
-			</label>
-			<label class="mrz-display-post-exp-taxo-col">
-				<span><?php esc_html_e( 'Logique', 'mrz-display-post-exp' ); ?></span>
-				<select name="mrzdpe[taxo_logic][<?php echo esc_attr( $slug ); ?>]" class="mrz-display-post-exp-taxo-logic" title="<?php esc_attr_e( 'Combinaison entre cases cochées', 'mrz-display-post-exp' ); ?>">
-					<?php foreach ( $logic_labels as $value => $label ) : ?>
-						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $logic, $value ); ?>>
-							<?php echo esc_html( $label ); ?>
-						</option>
-					<?php endforeach; ?>
-				</select>
-			</label>
-		</div>
-	<?php endforeach; ?>
-</div>
-<p class="description"><?php esc_html_e( 'Seules les taxonomies liées au post type sélectionné sont affichées. Le libellé remplace le nom de la taxonomie affiché au-dessus du filtre sur le site.', 'mrz-display-post-exp' ); ?></p>
-
-<hr />
-
-<h3 class="mrz-display-post-exp-section-title"><?php esc_html_e( 'Filtres par champ ACF', 'mrz-display-post-exp' ); ?></h3>
+<h3 class="mrz-display-post-exp-section-title"><?php esc_html_e( 'Filtres', 'mrz-display-post-exp' ); ?></h3>
 <p class="description">
-	<?php esc_html_e( 'Pour les champs Select, Radio, Checkbox ou Vrai/Faux, les options sont détectées automatiquement depuis la configuration ACF. Pour les autres types (texte, nombre), les valeurs distinctes des posts sont collectées dynamiquement.', 'mrz-display-post-exp' ); ?>
+	<?php esc_html_e( 'Cochez les taxonomies et ajoutez les champs ACF à proposer en filtre, puis glissez les lignes (⠿) pour définir leur ordre d\'affichage sur le site.', 'mrz-display-post-exp' ); ?>
 </p>
 
-<div class="mrz-display-post-exp-acf-filters" data-next-index="<?php echo (int) count( $acf_filters ); ?>">
-	<?php foreach ( $acf_filters as $i => $row ) : ?>
-		<?php
-		$field     = isset( $row['field'] ) ? $row['field'] : '';
-		$label     = isset( $row['label'] ) ? $row['label'] : '';
-		$mode      = isset( $row['mode'] ) ? $row['mode'] : 'dropdown';
-		$row_logic = isset( $row['logic'] ) ? $row['logic'] : 'or';
-		?>
-		<div class="mrz-display-post-exp-acf-row" data-index="<?php echo (int) $i; ?>">
-			<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
-			<label class="mrz-display-post-exp-acf-col">
-				<span><?php esc_html_e( 'Nom du champ ACF', 'mrz-display-post-exp' ); ?></span>
-				<input type="text" name="mrzdpe[acf_filters][<?php echo (int) $i; ?>][field]" value="<?php echo esc_attr( $field ); ?>" class="regular-text" placeholder="type_annonce" />
-			</label>
-			<label class="mrz-display-post-exp-acf-col">
-				<span><?php esc_html_e( 'Libellé affiché', 'mrz-display-post-exp' ); ?></span>
-				<input type="text" name="mrzdpe[acf_filters][<?php echo (int) $i; ?>][label]" value="<?php echo esc_attr( $label ); ?>" class="regular-text" placeholder="Type d'annonce" />
-			</label>
-			<label class="mrz-display-post-exp-acf-col">
-				<span><?php esc_html_e( 'Type de filtre', 'mrz-display-post-exp' ); ?></span>
-				<select name="mrzdpe[acf_filters][<?php echo (int) $i; ?>][mode]">
-					<?php foreach ( $modes_labels as $value => $mlabel ) : ?>
-						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $mode, $value ); ?>>
-							<?php echo esc_html( $mlabel ); ?>
-						</option>
-					<?php endforeach; ?>
-				</select>
-			</label>
-			<label class="mrz-display-post-exp-acf-col">
-				<span><?php esc_html_e( 'Logique', 'mrz-display-post-exp' ); ?></span>
-				<select name="mrzdpe[acf_filters][<?php echo (int) $i; ?>][logic]" title="<?php esc_attr_e( 'Combinaison entre cases cochées (sans effet en mode dropdown/radio)', 'mrz-display-post-exp' ); ?>">
-					<?php foreach ( $logic_labels as $value => $llabel ) : ?>
-						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $row_logic, $value ); ?>>
-							<?php echo esc_html( $llabel ); ?>
-						</option>
-					<?php endforeach; ?>
-				</select>
-			</label>
-			<button type="button" class="button mrz-display-post-exp-acf-remove"><?php esc_html_e( 'Retirer', 'mrz-display-post-exp' ); ?></button>
-		</div>
-	<?php endforeach; ?>
+<div class="mrz-display-post-exp-filters-list" data-next-index="<?php echo (int) count( $acf_filters ); ?>">
+	<?php
+	foreach ( $filter_rows as $filter_row ) {
+		if ( 'tax' === $filter_row['type'] ) {
+			$render_tax_row( $filter_row['tax'] );
+		} else {
+			$render_acf_row( (int) $filter_row['index'], $filter_row['row'] );
+		}
+	}
+	?>
 </div>
 
 <p>
 	<button type="button" class="button mrz-display-post-exp-acf-add"><?php esc_html_e( 'Ajouter un filtre ACF', 'mrz-display-post-exp' ); ?></button>
 </p>
+<p class="description"><?php esc_html_e( 'Seules les taxonomies liées au post type sélectionné sont affichées. Le libellé remplace le nom de la taxonomie affiché au-dessus du filtre sur le site.', 'mrz-display-post-exp' ); ?></p>
+<p class="description">
+	<?php esc_html_e( 'Pour les champs Select, Radio, Checkbox ou Vrai/Faux, les options sont détectées automatiquement depuis la configuration ACF. Pour les autres types (texte, nombre), les valeurs distinctes des posts sont collectées dynamiquement.', 'mrz-display-post-exp' ); ?>
+</p>
 
 <template id="mrz-display-post-exp-acf-row-template">
-	<div class="mrz-display-post-exp-acf-row" data-index="__INDEX__">
-		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
-		<label class="mrz-display-post-exp-acf-col">
-			<span><?php esc_html_e( 'Nom du champ ACF', 'mrz-display-post-exp' ); ?></span>
-			<input type="text" name="mrzdpe[acf_filters][__INDEX__][field]" value="" class="regular-text" placeholder="type_annonce" />
-		</label>
-		<label class="mrz-display-post-exp-acf-col">
-			<span><?php esc_html_e( 'Libellé affiché', 'mrz-display-post-exp' ); ?></span>
-			<input type="text" name="mrzdpe[acf_filters][__INDEX__][label]" value="" class="regular-text" placeholder="Type d'annonce" />
-		</label>
-		<label class="mrz-display-post-exp-acf-col">
-			<span><?php esc_html_e( 'Type de filtre', 'mrz-display-post-exp' ); ?></span>
-			<select name="mrzdpe[acf_filters][__INDEX__][mode]">
-				<?php foreach ( $modes_labels as $value => $mlabel ) : ?>
-					<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $mlabel ); ?></option>
-				<?php endforeach; ?>
-			</select>
-		</label>
-		<label class="mrz-display-post-exp-acf-col">
-			<span><?php esc_html_e( 'Logique', 'mrz-display-post-exp' ); ?></span>
-			<select name="mrzdpe[acf_filters][__INDEX__][logic]">
-				<?php foreach ( $logic_labels as $value => $llabel ) : ?>
-					<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $llabel ); ?></option>
-				<?php endforeach; ?>
-			</select>
-		</label>
-		<button type="button" class="button mrz-display-post-exp-acf-remove"><?php esc_html_e( 'Retirer', 'mrz-display-post-exp' ); ?></button>
-	</div>
+	<?php $render_acf_row( '__INDEX__', array() ); ?>
 </template>

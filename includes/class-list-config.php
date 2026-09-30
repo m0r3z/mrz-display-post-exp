@@ -104,6 +104,7 @@ final class ListConfig {
 			'taxo_logic'            => array(),
 			'taxo_labels'           => array(),
 			'acf_filters'           => array(),
+			'filters_order'         => array(),
 			'show_filter_counts'    => 1,
 			'url_filters_enabled'   => 0,
 			// Recherche.
@@ -243,9 +244,10 @@ final class ListConfig {
 		$clean['taxo_labels'] = $labels;
 
 		// Filtres ACF.
-		$acf_filters = array();
+		$acf_filters        = array();
+		$acf_index_to_field = array();
 		if ( isset( $raw['acf_filters'] ) && is_array( $raw['acf_filters'] ) ) {
-			foreach ( $raw['acf_filters'] as $row ) {
+			foreach ( $raw['acf_filters'] as $raw_index => $row ) {
 				if ( ! is_array( $row ) ) {
 					continue;
 				}
@@ -260,6 +262,7 @@ final class ListConfig {
 				$logic         = ( isset( $row['logic'] ) && in_array( $row['logic'], self::filter_logics(), true ) )
 					? $row['logic']
 					: 'or';
+				$acf_index_to_field[ (string) $raw_index ] = $field;
 				$acf_filters[] = array(
 					'field' => $field,
 					'label' => sanitize_text_field( $label_raw ),
@@ -269,6 +272,20 @@ final class ListConfig {
 			}
 		}
 		$clean['acf_filters'] = $acf_filters;
+
+		// Ordre global des filtres (taxonomies et ACF mélangés) : clés « tax:slug » / « acf:field ».
+		$filters_order = array();
+		if ( isset( $raw['filters_order'] ) && is_array( $raw['filters_order'] ) ) {
+			foreach ( $raw['filters_order'] as $order_key ) {
+				list( $type, $ref ) = array_pad( explode( ':', (string) $order_key, 2 ), 2, '' );
+				if ( 'tax' === $type && in_array( sanitize_key( $ref ), $taxo, true ) ) {
+					$filters_order[] = 'tax:' . sanitize_key( $ref );
+				} elseif ( 'acf' === $type && isset( $acf_index_to_field[ $ref ] ) ) {
+					$filters_order[] = 'acf:' . $acf_index_to_field[ $ref ];
+				}
+			}
+		}
+		$clean['filters_order'] = array_values( array_unique( $filters_order ) );
 
 		$clean['show_filter_counts']  = ! empty( $raw['show_filter_counts'] ) ? 1 : 0;
 		$clean['url_filters_enabled'] = ! empty( $raw['url_filters_enabled'] ) ? 1 : 0;

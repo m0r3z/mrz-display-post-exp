@@ -66,7 +66,7 @@
 	}
 
 	function initAcfRepeater() {
-		var wrap = document.querySelector('.mrz-display-post-exp-acf-filters');
+		var wrap = document.querySelector('.mrz-display-post-exp-filters-list');
 		var tpl = document.getElementById('mrz-display-post-exp-acf-row-template');
 		var addBtn = document.querySelector('.mrz-display-post-exp-acf-add');
 		if (!wrap || !tpl || !addBtn) { return; }
@@ -146,20 +146,13 @@
 		initSortableFilters();
 	});
 
-	// Rend les listes de filtres réordonnables (taxonomies et ACF, chacune de son côté).
-	// L'ordre du DOM est repris tel quel à la sauvegarde par le PHP.
+	// Rend la liste unique des filtres réordonnable (taxonomies et ACF mélangés).
+	// L'ordre du DOM est repris tel quel à la sauvegarde via mrzdpe[filters_order][].
 	function initSortableFilters() {
 		if (!window.jQuery || !jQuery.fn.sortable) { return; }
-		jQuery('.mrz-display-post-exp-taxo-list').sortable({
+		jQuery('.mrz-display-post-exp-filters-list').sortable({
 			handle: '.mrz-display-post-exp-sort-handle',
-			items: '> .mrz-display-post-exp-taxo-row',
-			axis: 'y',
-			cursor: 'move',
-			opacity: 0.7
-		});
-		jQuery('.mrz-display-post-exp-acf-filters').sortable({
-			handle: '.mrz-display-post-exp-sort-handle',
-			items: '> .mrz-display-post-exp-acf-row',
+			items: '> .mrz-display-post-exp-taxo-row, > .mrz-display-post-exp-acf-row',
 			axis: 'y',
 			cursor: 'move',
 			opacity: 0.7
