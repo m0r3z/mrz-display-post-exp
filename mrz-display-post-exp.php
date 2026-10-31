@@ -6,6 +6,7 @@
  * Version:           1.2.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
+ * Requires Plugins:  advanced-custom-fields
  * Author:            Morez.co
  * Author URI:        https://morez.co
  * License:           GPLv3 or later
