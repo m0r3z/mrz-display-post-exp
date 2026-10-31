@@ -335,7 +335,7 @@
 			if (!visible.length) {
 				var empty = document.createElement('div');
 				empty.className = 'mrz-display-post-exp-empty';
-				empty.textContent = (config.i18n && config.i18n.empty) || 'Aucun résultat.';
+				empty.textContent = (config.i18n && config.i18n.empty) || 'No results.';
 				listEl.appendChild(empty);
 				if (paginationEl) { paginationEl.hidden = true; }
 				if (sliderApi) { sliderApi.refresh(); }

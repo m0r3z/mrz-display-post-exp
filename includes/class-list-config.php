@@ -58,10 +58,10 @@ final class ListConfig {
 	}
 
 	public function add_metaboxes() {
-		add_meta_box( 'mrzdpe_source', __( 'Source des données', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'source' ) );
-		add_meta_box( 'mrzdpe_templates', __( 'Template HTML', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'templates' ) );
-		add_meta_box( 'mrzdpe_filters', __( 'Filtres & recherche', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'filters' ) );
-		add_meta_box( 'mrzdpe_display', __( 'Affichage', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'display' ) );
+		add_meta_box( 'mrzdpe_source', __( 'Data source', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'source' ) );
+		add_meta_box( 'mrzdpe_templates', __( 'HTML template', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'templates' ) );
+		add_meta_box( 'mrzdpe_filters', __( 'Filters & search', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'filters' ) );
+		add_meta_box( 'mrzdpe_display', __( 'Display', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'normal', 'high', array( 'view' => 'display' ) );
 		add_meta_box( 'mrzdpe_shortcode', __( 'Shortcode', 'mrz-display-post-exp' ), array( $this, 'render' ), MRZDPE_CPT, 'side', 'high', array( 'view' => 'shortcode' ) );
 	}
 

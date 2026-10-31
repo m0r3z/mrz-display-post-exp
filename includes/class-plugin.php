@@ -108,7 +108,7 @@ final class Plugin {
 		}
 		printf(
 			'<div class="notice notice-error"><p>%s</p></div>',
-			esc_html__( 'MRZ Display Post nécessite Advanced Custom Fields (Pro recommandé) pour fonctionner.', 'mrz-display-post-exp' )
+			esc_html__( 'MRZ Display Post Exp requires Advanced Custom Fields (Pro recommended) to work.', 'mrz-display-post-exp' )
 		);
 	}
 }

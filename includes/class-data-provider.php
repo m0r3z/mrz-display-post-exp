@@ -54,12 +54,15 @@ final class DataProvider {
 	private static function build_config( $values ) {
 		$clear_btn_text = '' !== (string) $values['clear_btn_text']
 			? (string) $values['clear_btn_text']
-			: __( 'Effacer', 'mrz-display-post-exp' );
+			: __( 'Clear', 'mrz-display-post-exp' );
 
 		$search_fields = array_filter( array_map( 'trim', explode( ',', (string) $values['search_acf_fields'] ) ) );
 
 		return array(
 			'format'           => (string) $values['format'],
+			'i18n'             => array(
+				'empty' => __( 'No results.', 'mrz-display-post-exp' ),
+			),
 			'layoutFilters'    => (string) $values['layout_filters'],
 			'itemClickAction'  => (string) $values['item_click_action'],
 			'showClearBtn'     => ! empty( $values['show_clear_btn'] ),
@@ -74,10 +77,10 @@ final class DataProvider {
 				'enabled'     => ! empty( $values['search_enabled'] ),
 				'label'       => '' !== (string) $values['search_label']
 					? (string) $values['search_label']
-					: __( 'Rechercher', 'mrz-display-post-exp' ),
+					: __( 'Search', 'mrz-display-post-exp' ),
 				'placeholder' => '' !== (string) $values['search_placeholder']
 					? (string) $values['search_placeholder']
-					: __( 'Rechercher…', 'mrz-display-post-exp' ),
+					: __( 'Search…', 'mrz-display-post-exp' ),
 				'layout'      => (string) $values['search_layout'],
 				'acfFields'   => array_values( $search_fields ),
 			),
@@ -385,8 +388,8 @@ final class DataProvider {
 			}
 			if ( is_array( $obj ) && isset( $obj['type'] ) && 'true_false' === $obj['type'] ) {
 				$choices = array(
-					'1' => isset( $obj['ui_on_text'] ) && '' !== $obj['ui_on_text'] ? (string) $obj['ui_on_text'] : __( 'Oui', 'mrz-display-post-exp' ),
-					'0' => isset( $obj['ui_off_text'] ) && '' !== $obj['ui_off_text'] ? (string) $obj['ui_off_text'] : __( 'Non', 'mrz-display-post-exp' ),
+					'1' => isset( $obj['ui_on_text'] ) && '' !== $obj['ui_on_text'] ? (string) $obj['ui_on_text'] : __( 'Yes', 'mrz-display-post-exp' ),
+					'0' => isset( $obj['ui_off_text'] ) && '' !== $obj['ui_off_text'] ? (string) $obj['ui_off_text'] : __( 'No', 'mrz-display-post-exp' ),
 				);
 			}
 		}

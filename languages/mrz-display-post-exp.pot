@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-30T12:53:43+00:00\n"
+"POT-Creation-Date: 2026-10-31T16:37:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-display-post-exp\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: mrz-display-post-exp.php
-msgid "Affiche des posts et custom posts avec leurs champs ACF en liste, grille ou slider. Templates HTML personnalisables, filtres et recherche côté client."
+msgid "Display posts and custom posts with their ACF fields as a list, grid or slider, with customizable HTML templates, client-side filters and search."
 msgstr ""
 
 #. Author of the plugin
@@ -40,15 +40,15 @@ msgid "https://morez.co"
 msgstr ""
 
 #: admin/views/metabox-display.php:15
-msgid "Format d'affichage"
+msgid "Display format"
 msgstr ""
 
 #: admin/views/metabox-display.php:19
-msgid "Liste"
+msgid "List"
 msgstr ""
 
 #: admin/views/metabox-display.php:20
-msgid "Grille"
+msgid "Grid"
 msgstr ""
 
 #: admin/views/metabox-display.php:21
@@ -56,27 +56,27 @@ msgid "Slider"
 msgstr ""
 
 #: admin/views/metabox-display.php:35
-msgid "Ratio de l'image à la une"
+msgid "Featured image aspect ratio"
 msgstr ""
 
 #: admin/views/metabox-display.php:41
-msgid "Auto (image d'origine)"
+msgid "Auto (original image)"
 msgstr ""
 
 #: admin/views/metabox-display.php:42
-msgid "Carré (1:1)"
+msgid "Square (1:1)"
 msgstr ""
 
 #: admin/views/metabox-display.php:43
-msgid "Paysage 4:3"
+msgid "Landscape 4:3"
 msgstr ""
 
 #: admin/views/metabox-display.php:44
-msgid "Paysage 3:2"
+msgid "Landscape 3:2"
 msgstr ""
 
 #: admin/views/metabox-display.php:45
-msgid "Paysage 16:9"
+msgid "Landscape 16:9"
 msgstr ""
 
 #: admin/views/metabox-display.php:46
@@ -88,507 +88,512 @@ msgid "Portrait 2:3"
 msgstr ""
 
 #: admin/views/metabox-display.php:56
-msgid "S'applique à l'image à la une ({post_thumbnail}). L'image remplit la zone et est recadrée proprement (object-fit) sans déformation, sans modifier le fichier."
+msgid "Applies to the featured image ({post_thumbnail}). The image fills the area and is cleanly cropped (object-fit) without distortion and without altering the file."
 msgstr ""
 
 #: admin/views/metabox-display.php:62
-msgid "Largeur min. d'une colonne (px)"
+msgid "Minimum column width (px)"
 msgstr ""
 
 #: admin/views/metabox-display.php:66
-msgid "La grille remplit automatiquement autant de colonnes que possible à partir de cette largeur minimale."
+msgid "The grid automatically fits as many columns as possible based on this minimum width."
 msgstr ""
 
 #: admin/views/metabox-display.php:71
 #: admin/views/metabox-display.php:99
-msgid "Espacement entre items (px)"
+msgid "Gap between items (px)"
 msgstr ""
 
 #: admin/views/metabox-display.php:75
-msgid "Écart horizontal et vertical entre les items de la grille."
+msgid "Horizontal and vertical spacing between grid items."
 msgstr ""
 
 #: admin/views/metabox-display.php:80
-msgid "Items visibles (slider)"
+msgid "Visible items (slider)"
 msgstr ""
 
 #: admin/views/metabox-display.php:83
-msgid "Bureau :"
+msgid "Desktop:"
 msgstr ""
 
 #: admin/views/metabox-display.php:87
-msgid "Tablette :"
+msgid "Tablet:"
 msgstr ""
 
 #: admin/views/metabox-display.php:91
-msgid "Mobile :"
+msgid "Mobile:"
 msgstr ""
 
 #: admin/views/metabox-display.php:94
-msgid "Bureau > 1024px, tablette ≤ 1024px, mobile ≤ 768px."
+msgid "Desktop > 1024px, tablet ≤ 1024px, mobile ≤ 768px."
 msgstr ""
 
 #: admin/views/metabox-display.php:107
-msgid "Vitesse de transition (ms)"
+msgid "Transition speed (ms)"
 msgstr ""
 
 #: admin/views/metabox-display.php:111
-msgid "Durée du glissement au clic des flèches / puces et en défilement automatique. Plus la valeur est élevée, plus la transition est lente et douce (défaut : 500 ms). Le glissement au doigt reste natif."
+msgid "Duration of the slide animation when clicking the arrows / dots and during autoplay. The higher the value, the slower and smoother the transition (default: 500 ms). Touch swiping remains native."
 msgstr ""
 
 #: admin/views/metabox-display.php:115
-msgid "Options du slider"
+msgid "Slider options"
 msgstr ""
 
 #: admin/views/metabox-display.php:120
-msgid "Afficher les flèches précédent / suivant."
+msgid "Show previous / next arrows."
 msgstr ""
 
 #: admin/views/metabox-display.php:124
-msgid "Position des flèches :"
+msgid "Arrow position:"
 msgstr ""
 
 #: admin/views/metabox-display.php:127
-msgid "Sur les côtés"
+msgid "On the sides"
 msgstr ""
 
 #: admin/views/metabox-display.php:128
-msgid "Au-dessus (alignées à gauche)"
+msgid "Above (left-aligned)"
 msgstr ""
 
 #: admin/views/metabox-display.php:141
-msgid "Afficher les puces de pagination."
+msgid "Show pagination dots."
 msgstr ""
 
 #: admin/views/metabox-display.php:147
-msgid "Boucler (revenir au début après le dernier item)."
+msgid "Loop (go back to the start after the last item)."
 msgstr ""
 
 #: admin/views/metabox-display.php:153
-msgid "Défilement automatique."
+msgid "Autoplay."
 msgstr ""
 
 #: admin/views/metabox-display.php:158
-msgid "Délai entre transitions (ms) :"
+msgid "Delay between transitions (ms):"
 msgstr ""
 
 #: admin/views/metabox-display.php:162
-msgid "Le défilement automatique respecte la préférence « réduire les animations » du visiteur et se met en pause au survol."
+msgid "Autoplay respects the visitor's “reduce motion” preference and pauses on hover."
 msgstr ""
 
 #: admin/views/metabox-display.php:168
-msgid "Layout des filtres"
+msgid "Filters layout"
 msgstr ""
 
 #: admin/views/metabox-display.php:172
-msgid "Au-dessus"
+msgid "Above"
 msgstr ""
 
 #: admin/views/metabox-display.php:173
-msgid "À gauche"
+msgid "Left"
 msgstr ""
 
 #: admin/views/metabox-display.php:174
-msgid "À droite"
+msgid "Right"
 msgstr ""
 
 #: admin/views/metabox-display.php:183
-msgid "N'a d'effet que si des filtres ou la recherche sont activés."
+msgid "Only applies when filters or search are enabled."
 msgstr ""
 
 #: admin/views/metabox-display.php:187
-msgid "Clic sur un item"
+msgid "On item click"
 msgstr ""
 
 #: admin/views/metabox-display.php:191
-msgid "Ne rien faire"
+msgid "Do nothing"
 msgstr ""
 
 #: admin/views/metabox-display.php:192
-msgid "Ouvrir la page du post"
+msgid "Open the post page"
 msgstr ""
 
 #: admin/views/metabox-display.php:204
-msgid "Bouton de réinitialisation"
+msgid "Reset button"
 msgstr ""
 
 #: admin/views/metabox-display.php:209
-msgid "Afficher un bouton de réinitialisation de tous les filtres."
+msgid "Show a button that resets all filters."
 msgstr ""
 
 #: admin/views/metabox-display.php:214
-msgid "Texte du bouton :"
+msgid "Button text:"
 msgstr ""
 
 #: admin/views/metabox-display.php:215
 #: includes/class-data-provider.php:57
-msgid "Effacer"
+msgid "Clear"
 msgstr ""
 
 #: admin/views/metabox-filters.php:59
-msgid "Glisser pour réordonner"
+msgid "Drag to reorder"
 msgstr ""
 
 #: admin/views/metabox-filters.php:61
-msgid "Menu déroulant"
+msgid "Dropdown"
 msgstr ""
 
 #: admin/views/metabox-filters.php:62
-msgid "Boutons radio"
+msgid "Radio buttons"
 msgstr ""
 
 #: admin/views/metabox-filters.php:63
-msgid "Cases à cocher"
+msgid "Checkboxes"
 msgstr ""
 
 #: admin/views/metabox-filters.php:66
-msgid "OU"
+msgid "OR"
 msgstr ""
 
 #: admin/views/metabox-filters.php:67
-msgid "ET"
+msgid "AND"
 msgstr ""
 
 #: admin/views/metabox-filters.php:85
-msgid "Taxonomie"
+msgid "Taxonomy"
 msgstr ""
 
 #: admin/views/metabox-filters.php:92
 #: admin/views/metabox-filters.php:137
-msgid "Libellé affiché"
+msgid "Display label"
 msgstr ""
 
 #: admin/views/metabox-filters.php:96
 #: admin/views/metabox-filters.php:141
-msgid "Type de filtre"
+msgid "Filter type"
 msgstr ""
 
 #: admin/views/metabox-filters.php:106
 #: admin/views/metabox-filters.php:151
-msgid "Logique"
+msgid "Logic"
 msgstr ""
 
 #: admin/views/metabox-filters.php:107
-msgid "Combinaison entre cases cochées"
+msgid "How checked options are combined"
 msgstr ""
 
 #: admin/views/metabox-filters.php:133
-msgid "Champ ACF"
+msgid "ACF field"
+msgstr ""
+
+#: admin/views/metabox-filters.php:138
+msgid "Listing type"
 msgstr ""
 
 #: admin/views/metabox-filters.php:152
-msgid "Combinaison entre cases cochées (sans effet en mode dropdown/radio)"
+msgid "How checked options are combined (no effect in dropdown/radio mode)"
 msgstr ""
 
 #: admin/views/metabox-filters.php:160
-msgid "Retirer"
+msgid "Remove"
 msgstr ""
 
 #: admin/views/metabox-filters.php:166
-msgid "Recherche"
+msgctxt "settings section title"
+msgid "Search"
 msgstr ""
 
 #: admin/views/metabox-filters.php:170
-msgid "Afficher un champ de recherche (filtrage instantané côté client)."
+msgid "Show a search field (instant client-side filtering)."
 msgstr ""
 
 #: admin/views/metabox-filters.php:175
-msgid "Champs ACF à inclure dans la recherche :"
+msgid "ACF fields to include in search:"
 msgstr ""
 
 #: admin/views/metabox-filters.php:179
-msgid "Liste de noms de champs ACF texte séparés par des virgules. Le titre du post est toujours inclus."
+msgid "Comma-separated list of ACF text field names. The post title is always included."
 msgstr ""
 
 #: admin/views/metabox-filters.php:182
-msgid "Position du champ :"
+msgid "Field position:"
 msgstr ""
 
 #: admin/views/metabox-filters.php:185
-msgid "Dans le bloc filtres"
+msgid "Inside the filters block"
 msgstr ""
 
 #: admin/views/metabox-filters.php:186
-msgid "En haut, pleine largeur"
+msgid "At the top, full width"
 msgstr ""
 
 #: admin/views/metabox-filters.php:198
-msgid "Libellé affiché au-dessus du champ :"
+msgid "Label shown above the field:"
 msgstr ""
 
 #: admin/views/metabox-filters.php:199
-#: includes/class-data-provider.php:77
-msgid "Rechercher"
+#: includes/class-data-provider.php:80
+msgid "Search"
 msgstr ""
 
 #: admin/views/metabox-filters.php:204
-msgid "Placeholder du champ :"
+msgid "Field placeholder:"
 msgstr ""
 
 #: admin/views/metabox-filters.php:205
-#: includes/class-data-provider.php:80
-msgid "Rechercher…"
+#: includes/class-data-provider.php:83
+msgid "Search…"
 msgstr ""
 
 #: admin/views/metabox-filters.php:211
-msgid "Options globales"
+msgid "Global options"
 msgstr ""
 
 #: admin/views/metabox-filters.php:215
-msgid "Afficher le nombre de résultats à côté de chaque option de filtre."
+msgid "Show the number of results next to each filter option."
 msgstr ""
 
 #: admin/views/metabox-filters.php:221
-msgid "Synchroniser les filtres avec l'URL (lien partageable)."
+msgid "Sync filters with the URL (shareable link)."
 msgstr ""
 
 #: admin/views/metabox-filters.php:227
 #: public/views/list-wrapper.php:106
-msgid "Filtres"
+msgid "Filters"
 msgstr ""
 
 #: admin/views/metabox-filters.php:229
-msgid "Cochez les taxonomies et ajoutez les champs ACF à proposer en filtre, puis glissez les lignes (⠿) pour définir leur ordre d'affichage sur le site."
+msgid "Check the taxonomies and add the ACF fields to offer as filters, then drag the rows (⠿) to set their display order on the site."
 msgstr ""
 
 #: admin/views/metabox-filters.php:245
-msgid "Ajouter un filtre ACF"
+msgid "Add ACF filter"
 msgstr ""
 
 #: admin/views/metabox-filters.php:247
-msgid "Seules les taxonomies liées au post type sélectionné sont affichées. Le libellé remplace le nom de la taxonomie affiché au-dessus du filtre sur le site."
+msgid "Only taxonomies attached to the selected post type are shown. The label replaces the taxonomy name displayed above the filter on the site."
 msgstr ""
 
 #: admin/views/metabox-filters.php:249
-msgid "Pour les champs Select, Radio, Checkbox ou Vrai/Faux, les options sont détectées automatiquement depuis la configuration ACF. Pour les autres types (texte, nombre), les valeurs distinctes des posts sont collectées dynamiquement."
+msgid "For Select, Radio Button, Checkbox or True / False fields, options are detected automatically from the ACF configuration. For other types (text, number), distinct values are collected dynamically from the posts."
 msgstr ""
 
 #: admin/views/metabox-shortcode.php:15
-msgid "Collez ce shortcode dans vos contenus :"
+msgid "Paste this shortcode into your content:"
 msgstr ""
 
 #: admin/views/metabox-shortcode.php:17
-msgid "Exemple avec filtre forcé :"
+msgid "Example with a forced filter:"
 msgstr ""
 
 #: admin/views/metabox-source.php:17
-msgid "Date de publication"
+msgid "Publish date"
 msgstr ""
 
 #: admin/views/metabox-source.php:18
-msgid "Titre"
+msgid "Title"
 msgstr ""
 
 #: admin/views/metabox-source.php:19
-msgid "Ordre manuel (menu_order)"
+msgid "Manual order (menu_order)"
 msgstr ""
 
 #: admin/views/metabox-source.php:20
-msgid "Aléatoire"
+msgid "Random"
 msgstr ""
 
 #: admin/views/metabox-source.php:21
-msgid "Date de modification"
+msgid "Last modified date"
 msgstr ""
 
 #: admin/views/metabox-source.php:22
-msgid "Champ ACF de date (agenda)"
+msgid "ACF date field (events)"
 msgstr ""
 
 #: admin/views/metabox-source.php:29
-msgid "Post type source"
+msgid "Source post type"
 msgstr ""
 
 #: admin/views/metabox-source.php:39
-msgid "Le post type dont les entrées seront affichées."
+msgid "The post type whose entries will be displayed."
 msgstr ""
 
 #: admin/views/metabox-source.php:44
-msgid "Trier par"
+msgid "Order by"
 msgstr ""
 
 #: admin/views/metabox-source.php:55
-msgid "Décroissant"
+msgid "Descending"
 msgstr ""
 
 #: admin/views/metabox-source.php:56
-msgid "Croissant"
+msgid "Ascending"
 msgstr ""
 
 #: admin/views/metabox-source.php:62
-msgid "Champ ACF de date"
+msgid "ACF date field"
 msgstr ""
 
 #: admin/views/metabox-source.php:66
-msgid "Nom du champ ACF de type Date (ou Date/Heure) servant au tri. Seules les entrées possédant ce champ seront affichées."
+msgid "Name of the ACF Date Picker (or Date Time Picker) field used for sorting. Only entries that have this field will be displayed."
 msgstr ""
 
 #: admin/views/metabox-source.php:71
-msgid "Afficher"
+msgid "Show"
 msgstr ""
 
 #: admin/views/metabox-source.php:75
-msgid "Toutes les dates"
+msgid "All dates"
 msgstr ""
 
 #: admin/views/metabox-source.php:76
-msgid "À venir uniquement (≥ aujourd'hui)"
+msgid "Upcoming only (≥ today)"
 msgstr ""
 
 #: admin/views/metabox-source.php:77
-msgid "Passées uniquement (< aujourd'hui)"
+msgid "Past only (< today)"
 msgstr ""
 
 #: admin/views/metabox-source.php:79
-msgid "Filtre côté serveur sur le champ de date ci-dessus. « À venir » masque les événements passés (idéal agenda)."
+msgid "Server-side filter on the date field above. “Upcoming” hides past events (ideal for an events calendar)."
 msgstr ""
 
 #: admin/views/metabox-source.php:84
-msgid "Nombre max de posts"
+msgid "Maximum number of posts"
 msgstr ""
 
 #: admin/views/metabox-source.php:88
-msgid "Limite de chargement côté serveur. 0 = illimité."
+msgid "Server-side loading limit. 0 = unlimited."
 msgstr ""
 
 #: admin/views/metabox-source.php:93
-msgid "Posts par page"
+msgid "Posts per page"
 msgstr ""
 
 #: admin/views/metabox-source.php:97
-msgid "Pagination côté utilisateur (liste et grille) : nombre de posts par page. 0 = tous affichés. Ignoré en mode slider."
+msgid "Client-side pagination (list and grid): number of posts per page. 0 = show all. Ignored in slider mode."
 msgstr ""
 
 #: admin/views/metabox-source.php:101
-msgid "Contexte courant"
+msgid "Current context"
 msgstr ""
 
 #: admin/views/metabox-source.php:105
-msgid "N'afficher que les contenus partageant la catégorie de la page courante (single ou archive de catégorie)."
+msgid "Only show content sharing the category of the current page (single post or category archive)."
 msgstr ""
 
 #: admin/views/metabox-source.php:107
-msgid "Idéal pour un bloc « contenus liés » placé dans un article : sur un single, l'élément courant est exclu. Sans contexte de catégorie (ex. page), tous les contenus s'affichent."
+msgid "Ideal for a “related content” block placed in a post: on a single post, the current item is excluded. Without a category context (e.g. a page), all content is displayed."
 msgstr ""
 
 #: admin/views/metabox-source.php:112
-msgid "Taxonomie du contexte"
+msgid "Context taxonomy"
 msgstr ""
 
 #: admin/views/metabox-source.php:122
-msgid "Taxonomie partagée entre la page courante et les contenus affichés (par défaut : Catégorie)."
+msgid "Taxonomy shared by the current page and the displayed content (default: Category)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:16
-msgid "Template de l'item"
+msgid "Item template"
 msgstr ""
 
 #: admin/views/metabox-templates.php:20
-msgid "HTML affiché pour chaque entrée (liste, grille ou slider). L'attribut style n'est pas autorisé : mettez en forme via le CSS de votre thème."
+msgid "HTML rendered for each entry (list, grid or slider). The style attribute is not allowed: use your theme's CSS for styling."
 msgstr ""
 
 #: admin/views/metabox-templates.php:28
-msgid "Titre du post."
+msgid "Post title."
 msgstr ""
 
 #: admin/views/metabox-templates.php:29
-msgid "Lien (permalien) du post."
+msgid "Post link (permalink)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:30
-msgid "Extrait complet."
+msgid "Full excerpt."
 msgstr ""
 
 #: admin/views/metabox-templates.php:31
-msgid "Extrait tronqué à N mots (ici 25)."
+msgid "Excerpt trimmed to N words (25 here)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:32
-msgid "Image à la une (balise <img>)."
+msgid "Featured image (<img> tag)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:33
-msgid "URL de l'image à la une."
+msgid "Featured image URL."
 msgstr ""
 
 #: admin/views/metabox-templates.php:34
-msgid "Identifiant du post."
+msgid "Post ID."
 msgstr ""
 
 #: admin/views/metabox-templates.php:35
-msgid "Date de publication du post (format de date du site)."
+msgid "Post publish date (site date format)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:36
-msgid "Valeur d'un champ ACF (remplacez « nom_champ_acf » par le nom de votre champ)."
+msgid "Value of an ACF field (replace “nom_champ_acf” with your field name)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:37
-msgid "Tous les termes de la taxonomie, chacun dans un <span class=\"mrz-dpe-term\">."
+msgid "All terms of the taxonomy, each wrapped in a <span class=\"mrz-dpe-term\">."
 msgstr ""
 
 #: admin/views/metabox-templates.php:38
-msgid "Nom du premier terme uniquement (texte brut)."
+msgid "Name of the first term only (plain text)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:39
-msgid "Slug du premier terme (ex. « recherche-developpement ») — idéal comme modificateur de classe CSS."
+msgid "Slug of the first term (e.g. “research-development”) — handy as a CSS class modifier."
 msgstr ""
 
 #: admin/views/metabox-templates.php:40
-msgid "Champ ACF de date découpé en 3 spans : jour / mois / année (voir formats ci-dessous)."
+msgid "ACF date field split into 3 spans: day / month / year (see formats below)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:44
-msgid "Mois en numéro : 08 (par défaut)."
+msgid "Month as a number: 08 (default)."
 msgstr ""
 
 #: admin/views/metabox-templates.php:45
-msgid "Mois en numéro sans zéro : 8."
+msgid "Month as a number without leading zero: 8."
 msgstr ""
 
 #: admin/views/metabox-templates.php:46
-msgid "Mois en toutes lettres, localisé : août."
+msgid "Full month name, localized: August."
 msgstr ""
 
 #: admin/views/metabox-templates.php:47
-msgid "Mois abrégé, localisé : aoû."
+msgid "Abbreviated month name, localized: Aug."
 msgstr ""
 
 #: admin/views/metabox-templates.php:52
-msgid "Placeholders disponibles, formats de date & conditionnels"
+msgid "Available placeholders, date formats & conditionals"
 msgstr ""
 
 #: admin/views/metabox-templates.php:54
-msgid "Placeholders disponibles"
+msgid "Available placeholders"
 msgstr ""
 
 #: admin/views/metabox-templates.php:66
-msgid "Formats de date ({acf_date})"
+msgid "Date formats ({acf_date})"
 msgstr ""
 
 #: admin/views/metabox-templates.php:68
-msgid "Le jour (01) et l'année (2026) sont fixes ; seul le mois change selon le suffixe :"
+msgid "The day (01) and year (2026) are fixed; only the month changes based on the suffix:"
 msgstr ""
 
 #: admin/views/metabox-templates.php:83
-msgid "Chaque partie est dans son span : <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — à styliser via le CSS de votre thème."
+msgid "Each part is wrapped in its own span: <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — style them with your theme's CSS."
 msgstr ""
 
 #: admin/views/metabox-templates.php:89
-msgid "Conditionnels"
+msgid "Conditionals"
 msgstr ""
 
 #: admin/views/metabox-templates.php:93
-msgid "Affiche un bloc seulement si le champ est renseigné : <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Fonctionne aussi avec <code>{#if post_thumbnail}…{/if}</code> ou <code>{#if taxonomy:category}…{/if}</code>."
+msgid "Displays a block only if the field has a value: <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Also works with <code>{#if post_thumbnail}…{/if}</code> or <code>{#if taxonomy:category}…{/if}</code>."
 msgstr ""
 
 #: includes/class-activator.php:18
-msgid "MRZ Display Post nécessite Advanced Custom Fields (Pro recommandé). Veuillez installer et activer ACF avant d'activer ce plugin."
+msgid "MRZ Display Post Exp requires Advanced Custom Fields (Pro recommended). Please install and activate ACF before activating this plugin."
 msgstr ""
 
 #: includes/class-activator.php:19
-msgid "Dépendance manquante"
+msgid "Missing dependency"
 msgstr ""
 
 #: includes/class-cpt.php:23
@@ -598,7 +603,7 @@ msgstr ""
 
 #: includes/class-cpt.php:24
 msgctxt "post type singular name"
-msgid "Élément"
+msgid "Item"
 msgstr ""
 
 #: includes/class-cpt.php:25
@@ -608,40 +613,40 @@ msgstr ""
 
 #: includes/class-cpt.php:26
 msgctxt "add new on admin bar"
-msgid "Élément"
+msgid "Item"
 msgstr ""
 
 #: includes/class-cpt.php:27
 #: includes/class-cpt.php:28
-msgid "Ajouter un élément"
+msgid "Add new item"
 msgstr ""
 
 #: includes/class-cpt.php:29
-msgid "Nouvel élément"
+msgid "New item"
 msgstr ""
 
 #: includes/class-cpt.php:30
-msgid "Modifier l'élément"
+msgid "Edit item"
 msgstr ""
 
 #: includes/class-cpt.php:31
-msgid "Voir l'élément"
+msgid "View item"
 msgstr ""
 
 #: includes/class-cpt.php:32
-msgid "Tous les éléments"
+msgid "All items"
 msgstr ""
 
 #: includes/class-cpt.php:33
-msgid "Rechercher un élément"
+msgid "Search items"
 msgstr ""
 
 #: includes/class-cpt.php:34
-msgid "Aucun élément trouvé."
+msgid "No items found."
 msgstr ""
 
 #: includes/class-cpt.php:35
-msgid "Aucun élément dans la corbeille."
+msgid "No items found in Trash."
 msgstr ""
 
 #: includes/class-cpt.php:92
@@ -649,51 +654,55 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-data-provider.php:388
-msgid "Oui"
+#: includes/class-data-provider.php:64
+msgid "No results."
 msgstr ""
 
-#: includes/class-data-provider.php:389
-msgid "Non"
+#: includes/class-data-provider.php:391
+msgid "Yes"
+msgstr ""
+
+#: includes/class-data-provider.php:392
+msgid "No"
 msgstr ""
 
 #: includes/class-list-config.php:61
-msgid "Source des données"
+msgid "Data source"
 msgstr ""
 
 #: includes/class-list-config.php:62
-msgid "Template HTML"
+msgid "HTML template"
 msgstr ""
 
 #: includes/class-list-config.php:63
-msgid "Filtres & recherche"
+msgid "Filters & search"
 msgstr ""
 
 #: includes/class-list-config.php:64
-msgid "Affichage"
+msgid "Display"
 msgstr ""
 
 #: includes/class-plugin.php:111
-msgid "MRZ Display Post nécessite Advanced Custom Fields (Pro recommandé) pour fonctionner."
+msgid "MRZ Display Post Exp requires Advanced Custom Fields (Pro recommended) to work."
 msgstr ""
 
 #: public/views/list-wrapper.php:130
 #: public/views/list-wrapper.php:146
-msgid "Tous"
+msgid "All"
 msgstr ""
 
 #: public/views/list-wrapper.php:208
-msgid "Précédent"
+msgid "Previous"
 msgstr ""
 
 #: public/views/list-wrapper.php:209
-msgid "Suivant"
+msgid "Next"
 msgstr ""
 
 #: public/views/list-wrapper.php:227
-msgid "Page précédente"
+msgid "Previous page"
 msgstr ""
 
 #: public/views/list-wrapper.php:233
-msgid "Page suivante"
+msgid "Next page"
 msgstr ""

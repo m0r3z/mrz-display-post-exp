@@ -15,8 +15,8 @@ final class Activator {
 		if ( ! mrzdpe_has_acf() ) {
 			deactivate_plugins( MRZDPE_BASENAME );
 			wp_die(
-				esc_html__( 'MRZ Display Post nécessite Advanced Custom Fields (Pro recommandé). Veuillez installer et activer ACF avant d\'activer ce plugin.', 'mrz-display-post-exp' ),
-				esc_html__( 'Dépendance manquante', 'mrz-display-post-exp' ),
+				esc_html__( 'MRZ Display Post Exp requires Advanced Custom Fields (Pro recommended). Please install and activate ACF before activating this plugin.', 'mrz-display-post-exp' ),
+				esc_html__( 'Missing dependency', 'mrz-display-post-exp' ),
 				array( 'back_link' => true )
 			);
 		}

@@ -14,19 +14,19 @@ use Mrzdpe\ListConfig;
 $public_pts = get_post_types( array( 'public' => true ), 'objects' );
 
 $orderby_labels = array(
-	'date'       => __( 'Date de publication', 'mrz-display-post-exp' ),
-	'title'      => __( 'Titre', 'mrz-display-post-exp' ),
-	'menu_order' => __( 'Ordre manuel (menu_order)', 'mrz-display-post-exp' ),
-	'rand'       => __( 'Aléatoire', 'mrz-display-post-exp' ),
-	'modified'   => __( 'Date de modification', 'mrz-display-post-exp' ),
-	'acf_date'   => __( 'Champ ACF de date (agenda)', 'mrz-display-post-exp' ),
+	'date'       => __( 'Publish date', 'mrz-display-post-exp' ),
+	'title'      => __( 'Title', 'mrz-display-post-exp' ),
+	'menu_order' => __( 'Manual order (menu_order)', 'mrz-display-post-exp' ),
+	'rand'       => __( 'Random', 'mrz-display-post-exp' ),
+	'modified'   => __( 'Last modified date', 'mrz-display-post-exp' ),
+	'acf_date'   => __( 'ACF date field (events)', 'mrz-display-post-exp' ),
 );
 ?>
 <table class="form-table mrz-display-post-exp-table">
 	<tbody>
 		<tr>
 			<th scope="row">
-				<label for="mrzdpe_source_pt"><?php esc_html_e( 'Post type source', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_source_pt"><?php esc_html_e( 'Source post type', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
 				<select name="mrzdpe[source_pt]" id="mrzdpe_source_pt">
@@ -36,12 +36,12 @@ $orderby_labels = array(
 						</option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php esc_html_e( 'Le post type dont les entrées seront affichées.', 'mrz-display-post-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'The post type whose entries will be displayed.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">
-				<label for="mrzdpe_orderby"><?php esc_html_e( 'Trier par', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_orderby"><?php esc_html_e( 'Order by', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
 				<select name="mrzdpe[orderby]" id="mrzdpe_orderby">
@@ -52,64 +52,64 @@ $orderby_labels = array(
 					<?php endforeach; ?>
 				</select>
 				<select name="mrzdpe[order]" id="mrzdpe_order">
-					<option value="DESC" <?php selected( $values['order'], 'DESC' ); ?>><?php esc_html_e( 'Décroissant', 'mrz-display-post-exp' ); ?></option>
-					<option value="ASC" <?php selected( $values['order'], 'ASC' ); ?>><?php esc_html_e( 'Croissant', 'mrz-display-post-exp' ); ?></option>
+					<option value="DESC" <?php selected( $values['order'], 'DESC' ); ?>><?php esc_html_e( 'Descending', 'mrz-display-post-exp' ); ?></option>
+					<option value="ASC" <?php selected( $values['order'], 'ASC' ); ?>><?php esc_html_e( 'Ascending', 'mrz-display-post-exp' ); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr class="mrz-display-post-exp-when-acfdate">
 			<th scope="row">
-				<label for="mrzdpe_orderby_acf_field"><?php esc_html_e( 'Champ ACF de date', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_orderby_acf_field"><?php esc_html_e( 'ACF date field', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
 				<input type="text" name="mrzdpe[orderby_acf_field]" id="mrzdpe_orderby_acf_field" value="<?php echo esc_attr( $values['orderby_acf_field'] ); ?>" class="regular-text" placeholder="date_evenement" />
-				<p class="description"><?php esc_html_e( 'Nom du champ ACF de type Date (ou Date/Heure) servant au tri. Seules les entrées possédant ce champ seront affichées.', 'mrz-display-post-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Name of the ACF Date Picker (or Date Time Picker) field used for sorting. Only entries that have this field will be displayed.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 		<tr class="mrz-display-post-exp-when-acfdate">
 			<th scope="row">
-				<label for="mrzdpe_acf_date_scope"><?php esc_html_e( 'Afficher', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_acf_date_scope"><?php esc_html_e( 'Show', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
 				<select name="mrzdpe[acf_date_scope]" id="mrzdpe_acf_date_scope">
-					<option value="all" <?php selected( $values['acf_date_scope'], 'all' ); ?>><?php esc_html_e( 'Toutes les dates', 'mrz-display-post-exp' ); ?></option>
-					<option value="upcoming" <?php selected( $values['acf_date_scope'], 'upcoming' ); ?>><?php esc_html_e( 'À venir uniquement (≥ aujourd\'hui)', 'mrz-display-post-exp' ); ?></option>
-					<option value="past" <?php selected( $values['acf_date_scope'], 'past' ); ?>><?php esc_html_e( 'Passées uniquement (< aujourd\'hui)', 'mrz-display-post-exp' ); ?></option>
+					<option value="all" <?php selected( $values['acf_date_scope'], 'all' ); ?>><?php esc_html_e( 'All dates', 'mrz-display-post-exp' ); ?></option>
+					<option value="upcoming" <?php selected( $values['acf_date_scope'], 'upcoming' ); ?>><?php esc_html_e( 'Upcoming only (≥ today)', 'mrz-display-post-exp' ); ?></option>
+					<option value="past" <?php selected( $values['acf_date_scope'], 'past' ); ?>><?php esc_html_e( 'Past only (< today)', 'mrz-display-post-exp' ); ?></option>
 				</select>
-				<p class="description"><?php esc_html_e( 'Filtre côté serveur sur le champ de date ci-dessus. « À venir » masque les événements passés (idéal agenda).', 'mrz-display-post-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Server-side filter on the date field above. “Upcoming” hides past events (ideal for an events calendar).', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">
-				<label for="mrzdpe_limit"><?php esc_html_e( 'Nombre max de posts', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_limit"><?php esc_html_e( 'Maximum number of posts', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
 				<input type="number" name="mrzdpe[limit]" id="mrzdpe_limit" value="<?php echo esc_attr( $values['limit'] ); ?>" min="0" step="1" />
-				<p class="description"><?php esc_html_e( 'Limite de chargement côté serveur. 0 = illimité.', 'mrz-display-post-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Server-side loading limit. 0 = unlimited.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">
-				<label for="mrzdpe_per_page"><?php esc_html_e( 'Posts par page', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_per_page"><?php esc_html_e( 'Posts per page', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
 				<input type="number" name="mrzdpe[per_page]" id="mrzdpe_per_page" value="<?php echo esc_attr( $values['per_page'] ); ?>" min="0" step="1" />
-				<p class="description"><?php esc_html_e( 'Pagination côté utilisateur (liste et grille) : nombre de posts par page. 0 = tous affichés. Ignoré en mode slider.', 'mrz-display-post-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Client-side pagination (list and grid): number of posts per page. 0 = show all. Ignored in slider mode.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><?php esc_html_e( 'Contexte courant', 'mrz-display-post-exp' ); ?></th>
+			<th scope="row"><?php esc_html_e( 'Current context', 'mrz-display-post-exp' ); ?></th>
 			<td>
 				<label>
 					<input type="checkbox" class="mrz-display-post-exp-current-term-toggle" name="mrzdpe[restrict_current_term]" value="1" <?php checked( ! empty( $values['restrict_current_term'] ) ); ?> />
-					<?php esc_html_e( 'N\'afficher que les contenus partageant la catégorie de la page courante (single ou archive de catégorie).', 'mrz-display-post-exp' ); ?>
+					<?php esc_html_e( 'Only show content sharing the category of the current page (single post or category archive).', 'mrz-display-post-exp' ); ?>
 				</label>
-				<p class="description"><?php esc_html_e( 'Idéal pour un bloc « contenus liés » placé dans un article : sur un single, l\'élément courant est exclu. Sans contexte de catégorie (ex. page), tous les contenus s\'affichent.', 'mrz-display-post-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Ideal for a “related content” block placed in a post: on a single post, the current item is excluded. Without a category context (e.g. a page), all content is displayed.', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 		<tr class="mrz-display-post-exp-when-current-term">
 			<th scope="row">
-				<label for="mrzdpe_current_term_taxonomy"><?php esc_html_e( 'Taxonomie du contexte', 'mrz-display-post-exp' ); ?></label>
+				<label for="mrzdpe_current_term_taxonomy"><?php esc_html_e( 'Context taxonomy', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
 				<select name="mrzdpe[current_term_taxonomy]" id="mrzdpe_current_term_taxonomy">
@@ -119,7 +119,7 @@ $orderby_labels = array(
 						</option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php esc_html_e( 'Taxonomie partagée entre la page courante et les contenus affichés (par défaut : Catégorie).', 'mrz-display-post-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Taxonomy shared by the current page and the displayed content (default: Category).', 'mrz-display-post-exp' ); ?></p>
 			</td>
 		</tr>
 	</tbody>

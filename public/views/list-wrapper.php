@@ -103,7 +103,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 
 			<?php if ( ! empty( $filters ) || ! empty( $config['showClearBtn'] ) ) : ?>
 				<button type="button" class="mrz-display-post-exp-filters-toggle" aria-expanded="false" aria-controls="<?php echo esc_attr( $uid ); ?>-filters-body">
-					<?php esc_html_e( 'Filtres', 'mrz-display-post-exp' ); ?>
+					<?php esc_html_e( 'Filters', 'mrz-display-post-exp' ); ?>
 				</button>
 			<?php endif; ?>
 
@@ -127,7 +127,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 
 					<?php if ( 'dropdown' === $filter['mode'] ) : ?>
 						<select class="mrz-display-post-exp-filter-input" <?php echo $dattr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — attributs déjà échappés ?>>
-							<option value=""><?php esc_html_e( 'Tous', 'mrz-display-post-exp' ); ?></option>
+							<option value=""><?php esc_html_e( 'All', 'mrz-display-post-exp' ); ?></option>
 							<?php foreach ( $filter['options'] as $opt ) : ?>
 								<?php
 								$is_forced = ( $forced && 'tax' === $filter['type']
@@ -143,7 +143,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 						<div class="mrz-display-post-exp-filter-group">
 							<label>
 								<input type="radio" name="<?php echo esc_attr( $uid . '-' . $fkey ); ?>" class="mrz-display-post-exp-filter-input" <?php echo $dattr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> value="" <?php checked( ! $forced || 'tax' !== $filter['type'] || $forced['taxonomy'] !== $filter['taxonomy'] ); ?> />
-								<?php esc_html_e( 'Tous', 'mrz-display-post-exp' ); ?>
+								<?php esc_html_e( 'All', 'mrz-display-post-exp' ); ?>
 							</label>
 							<?php foreach ( $filter['options'] as $opt ) : ?>
 								<?php
@@ -205,8 +205,8 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 				data-autoplay="<?php echo $s['autoplay'] ? '1' : '0'; ?>"
 				data-autoplay-delay="<?php echo (int) $s['autoplayDelay']; ?>">
 				<?php if ( ! empty( $s['showArrows'] ) ) : ?>
-					<button type="button" class="mrz-display-post-exp-slider-prev" aria-label="<?php esc_attr_e( 'Précédent', 'mrz-display-post-exp' ); ?>">&lsaquo;</button>
-					<button type="button" class="mrz-display-post-exp-slider-next" aria-label="<?php esc_attr_e( 'Suivant', 'mrz-display-post-exp' ); ?>">&rsaquo;</button>
+					<button type="button" class="mrz-display-post-exp-slider-prev" aria-label="<?php esc_attr_e( 'Previous', 'mrz-display-post-exp' ); ?>">&lsaquo;</button>
+					<button type="button" class="mrz-display-post-exp-slider-next" aria-label="<?php esc_attr_e( 'Next', 'mrz-display-post-exp' ); ?>">&rsaquo;</button>
 				<?php endif; ?>
 				<div class="mrz-display-post-exp-track mrz-display-post-exp-list" tabindex="0"></div>
 				<?php if ( ! empty( $s['showDots'] ) ) : ?>
@@ -224,13 +224,13 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 				<div class="mrz-display-post-exp-list"<?php echo $list_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — valeur entière interpolée ?>></div>
 				<?php if ( (int) $config['perPage'] > 0 ) : ?>
 					<nav class="mrz-display-post-exp-pagination" hidden>
-						<button type="button" class="mrz-display-post-exp-page-prev" aria-label="<?php esc_attr_e( 'Page précédente', 'mrz-display-post-exp' ); ?>">&lsaquo;</button>
+						<button type="button" class="mrz-display-post-exp-page-prev" aria-label="<?php esc_attr_e( 'Previous page', 'mrz-display-post-exp' ); ?>">&lsaquo;</button>
 						<span class="mrz-display-post-exp-page-info">
 							<span class="mrz-display-post-exp-page-current">1</span>
 							 /
 							<span class="mrz-display-post-exp-page-total">1</span>
 						</span>
-						<button type="button" class="mrz-display-post-exp-page-next" aria-label="<?php esc_attr_e( 'Page suivante', 'mrz-display-post-exp' ); ?>">&rsaquo;</button>
+						<button type="button" class="mrz-display-post-exp-page-next" aria-label="<?php esc_attr_e( 'Next page', 'mrz-display-post-exp' ); ?>">&rsaquo;</button>
 					</nav>
 				<?php endif; ?>
 			</div>

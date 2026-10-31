@@ -21,18 +21,18 @@ final class CPT {
 	public function register_post_type() {
 		$labels = array(
 			'name'               => _x( 'MRZ Display Post', 'post type general name', 'mrz-display-post-exp' ),
-			'singular_name'      => _x( 'Élément', 'post type singular name', 'mrz-display-post-exp' ),
+			'singular_name'      => _x( 'Item', 'post type singular name', 'mrz-display-post-exp' ),
 			'menu_name'          => _x( 'MRZ Display Post', 'admin menu', 'mrz-display-post-exp' ),
-			'name_admin_bar'     => _x( 'Élément', 'add new on admin bar', 'mrz-display-post-exp' ),
-			'add_new'            => __( 'Ajouter un élément', 'mrz-display-post-exp' ),
-			'add_new_item'       => __( 'Ajouter un élément', 'mrz-display-post-exp' ),
-			'new_item'           => __( 'Nouvel élément', 'mrz-display-post-exp' ),
-			'edit_item'          => __( 'Modifier l\'élément', 'mrz-display-post-exp' ),
-			'view_item'          => __( 'Voir l\'élément', 'mrz-display-post-exp' ),
-			'all_items'          => __( 'Tous les éléments', 'mrz-display-post-exp' ),
-			'search_items'       => __( 'Rechercher un élément', 'mrz-display-post-exp' ),
-			'not_found'          => __( 'Aucun élément trouvé.', 'mrz-display-post-exp' ),
-			'not_found_in_trash' => __( 'Aucun élément dans la corbeille.', 'mrz-display-post-exp' ),
+			'name_admin_bar'     => _x( 'Item', 'add new on admin bar', 'mrz-display-post-exp' ),
+			'add_new'            => __( 'Add new item', 'mrz-display-post-exp' ),
+			'add_new_item'       => __( 'Add new item', 'mrz-display-post-exp' ),
+			'new_item'           => __( 'New item', 'mrz-display-post-exp' ),
+			'edit_item'          => __( 'Edit item', 'mrz-display-post-exp' ),
+			'view_item'          => __( 'View item', 'mrz-display-post-exp' ),
+			'all_items'          => __( 'All items', 'mrz-display-post-exp' ),
+			'search_items'       => __( 'Search items', 'mrz-display-post-exp' ),
+			'not_found'          => __( 'No items found.', 'mrz-display-post-exp' ),
+			'not_found_in_trash' => __( 'No items found in Trash.', 'mrz-display-post-exp' ),
 		);
 
 		$args = array(
