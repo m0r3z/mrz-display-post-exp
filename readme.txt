@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,12 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.3.0 =
+* Declared Advanced Custom Fields as a required plugin (`Requires Plugins` header, WordPress 6.5+).
+* All source strings (admin, front end, JavaScript fallback and plugin description) are now in English, as expected by translate.wordpress.org. French is provided as a fr_FR translation.
+* The empty-result message ("No results.") is now translatable.
+* The "ACF required" notice now uses the full plugin name.
 
 = 1.2.0 =
 * Taxonomy and ACF filters now live in a single sortable list in the admin: drag them in any order (e.g. ACF, taxonomy, ACF, taxonomy) and the front-end filters follow that order.
