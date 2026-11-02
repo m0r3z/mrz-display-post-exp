@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Display Post Exp 1.3.0\n"
+"Project-Id-Version: MRZ Display Post Exp 1.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-display-post-exp\n"
 "Last-Translator: Morez.co\n"
 "Language-Team: French\n"
