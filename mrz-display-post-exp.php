@@ -3,7 +3,7 @@
  * Plugin Name:       MRZ Display Post Exp
  * Plugin URI:        https://github.com/m0r3z/mrz-display-post-exp
  * Description:       Display posts and custom posts with their ACF fields as a list, grid or slider, with customizable HTML templates, client-side filters and search.
- * Version:           1.3.0
+ * Version:           1.3.1
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Requires Plugins:  advanced-custom-fields
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRZDPE_VERSION', '1.3.0' );
+define( 'MRZDPE_VERSION', '1.3.1' );
 define( 'MRZDPE_FILE', __FILE__ );
 define( 'MRZDPE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MRZDPE_URL', plugin_dir_url( __FILE__ ) );

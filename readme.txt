@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.3.1 =
+* Security hardening: the `style` attribute is now stripped from item templates, as the admin already stated. Style your items with your theme's CSS. Existing templates are only affected when the block is saved again.
 
 = 1.3.0 =
 * Declared Advanced Custom Fields as a required plugin (`Requires Plugins` header, WordPress 6.5+).
