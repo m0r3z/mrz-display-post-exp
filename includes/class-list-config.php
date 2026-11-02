@@ -349,8 +349,7 @@ final class ListConfig {
 		$allowed = wp_kses_allowed_html( 'post' );
 
 		// Ajoute les attributs class/id/data-* sur les balises courantes.
-		// 'style' est volontairement exclu (défense en profondeur : évite le
-		// CSS tracking type background:url(...) par un éditeur hostile).
+		// 'style' est retiré plus bas : la mise en forme passe par le CSS du thème.
 		$common_attrs = array(
 			'class'  => true,
 			'id'     => true,
@@ -363,6 +362,13 @@ final class ListConfig {
 			}
 			foreach ( $common_attrs as $attr => $val ) {
 				$allowed[ $tag ][ $attr ] = $val;
+			}
+		}
+
+		// L'allowlist 'post' autorise 'style' sur la plupart des balises : on le retire partout.
+		foreach ( $allowed as $tag => $attrs ) {
+			if ( is_array( $attrs ) ) {
+				unset( $allowed[ $tag ]['style'] );
 			}
 		}
 
