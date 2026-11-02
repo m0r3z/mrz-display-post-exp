@@ -79,7 +79,7 @@ $render_tax_row = static function ( $tax ) use ( $values, $sort_handle, $modes_l
 	$object_type  = implode( ',', (array) $tax->object_type );
 	?>
 	<div class="mrz-display-post-exp-taxo-row" data-object-types="<?php echo esc_attr( $object_type ); ?>">
-		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
+		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- titre déjà échappé via esc_attr__ ?>
 		<input type="hidden" name="mrzdpe[filters_order][]" value="<?php echo esc_attr( 'tax:' . $slug ); ?>" />
 		<label class="mrz-display-post-exp-taxo-col mrz-display-post-exp-taxo-col-activate">
 			<span class="mrz-display-post-exp-filter-type"><?php esc_html_e( 'Taxonomy', 'mrz-display-post-exp' ); ?></span>
@@ -127,7 +127,7 @@ $render_acf_row = static function ( $index, $row ) use ( $sort_handle, $modes_la
 	$base_name = 'mrzdpe[acf_filters][' . $index . ']';
 	?>
 	<div class="mrz-display-post-exp-acf-row" data-index="<?php echo esc_attr( $index ); ?>">
-		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — titre déjà échappé via esc_attr__ ?>
+		<?php echo $sort_handle; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- titre déjà échappé via esc_attr__ ?>
 		<input type="hidden" name="mrzdpe[filters_order][]" value="<?php echo esc_attr( 'acf:' . $index ); ?>" />
 		<label class="mrz-display-post-exp-acf-col">
 			<span class="mrz-display-post-exp-filter-type"><?php esc_html_e( 'ACF field', 'mrz-display-post-exp' ); ?></span>

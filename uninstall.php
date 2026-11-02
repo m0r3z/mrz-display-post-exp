@@ -11,7 +11,7 @@ global $wpdb;
 
 // Supprime tous les posts du CPT et leurs métas associées.
 $cpt      = 'mrzdpe_list';
-$list_ids = $wpdb->get_col(
+$list_ids = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- désinstallation : inclut corbeille et brouillons auto, ignorés par get_posts().
 	$wpdb->prepare(
 		"SELECT ID FROM {$wpdb->posts} WHERE post_type = %s",
 		$cpt
@@ -26,7 +26,7 @@ if ( ! empty( $list_ids ) ) {
 
 // Supprime les post_meta orphelines éventuelles (_mrzdpe_*).
 $meta_like = $wpdb->esc_like( '_mrzdpe_' ) . '%';
-$wpdb->query(
+$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- désinstallation : suppression en masse par préfixe, requête préparée.
 	$wpdb->prepare(
 		"DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s",
 		$meta_like
@@ -36,7 +36,7 @@ $wpdb->query(
 // Supprime les transients de cache.
 $transient_like         = $wpdb->esc_like( '_transient_mrzdpe_' ) . '%';
 $transient_timeout_like = $wpdb->esc_like( '_transient_timeout_mrzdpe_' ) . '%';
-$wpdb->query(
+$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- désinstallation : suppression en masse par préfixe, requête préparée.
 	$wpdb->prepare(
 		"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
 		$transient_like,
@@ -49,7 +49,7 @@ delete_option( 'mrzdpe_migrated_1' );
 
 // Défensif : nettoie aussi d'éventuelles données de l'ancien préfixe (site
 // supprimé avant que la migration n'ait eu lieu).
-$legacy_ids = $wpdb->get_col(
+$legacy_ids = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- désinstallation : inclut corbeille et brouillons auto, ignorés par get_posts().
 	$wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_type = %s", 'mrz_dpe_list' )
 );
 if ( ! empty( $legacy_ids ) ) {
@@ -60,8 +60,8 @@ if ( ! empty( $legacy_ids ) ) {
 $legacy_meta_like      = $wpdb->esc_like( '_mrz_display_post_exp_' ) . '%';
 $legacy_transient_like = $wpdb->esc_like( '_transient_mrz_display_post_exp_' ) . '%';
 $legacy_timeout_like   = $wpdb->esc_like( '_transient_timeout_mrz_display_post_exp_' ) . '%';
-$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s", $legacy_meta_like ) );
-$wpdb->query(
+$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s", $legacy_meta_like ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- désinstallation : suppression en masse par préfixe, requête préparée.
+$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- désinstallation : suppression en masse par préfixe, requête préparée.
 	$wpdb->prepare(
 		"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
 		$legacy_transient_like,

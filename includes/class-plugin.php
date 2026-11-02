@@ -77,7 +77,7 @@ final class Plugin {
 		global $wpdb;
 
 		// CPT : mrz_dpe_list → mrzdpe_list.
-		$wpdb->query(
+		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- migration unique de l'ancien préfixe, requête préparée.
 			$wpdb->prepare(
 				"UPDATE {$wpdb->posts} SET post_type = %s WHERE post_type = %s",
 				'mrzdpe_list',
@@ -87,7 +87,7 @@ final class Plugin {
 
 		// Metas : _mrz_display_post_exp_* → _mrzdpe_*.
 		$old_meta_prefix = '_mrz_display_post_exp_';
-		$wpdb->query(
+		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- migration unique de l'ancien préfixe, requête préparée.
 			$wpdb->prepare(
 				"UPDATE {$wpdb->postmeta} SET meta_key = CONCAT('_mrzdpe_', SUBSTRING(meta_key, %d)) WHERE meta_key LIKE %s",
 				strlen( $old_meta_prefix ) + 1,
@@ -96,7 +96,7 @@ final class Plugin {
 		);
 
 		// Shortcodes dans le contenu : [mrz_display_post_exp → [mrzdpe.
-		$wpdb->query(
+		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- migration unique de l'ancien préfixe, requête préparée.
 			$wpdb->prepare(
 				"UPDATE {$wpdb->posts} SET post_content = REPLACE(post_content, %s, %s) WHERE post_content LIKE %s",
 				'[mrz_display_post_exp',

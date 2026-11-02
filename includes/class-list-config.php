@@ -173,7 +173,7 @@ final class ListConfig {
 		}
 
 		$raw = isset( $_POST['mrzdpe'] ) && is_array( $_POST['mrzdpe'] )
-			? wp_unslash( $_POST['mrzdpe'] )
+			? wp_unslash( $_POST['mrzdpe'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nettoyé champ par champ plus bas (nonce et droits vérifiés).
 			: array();
 
 		$clean = array();

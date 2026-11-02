@@ -80,7 +80,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 	<?php
 };
 ?>
-<div id="<?php echo esc_attr( $uid ); ?>" class="<?php echo esc_attr( $wrapper_cls ); ?>"<?php echo $wrapper_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — valeur issue d'une whitelist, déjà échappée via esc_attr ?> data-mrz-display-post-exp="1">
+<div id="<?php echo esc_attr( $uid ); ?>" class="<?php echo esc_attr( $wrapper_cls ); ?>"<?php echo $wrapper_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- valeur issue d'une whitelist, déjà échappée via esc_attr ?> data-mrz-display-post-exp="1">
 
 	<?php if ( $search_top ) : ?>
 		<div class="mrz-display-post-exp-search-top">
@@ -126,7 +126,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 					<div class="mrz-display-post-exp-filter-label"><?php echo esc_html( $filter['label'] ); ?></div>
 
 					<?php if ( 'dropdown' === $filter['mode'] ) : ?>
-						<select class="mrz-display-post-exp-filter-input" <?php echo $dattr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — attributs déjà échappés ?>>
+						<select class="mrz-display-post-exp-filter-input" <?php echo $dattr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attributs déjà échappés ?>>
 							<option value=""><?php esc_html_e( 'All', 'mrz-display-post-exp' ); ?></option>
 							<?php foreach ( $filter['options'] as $opt ) : ?>
 								<?php
@@ -221,7 +221,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 					$list_style = ' style="--mrz-grid-min:' . (int) $config['grid']['minWidth'] . 'px;--mrz-grid-gap:' . (int) $config['grid']['gap'] . 'px;"';
 				}
 				?>
-				<div class="mrz-display-post-exp-list"<?php echo $list_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — valeur entière interpolée ?>></div>
+				<div class="mrz-display-post-exp-list"<?php echo $list_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- valeur entière interpolée ?>></div>
 				<?php if ( (int) $config['perPage'] > 0 ) : ?>
 					<nav class="mrz-display-post-exp-pagination" hidden>
 						<button type="button" class="mrz-display-post-exp-page-prev" aria-label="<?php esc_attr_e( 'Previous page', 'mrz-display-post-exp' ); ?>">&lsaquo;</button>
