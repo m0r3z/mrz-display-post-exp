@@ -17,6 +17,19 @@
 .mrz-display-post-exp-main { display: block; }
 .mrz-display-post-exp-data { display: none; }
 
+/* Zone d'annonce du nombre de résultats : lue par les lecteurs d'écran, invisible à l'écran. */
+.mrz-display-post-exp-status {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
 /* --- Format LISTE --- */
 .mrz-display-post-exp-fmt-list .mrz-display-post-exp-list { display: flex; flex-direction: column; gap: 8px; }
 

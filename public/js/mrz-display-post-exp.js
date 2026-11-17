@@ -374,11 +374,27 @@
 			if (next) { next.disabled = page >= totalPages; }
 		}
 
+		// Annonce le nombre de résultats aux lecteurs d'écran après un filtrage ou une recherche.
+		var statusEl = wrapper.querySelector('.mrz-display-post-exp-status');
+		function announceCount(count) {
+			if (!statusEl) { return; }
+			var i18n = config.i18n || {};
+			var text;
+			if (count === 0) {
+				text = i18n.empty || 'No results.';
+			} else {
+				text = (count === 1 ? (i18n.result || '%d result') : (i18n.results || '%d results'))
+					.replace('%d', String(count));
+			}
+			statusEl.textContent = text;
+		}
+
 		function applyFilters(opts) {
 			opts = opts || {};
 			if (!opts.keepPage) { page = 1; }
 			var visible = items.filter(passesFilters);
 			renderList(visible);
+			if (!opts.keepPage && !opts.silent) { announceCount(visible.length); }
 			if (config.urlFilters) { writeUrl(); }
 		}
 
@@ -540,7 +556,7 @@
 		readUrl();
 		bindFilterInputs();
 		if (config.urlFilters) { syncInputsFromState(); }
-		applyFilters();
+		applyFilters({ silent: true });
 	}
 
 	document.addEventListener('DOMContentLoaded', function () {

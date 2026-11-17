@@ -237,5 +237,7 @@ $render_search_field = static function () use ( $config, $dropdown_id ) {
 		<?php endif; ?>
 	</div>
 
+	<div class="mrz-display-post-exp-status" role="status" aria-live="polite"></div>
+
 	<script type="application/json" class="mrz-display-post-exp-data"><?php echo wp_json_encode( $data ); ?></script>
 </div>

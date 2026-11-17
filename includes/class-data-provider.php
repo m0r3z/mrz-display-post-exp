@@ -61,7 +61,11 @@ final class DataProvider {
 		return array(
 			'format'           => (string) $values['format'],
 			'i18n'             => array(
-				'empty' => __( 'No results.', 'mrz-display-post-exp' ),
+				'empty'   => __( 'No results.', 'mrz-display-post-exp' ),
+				/* translators: %d: number of results shown after filtering. */
+				'result'  => _n( '%d result', '%d results', 1, 'mrz-display-post-exp' ),
+				/* translators: %d: number of results shown after filtering. */
+				'results' => _n( '%d result', '%d results', 2, 'mrz-display-post-exp' ),
 			),
 			'layoutFilters'    => (string) $values['layout_filters'],
 			'itemClickAction'  => (string) $values['item_click_action'],
