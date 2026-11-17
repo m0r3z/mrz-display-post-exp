@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Display Post Exp 1.3.2\n"
+"Project-Id-Version: MRZ Display Post Exp 1.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-display-post-exp\n"
 "Last-Translator: Morez.co\n"
 "Language-Team: French\n"
@@ -317,7 +317,7 @@ msgid "Label shown above the field:"
 msgstr "Libellé affiché au-dessus du champ :"
 
 #: admin/views/metabox-filters.php:199
-#: includes/class-data-provider.php:80
+#: includes/class-data-provider.php:84
 msgid "Search"
 msgstr "Rechercher"
 
@@ -326,7 +326,7 @@ msgid "Field placeholder:"
 msgstr "Placeholder du champ :"
 
 #: admin/views/metabox-filters.php:205
-#: includes/class-data-provider.php:83
+#: includes/class-data-provider.php:87
 msgid "Search…"
 msgstr "Rechercher…"
 
@@ -507,79 +507,79 @@ msgstr "Extrait tronqué à N mots (ici 25)."
 msgid "Featured image (<img> tag)."
 msgstr "Image à la une (balise <img>)."
 
-#: admin/views/metabox-templates.php:33
+#: admin/views/metabox-templates.php:34
 msgid "Featured image URL."
 msgstr "URL de l'image à la une."
 
-#: admin/views/metabox-templates.php:34
+#: admin/views/metabox-templates.php:35
 msgid "Post ID."
 msgstr "Identifiant du post."
 
-#: admin/views/metabox-templates.php:35
+#: admin/views/metabox-templates.php:36
 msgid "Post publish date (site date format)."
 msgstr "Date de publication du post (format de date du site)."
 
-#: admin/views/metabox-templates.php:36
+#: admin/views/metabox-templates.php:37
 msgid "Value of an ACF field (replace “nom_champ_acf” with your field name)."
 msgstr "Valeur d'un champ ACF (remplacez « nom_champ_acf » par le nom de votre champ)."
 
-#: admin/views/metabox-templates.php:37
+#: admin/views/metabox-templates.php:40
 msgid "All terms of the taxonomy, each wrapped in a <span class=\"mrz-dpe-term\">."
 msgstr "Tous les termes de la taxonomie, chacun dans un <span class=\"mrz-dpe-term\">."
 
-#: admin/views/metabox-templates.php:38
+#: admin/views/metabox-templates.php:41
 msgid "Name of the first term only (plain text)."
 msgstr "Nom du premier terme uniquement (texte brut)."
 
-#: admin/views/metabox-templates.php:39
+#: admin/views/metabox-templates.php:42
 msgid "Slug of the first term (e.g. “research-development”) — handy as a CSS class modifier."
 msgstr "Slug du premier terme (ex. « recherche-developpement ») — idéal comme modificateur de classe CSS."
 
-#: admin/views/metabox-templates.php:40
+#: admin/views/metabox-templates.php:43
 msgid "ACF date field split into 3 spans: day / month / year (see formats below)."
 msgstr "Champ ACF de date découpé en 3 spans : jour / mois / année (voir formats ci-dessous)."
 
-#: admin/views/metabox-templates.php:44
+#: admin/views/metabox-templates.php:47
 msgid "Month as a number: 08 (default)."
 msgstr "Mois en numéro : 08 (par défaut)."
 
-#: admin/views/metabox-templates.php:45
+#: admin/views/metabox-templates.php:48
 msgid "Month as a number without leading zero: 8."
 msgstr "Mois en numéro sans zéro : 8."
 
-#: admin/views/metabox-templates.php:46
+#: admin/views/metabox-templates.php:49
 msgid "Full month name, localized: August."
 msgstr "Mois en toutes lettres, localisé : août."
 
-#: admin/views/metabox-templates.php:47
+#: admin/views/metabox-templates.php:50
 msgid "Abbreviated month name, localized: Aug."
 msgstr "Mois abrégé, localisé : aoû."
 
-#: admin/views/metabox-templates.php:52
+#: admin/views/metabox-templates.php:55
 msgid "Available placeholders, date formats & conditionals"
 msgstr "Placeholders disponibles, formats de date & conditionnels"
 
-#: admin/views/metabox-templates.php:54
+#: admin/views/metabox-templates.php:57
 msgid "Available placeholders"
 msgstr "Placeholders disponibles"
 
-#: admin/views/metabox-templates.php:66
+#: admin/views/metabox-templates.php:69
 msgid "Date formats ({acf_date})"
 msgstr "Formats de date ({acf_date})"
 
-#: admin/views/metabox-templates.php:68
+#: admin/views/metabox-templates.php:71
 msgid "The day (01) and year (2026) are fixed; only the month changes based on the suffix:"
 msgstr "Le jour (01) et l'année (2026) sont fixes ; seul le mois change selon le suffixe :"
 
-#: admin/views/metabox-templates.php:83
+#: admin/views/metabox-templates.php:86
 msgid "Each part is wrapped in its own span: <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — style them with your theme's CSS."
 msgstr "Chaque partie est dans son span : <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — à styliser via le CSS de votre thème."
 
-#: admin/views/metabox-templates.php:89
+#: admin/views/metabox-templates.php:92
 msgid "Conditionals"
 msgstr "Conditionnels"
 
-#: admin/views/metabox-templates.php:93
+#: admin/views/metabox-templates.php:96
 msgid "Displays a block only if the field has a value: <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Also works with <code>{#if post_thumbnail}…{/if}</code> or <code>{#if taxonomy:category}…{/if}</code>."
 msgstr "Affiche un bloc seulement si le champ est renseigné : <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Fonctionne aussi avec <code>{#if post_thumbnail}…{/if}</code> ou <code>{#if taxonomy:category}…{/if}</code>."
 
@@ -649,11 +649,11 @@ msgstr "Aucun élément dans la corbeille."
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: includes/class-data-provider.php:391
+#: includes/class-data-provider.php:395
 msgid "Yes"
 msgstr "Oui"
 
-#: includes/class-data-provider.php:392
+#: includes/class-data-provider.php:396
 msgid "No"
 msgstr "Non"
 
@@ -673,7 +673,7 @@ msgstr "Filtres & recherche"
 msgid "Display"
 msgstr "Affichage"
 
-#: includes/class-plugin.php:111
+#: includes/class-plugin.php:118
 msgid "MRZ Display Post Exp requires Advanced Custom Fields (Pro recommended) to work."
 msgstr "MRZ Display Post Exp nécessite Advanced Custom Fields (Pro recommandé) pour fonctionner."
 
@@ -706,3 +706,24 @@ msgstr "Affiche des posts et custom posts avec leurs champs ACF en liste, grille
 #: includes/class-data-provider.php:64
 msgid "No results."
 msgstr "Aucun résultat."
+
+#: admin/views/metabox-templates.php:33
+msgid "Featured image in a given size (thumbnail, medium, large, full or any registered size). Default: medium."
+msgstr "Image à la une dans une taille donnée (thumbnail, medium, large, full ou toute taille déclarée). Par défaut : medium."
+
+#: admin/views/metabox-templates.php:38
+msgid "ACF image field as a full <img> tag (srcset, sizes, dimensions, lazy loading), whatever its return format. Default size: large."
+msgstr "Champ image ACF en balise <img> complète (srcset, sizes, dimensions, chargement différé), quel que soit son format de retour. Taille par défaut : large."
+
+#: admin/views/metabox-templates.php:39
+msgid "ACF image field in a given size."
+msgstr "Champ image ACF dans une taille donnée."
+
+#. translators: %d: number of results shown after filtering.
+#: includes/class-data-provider.php:66
+#: includes/class-data-provider.php:68
+#, php-format
+msgid "%d result"
+msgid_plural "%d results"
+msgstr[0] "%d résultat"
+msgstr[1] "%d résultats"
