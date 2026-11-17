@@ -4,9 +4,10 @@
  *
  * Placeholders supportés :
  *   - {post_title}, {post_url}, {post_excerpt}, {post_excerpt:N} (tronqué à N mots)
- *   - {post_thumbnail} (balise <img>), {post_thumbnail_url}
+ *   - {post_thumbnail} ou {post_thumbnail:taille} (balise <img>, medium par défaut), {post_thumbnail_url}
  *   - {post_date} (date de publication, au format de date du site)
  *   - {%nom_champ_acf%}
+ *   - {acf_image:champ} ou {acf_image:champ:taille} (balise <img> via wp_get_attachment_image, large par défaut)
  *   - {acf_date:champ} ou {acf_date:champ:F} (date ACF en spans jour/mois/année ; mois = m|n|F|M)
  *   - {taxonomy:slug} (chaque terme dans un <span class="mrz-dpe-term">, sans séparateur)
  *   - {taxonomy:slug:first} (nom du premier terme, texte brut)
@@ -104,6 +105,25 @@ final class TemplateParser {
 			$template
 		);
 
+		// Image ACF : {acf_image:champ} ou {acf_image:champ:taille}
+		$template = preg_replace_callback(
+			'/\{acf_image:([\w-]+)(?::([\w-]+))?\}/',
+			function ( $m ) use ( $post_id ) {
+				$size = isset( $m[2] ) ? $m[2] : 'large';
+				return self::render_acf_image( $m[1], $post_id, $size );
+			},
+			$template
+		);
+
+		// Image à la une dans une taille donnée : {post_thumbnail:large}
+		$template = preg_replace_callback(
+			'/\{post_thumbnail:([\w-]+)\}/',
+			function ( $m ) use ( $post_id ) {
+				return get_the_post_thumbnail( $post_id, $m[1] );
+			},
+			$template
+		);
+
 		// Extrait tronqué à N mots : {post_excerpt:20}
 		$template = preg_replace_callback(
 			'/\{post_excerpt:(\d+)\}/',
@@ -147,7 +167,8 @@ final class TemplateParser {
 			'{post_title}'         => esc_html( get_the_title( $post_id ) ),
 			'{post_url}'           => esc_url( get_permalink( $post_id ) ),
 			'{post_excerpt}'       => esc_html( wp_strip_all_tags( get_the_excerpt( $post_id ) ) ),
-			'{post_thumbnail}'     => wp_kses_post( get_the_post_thumbnail( $post_id, 'medium' ) ),
+			// Balise <img> générée et échappée par WordPress : wp_kses_post retirerait srcset et sizes.
+			'{post_thumbnail}'     => get_the_post_thumbnail( $post_id, 'medium' ),
 			'{post_thumbnail_url}' => esc_url( (string) get_the_post_thumbnail_url( $post_id, 'medium' ) ),
 			'{post_date}'          => esc_html( get_the_date( '', $post_id ) ),
 			'{post_id}'            => (string) $post_id,
@@ -178,6 +199,45 @@ final class TemplateParser {
 		return '<span class="mrz-dpe-month">' . esc_html( date_i18n( $month_fmt, $ts ) ) . '</span>'
 			. '<span class="mrz-dpe-day">' . esc_html( date_i18n( 'd', $ts ) ) . '</span>'
 			. '<span class="mrz-dpe-year">' . esc_html( date_i18n( 'Y', $ts ) ) . '</span>';
+	}
+
+	/**
+	 * Rend un champ image ACF en balise <img> complète (srcset, sizes, dimensions, loading),
+	 * quel que soit son format de retour : ID, array ou URL.
+	 */
+	private static function render_acf_image( $field, $post_id, $size ) {
+		// Valeur non formatée : ACF stocke l'ID de la pièce jointe.
+		$raw = function_exists( 'get_field' ) ? get_field( $field, $post_id, false ) : null;
+
+		$attachment_id = self::to_attachment_id( $raw );
+		if ( ! $attachment_id ) {
+			return '';
+		}
+
+		// Balise générée et échappée par WordPress : wp_kses_post retirerait srcset et sizes.
+		return wp_get_attachment_image( $attachment_id, $size );
+	}
+
+	/**
+	 * Convertit une valeur d'image ACF (ID, array ou URL) en ID de pièce jointe.
+	 */
+	private static function to_attachment_id( $value ) {
+		if ( is_array( $value ) ) {
+			if ( isset( $value['ID'] ) ) {
+				return (int) $value['ID'];
+			}
+			if ( isset( $value['id'] ) ) {
+				return (int) $value['id'];
+			}
+			return isset( $value['url'] ) ? attachment_url_to_postid( (string) $value['url'] ) : 0;
+		}
+		if ( is_numeric( $value ) ) {
+			return (int) $value;
+		}
+		if ( is_string( $value ) && '' !== $value ) {
+			return attachment_url_to_postid( $value );
+		}
+		return 0;
 	}
 
 	private static function get_native_raw( $key, $post_id ) {
@@ -270,6 +330,11 @@ final class TemplateParser {
 		} elseif ( is_scalar( $raw ) && isset( $choices[ (string) $raw ] ) ) {
 			// Select/radio simple : remplace la clé par le label.
 			$raw = (string) $choices[ (string) $raw ];
+		}
+
+		// Image ou fichier au format de retour « ID » : sort l'URL plutôt que l'ID.
+		if ( in_array( $type, array( 'image', 'file' ), true ) && is_numeric( $raw ) ) {
+			$raw = (string) wp_get_attachment_url( (int) $raw );
 		}
 
 		$value = (string) $raw;
