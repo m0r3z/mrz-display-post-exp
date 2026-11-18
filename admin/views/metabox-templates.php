@@ -13,6 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tbody>
 		<tr>
 			<th scope="row">
+				<label for="mrzdpe_btn_text"><?php esc_html_e( 'Button text', 'mrz-display-post-exp' ); ?></label>
+			</th>
+			<td>
+				<input type="text" name="mrzdpe[btn_text]" id="mrzdpe_btn_text" value="<?php echo esc_attr( $values['btn_text'] ); ?>" placeholder="<?php esc_attr_e( 'Learn more', 'mrz-display-post-exp' ); ?>" class="regular-text" />
+				<p class="description"><?php esc_html_e( 'Inserted by the {button_text} placeholder. Leave empty for the default text, translated with the site language. With Polylang, translate it in Languages > Translations.', 'mrz-display-post-exp' ); ?></p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">
 				<label for="mrzdpe_tpl_item"><?php esc_html_e( 'Item template', 'mrz-display-post-exp' ); ?></label>
 			</th>
 			<td>
@@ -33,6 +42,7 @@ $placeholders = array(
 	array( '{post_thumbnail:large}', __( 'Featured image in a given size (thumbnail, medium, large, full or any registered size). Default: medium.', 'mrz-display-post-exp' ) ),
 	array( '{post_thumbnail_url}', __( 'Featured image URL.', 'mrz-display-post-exp' ) ),
 	array( '{post_id}', __( 'Post ID.', 'mrz-display-post-exp' ) ),
+	array( '{button_text}', __( 'Button text set above (default: “Learn more”, translated).', 'mrz-display-post-exp' ) ),
 	array( '{post_date}', __( 'Post publish date (site date format).', 'mrz-display-post-exp' ) ),
 	array( '{%nom_champ_acf%}', __( 'Value of an ACF field (replace “nom_champ_acf” with your field name).', 'mrz-display-post-exp' ) ),
 	array( '{acf_image:champ}', __( 'ACF image field as a full <img> tag (srcset, sizes, dimensions, lazy loading), whatever its return format. Default size: large.', 'mrz-display-post-exp' ) ),

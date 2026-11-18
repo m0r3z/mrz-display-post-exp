@@ -14,7 +14,24 @@ final class DataProvider {
 	const CACHE_PREFIX = 'mrzdpe_';
 
 	public static function invalidate( $list_id ) {
-		delete_transient( self::CACHE_PREFIX . (int) $list_id );
+		$key = self::CACHE_PREFIX . (int) $list_id;
+		delete_transient( $key );
+		// Une clé par langue sur un site Polylang.
+		if ( function_exists( 'pll_languages_list' ) ) {
+			foreach ( (array) pll_languages_list() as $lang ) {
+				delete_transient( $key . '_' . $lang );
+			}
+		}
+	}
+
+	/**
+	 * Clé de cache d'un bloc, suffixée par la langue courante sur un site Polylang :
+	 * les articles et les textes diffèrent d'une langue à l'autre.
+	 */
+	private static function cache_key( $list_id ) {
+		$key  = self::CACHE_PREFIX . (int) $list_id;
+		$lang = function_exists( 'pll_current_language' ) ? pll_current_language() : '';
+		return $lang ? $key . '_' . $lang : $key;
 	}
 
 	public static function get_list_data( $list_id ) {
@@ -23,7 +40,7 @@ final class DataProvider {
 			return null;
 		}
 
-		$cache_key = self::CACHE_PREFIX . $list_id;
+		$cache_key = self::cache_key( $list_id );
 		$cached    = get_transient( $cache_key );
 		if ( false !== $cached && is_array( $cached ) ) {
 			return $cached;
@@ -161,13 +178,16 @@ final class DataProvider {
 			return array();
 		}
 
+		// Texte du bouton commun à tous les items du bloc.
+		$template = str_replace( '{button_text}', esc_html( ListConfig::button_text( $values ) ), (string) $values['tpl_item'] );
+
 		$items = array();
 		foreach ( $query->posts as $post ) {
 			$item = array(
 				'id'        => $post->ID,
 				'url'       => get_permalink( $post->ID ),
 				'title'     => get_the_title( $post->ID ),
-				'html'      => TemplateParser::render( (string) $values['tpl_item'], $post->ID ),
+				'html'      => TemplateParser::render( $template, $post->ID ),
 				'terms'     => array(),
 				'acfValues' => array(),
 				'searchText' => '',

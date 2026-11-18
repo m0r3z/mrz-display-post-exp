@@ -55,6 +55,42 @@ final class ListConfig {
 		add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
 		add_action( 'save_post_' . MRZDPE_CPT, array( $this, 'save' ), 10, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ) );
+		add_action( 'admin_init', array( $this, 'register_polylang_strings' ) );
+	}
+
+	/**
+	 * Déclare le texte du bouton de chaque bloc dans Polylang (Langues > Traductions).
+	 */
+	public function register_polylang_strings() {
+		if ( ! function_exists( 'pll_register_string' ) ) {
+			return;
+		}
+		$lists = get_posts(
+			array(
+				'post_type'      => MRZDPE_CPT,
+				'post_status'    => 'any',
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+			)
+		);
+		foreach ( $lists as $list_id ) {
+			$text = (string) get_post_meta( $list_id, '_mrzdpe_btn_text', true );
+			if ( '' !== $text ) {
+				pll_register_string( 'mrzdpe_btn_text_' . $list_id, $text, 'MRZ Display Post' );
+			}
+		}
+	}
+
+	/**
+	 * Texte du bouton d'un bloc, traduit : Polylang pour un texte saisi, sinon libellé par défaut.
+	 */
+	public static function button_text( $values ) {
+		$text = (string) $values['btn_text'];
+		if ( '' === $text ) {
+			return __( 'Learn more', 'mrz-display-post-exp' );
+		}
+		return function_exists( 'pll__' ) ? pll__( $text ) : $text;
 	}
 
 	public function add_metaboxes() {
@@ -135,6 +171,7 @@ final class ListConfig {
 			'slider_arrows_position' => 'sides',
 			'slider_show_dots'       => 1,
 			// Template.
+			'btn_text'              => '',
 			'tpl_item'              => "<div class=\"mrz-display-post-exp-item\">\n  {#if post_thumbnail}<div class=\"mrz-dpe-thumb\">{post_thumbnail}</div>{/if}\n  <div class=\"mrz-dpe-body\">\n    {#if taxonomy:category}<span class=\"mrz-dpe-cat\">{taxonomy:category:first}</span>{/if}\n    <h3 class=\"mrz-dpe-title\">{post_title}</h3>\n    {#if post_excerpt}<p class=\"mrz-dpe-excerpt\">{post_excerpt:25}</p>{/if}\n  </div>\n</div>",
 		);
 
@@ -323,6 +360,7 @@ final class ListConfig {
 		$clean['slider_show_dots']       = ! empty( $raw['slider_show_dots'] ) ? 1 : 0;
 
 		// Template.
+		$clean['btn_text'] = isset( $raw['btn_text'] ) ? sanitize_text_field( (string) $raw['btn_text'] ) : '';
 		$allowed           = self::allowed_html_for_templates();
 		$clean['tpl_item'] = isset( $raw['tpl_item'] ) ? wp_kses( (string) $raw['tpl_item'], $allowed ) : '';
 
@@ -330,8 +368,8 @@ final class ListConfig {
 			update_post_meta( $post_id, '_mrzdpe_' . $key, $value );
 		}
 
-		// Invalide le cache transient.
-		delete_transient( 'mrzdpe_' . (int) $post_id );
+		// Invalide le cache transient (toutes langues).
+		DataProvider::invalidate( $post_id );
 	}
 
 	/**
