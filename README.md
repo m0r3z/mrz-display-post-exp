@@ -31,10 +31,13 @@ Plugin WordPress minimaliste pour **afficher des posts et custom posts avec leur
 | `{post_excerpt}` | Extrait complet |
 | `{post_excerpt:N}` | Extrait tronqué à N mots (ex. `{post_excerpt:25}`) |
 | `{post_thumbnail}` | Balise `<img>` (taille medium) |
+| `{post_thumbnail:taille}` | Balise `<img>` dans la taille donnée (`thumbnail`, `large`, `full` ou taille déclarée) |
 | `{post_thumbnail_url}` | URL de la miniature |
 | `{post_id}` | ID du post |
 | `{post_date}` | Date de publication (format de date du site) |
+| `{button_text}` | Texte du bouton réglé dans le bloc (« Learn more » traduit par défaut ; traduisible dans Polylang) |
 | `{%nom_champ_acf%}` | Valeur ACF (échappement selon le type) |
+| `{acf_image:champ}` | Image ACF en balise `<img>` complète (`srcset`, `sizes`, `loading`), quel que soit le format de retour ; taille `large` par défaut, `{acf_image:champ:medium}` pour une autre |
 | `{acf_date:champ}` | Date ACF découpée en spans `mrz-dpe-day` / `mrz-dpe-month` / `mrz-dpe-year`. Mois numérique par défaut ; `{acf_date:champ:F}` = nom complet, `:M` = abrégé, `:n` = numéro sans zéro |
 | `{taxonomy:slug}` | Tous les termes, chacun dans un `<span class="mrz-dpe-term">` (aucun séparateur imposé, à styliser en CSS) |
 | `{taxonomy:slug:first}` | Nom du premier terme (texte brut) |
