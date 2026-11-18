@@ -18,6 +18,10 @@ final class Assets {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
 		// Invalide le cache en cas de changement.
 		add_action( 'save_post', array( $this, 'invalidate_on_post_save' ), 10, 2 );
+		// Réglage modifié hors de l'écran du plugin (update_post_meta, import, WP-CLI).
+		add_action( 'added_post_meta', array( $this, 'invalidate_on_meta_change' ), 10, 3 );
+		add_action( 'updated_post_meta', array( $this, 'invalidate_on_meta_change' ), 10, 3 );
+		add_action( 'deleted_post_meta', array( $this, 'invalidate_on_meta_change' ), 10, 3 );
 		add_action( 'edited_term', array( $this, 'invalidate_all' ) );
 		add_action( 'deleted_term', array( $this, 'invalidate_all' ) );
 	}
@@ -65,6 +69,20 @@ final class Assets {
 		}
 		// Un post source a changé : invalide tous les blocs.
 		$this->invalidate_all();
+	}
+
+	/**
+	 * Vide le cache d'un bloc quand l'un de ses réglages (_mrzdpe_*) change.
+	 * Les autres metas (_edit_lock, à chaque battement de l'éditeur) sont ignorées.
+	 */
+	public function invalidate_on_meta_change( $meta_id, $object_id, $meta_key ) {
+		if ( 0 !== strpos( (string) $meta_key, '_mrzdpe_' ) ) {
+			return;
+		}
+		if ( MRZDPE_CPT !== get_post_type( $object_id ) ) {
+			return;
+		}
+		DataProvider::invalidate( $object_id );
 	}
 
 	public function invalidate_all() {
