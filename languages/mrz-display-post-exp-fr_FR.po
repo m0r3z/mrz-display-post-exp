@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Display Post Exp 1.4.0\n"
+"Project-Id-Version: MRZ Display Post Exp 1.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-display-post-exp\n"
 "Last-Translator: Morez.co\n"
 "Language-Team: French\n"
@@ -216,7 +216,7 @@ msgid "Button text:"
 msgstr "Texte du bouton :"
 
 #: admin/views/metabox-display.php:215
-#: includes/class-data-provider.php:57
+#: includes/class-data-provider.php:74
 msgid "Clear"
 msgstr "Effacer"
 
@@ -317,7 +317,7 @@ msgid "Label shown above the field:"
 msgstr "Libellé affiché au-dessus du champ :"
 
 #: admin/views/metabox-filters.php:199
-#: includes/class-data-provider.php:84
+#: includes/class-data-provider.php:101
 msgid "Search"
 msgstr "Rechercher"
 
@@ -326,7 +326,7 @@ msgid "Field placeholder:"
 msgstr "Placeholder du champ :"
 
 #: admin/views/metabox-filters.php:205
-#: includes/class-data-provider.php:87
+#: includes/class-data-provider.php:104
 msgid "Search…"
 msgstr "Rechercher…"
 
@@ -479,107 +479,107 @@ msgstr "Taxonomie du contexte"
 msgid "Taxonomy shared by the current page and the displayed content (default: Category)."
 msgstr "Taxonomie partagée entre la page courante et les contenus affichés (par défaut : Catégorie)."
 
-#: admin/views/metabox-templates.php:16
+#: admin/views/metabox-templates.php:25
 msgid "Item template"
 msgstr "Template de l'item"
 
-#: admin/views/metabox-templates.php:20
+#: admin/views/metabox-templates.php:29
 msgid "HTML rendered for each entry (list, grid or slider). The style attribute is not allowed: use your theme's CSS for styling."
 msgstr "HTML affiché pour chaque entrée (liste, grille ou slider). L'attribut style n'est pas autorisé : mettez en forme via le CSS de votre thème."
 
-#: admin/views/metabox-templates.php:28
+#: admin/views/metabox-templates.php:37
 msgid "Post title."
 msgstr "Titre du post."
 
-#: admin/views/metabox-templates.php:29
+#: admin/views/metabox-templates.php:38
 msgid "Post link (permalink)."
 msgstr "Lien (permalien) du post."
 
-#: admin/views/metabox-templates.php:30
+#: admin/views/metabox-templates.php:39
 msgid "Full excerpt."
 msgstr "Extrait complet."
 
-#: admin/views/metabox-templates.php:31
+#: admin/views/metabox-templates.php:40
 msgid "Excerpt trimmed to N words (25 here)."
 msgstr "Extrait tronqué à N mots (ici 25)."
 
-#: admin/views/metabox-templates.php:32
+#: admin/views/metabox-templates.php:41
 msgid "Featured image (<img> tag)."
 msgstr "Image à la une (balise <img>)."
 
-#: admin/views/metabox-templates.php:34
+#: admin/views/metabox-templates.php:43
 msgid "Featured image URL."
 msgstr "URL de l'image à la une."
 
-#: admin/views/metabox-templates.php:35
+#: admin/views/metabox-templates.php:44
 msgid "Post ID."
 msgstr "Identifiant du post."
 
-#: admin/views/metabox-templates.php:36
+#: admin/views/metabox-templates.php:46
 msgid "Post publish date (site date format)."
 msgstr "Date de publication du post (format de date du site)."
 
-#: admin/views/metabox-templates.php:37
+#: admin/views/metabox-templates.php:47
 msgid "Value of an ACF field (replace “nom_champ_acf” with your field name)."
 msgstr "Valeur d'un champ ACF (remplacez « nom_champ_acf » par le nom de votre champ)."
 
-#: admin/views/metabox-templates.php:40
+#: admin/views/metabox-templates.php:50
 msgid "All terms of the taxonomy, each wrapped in a <span class=\"mrz-dpe-term\">."
 msgstr "Tous les termes de la taxonomie, chacun dans un <span class=\"mrz-dpe-term\">."
 
-#: admin/views/metabox-templates.php:41
+#: admin/views/metabox-templates.php:51
 msgid "Name of the first term only (plain text)."
 msgstr "Nom du premier terme uniquement (texte brut)."
 
-#: admin/views/metabox-templates.php:42
+#: admin/views/metabox-templates.php:52
 msgid "Slug of the first term (e.g. “research-development”) — handy as a CSS class modifier."
 msgstr "Slug du premier terme (ex. « recherche-developpement ») — idéal comme modificateur de classe CSS."
 
-#: admin/views/metabox-templates.php:43
+#: admin/views/metabox-templates.php:53
 msgid "ACF date field split into 3 spans: day / month / year (see formats below)."
 msgstr "Champ ACF de date découpé en 3 spans : jour / mois / année (voir formats ci-dessous)."
 
-#: admin/views/metabox-templates.php:47
+#: admin/views/metabox-templates.php:57
 msgid "Month as a number: 08 (default)."
 msgstr "Mois en numéro : 08 (par défaut)."
 
-#: admin/views/metabox-templates.php:48
+#: admin/views/metabox-templates.php:58
 msgid "Month as a number without leading zero: 8."
 msgstr "Mois en numéro sans zéro : 8."
 
-#: admin/views/metabox-templates.php:49
+#: admin/views/metabox-templates.php:59
 msgid "Full month name, localized: August."
 msgstr "Mois en toutes lettres, localisé : août."
 
-#: admin/views/metabox-templates.php:50
+#: admin/views/metabox-templates.php:60
 msgid "Abbreviated month name, localized: Aug."
 msgstr "Mois abrégé, localisé : aoû."
 
-#: admin/views/metabox-templates.php:55
+#: admin/views/metabox-templates.php:65
 msgid "Available placeholders, date formats & conditionals"
 msgstr "Placeholders disponibles, formats de date & conditionnels"
 
-#: admin/views/metabox-templates.php:57
+#: admin/views/metabox-templates.php:67
 msgid "Available placeholders"
 msgstr "Placeholders disponibles"
 
-#: admin/views/metabox-templates.php:69
+#: admin/views/metabox-templates.php:79
 msgid "Date formats ({acf_date})"
 msgstr "Formats de date ({acf_date})"
 
-#: admin/views/metabox-templates.php:71
+#: admin/views/metabox-templates.php:81
 msgid "The day (01) and year (2026) are fixed; only the month changes based on the suffix:"
 msgstr "Le jour (01) et l'année (2026) sont fixes ; seul le mois change selon le suffixe :"
 
-#: admin/views/metabox-templates.php:86
+#: admin/views/metabox-templates.php:96
 msgid "Each part is wrapped in its own span: <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — style them with your theme's CSS."
 msgstr "Chaque partie est dans son span : <code>.mrz-dpe-day</code>, <code>.mrz-dpe-month</code>, <code>.mrz-dpe-year</code> — à styliser via le CSS de votre thème."
 
-#: admin/views/metabox-templates.php:92
+#: admin/views/metabox-templates.php:102
 msgid "Conditionals"
 msgstr "Conditionnels"
 
-#: admin/views/metabox-templates.php:96
+#: admin/views/metabox-templates.php:106
 msgid "Displays a block only if the field has a value: <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Also works with <code>{#if post_thumbnail}…{/if}</code> or <code>{#if taxonomy:category}…{/if}</code>."
 msgstr "Affiche un bloc seulement si le champ est renseigné : <code>{#if %mon_champ%}&lt;div&gt;...&lt;/div&gt;{/if}</code>. Fonctionne aussi avec <code>{#if post_thumbnail}…{/if}</code> ou <code>{#if taxonomy:category}…{/if}</code>."
 
@@ -645,31 +645,31 @@ msgid "No items found in Trash."
 msgstr "Aucun élément dans la corbeille."
 
 #: includes/class-cpt.php:92
-#: includes/class-list-config.php:65
+#: includes/class-list-config.php:101
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: includes/class-data-provider.php:395
+#: includes/class-data-provider.php:415
 msgid "Yes"
 msgstr "Oui"
 
-#: includes/class-data-provider.php:396
+#: includes/class-data-provider.php:416
 msgid "No"
 msgstr "Non"
 
-#: includes/class-list-config.php:61
+#: includes/class-list-config.php:97
 msgid "Data source"
 msgstr "Source des données"
 
-#: includes/class-list-config.php:62
+#: includes/class-list-config.php:98
 msgid "HTML template"
 msgstr "Template HTML"
 
-#: includes/class-list-config.php:63
+#: includes/class-list-config.php:99
 msgid "Filters & search"
 msgstr "Filtres & recherche"
 
-#: includes/class-list-config.php:64
+#: includes/class-list-config.php:100
 msgid "Display"
 msgstr "Affichage"
 
@@ -703,27 +703,44 @@ msgstr "Page suivante"
 msgid "Display posts and custom posts with their ACF fields as a list, grid or slider, with customizable HTML templates, client-side filters and search."
 msgstr "Affiche des posts et custom posts avec leurs champs ACF en liste, grille ou slider. Templates HTML personnalisables, filtres et recherche côté client."
 
-#: includes/class-data-provider.php:64
+#: includes/class-data-provider.php:81
 msgid "No results."
 msgstr "Aucun résultat."
 
-#: admin/views/metabox-templates.php:33
+#: admin/views/metabox-templates.php:42
 msgid "Featured image in a given size (thumbnail, medium, large, full or any registered size). Default: medium."
 msgstr "Image à la une dans une taille donnée (thumbnail, medium, large, full ou toute taille déclarée). Par défaut : medium."
 
-#: admin/views/metabox-templates.php:38
+#: admin/views/metabox-templates.php:48
 msgid "ACF image field as a full <img> tag (srcset, sizes, dimensions, lazy loading), whatever its return format. Default size: large."
 msgstr "Champ image ACF en balise <img> complète (srcset, sizes, dimensions, chargement différé), quel que soit son format de retour. Taille par défaut : large."
 
-#: admin/views/metabox-templates.php:39
+#: admin/views/metabox-templates.php:49
 msgid "ACF image field in a given size."
 msgstr "Champ image ACF dans une taille donnée."
 
 #. translators: %d: number of results shown after filtering.
-#: includes/class-data-provider.php:66
-#: includes/class-data-provider.php:68
+#: includes/class-data-provider.php:83
+#: includes/class-data-provider.php:85
 #, php-format
 msgid "%d result"
 msgid_plural "%d results"
 msgstr[0] "%d résultat"
 msgstr[1] "%d résultats"
+
+#: admin/views/metabox-templates.php:16
+msgid "Button text"
+msgstr "Texte du bouton"
+
+#: admin/views/metabox-templates.php:19
+#: includes/class-list-config.php:91
+msgid "Learn more"
+msgstr "En savoir plus"
+
+#: admin/views/metabox-templates.php:20
+msgid "Inserted by the {button_text} placeholder. Leave empty for the default text, translated with the site language. With Polylang, translate it in Languages > Translations."
+msgstr "Inséré par le placeholder {button_text}. Laisser vide pour le texte par défaut, traduit dans la langue du site. Avec Polylang, le traduire dans Langues > Traductions."
+
+#: admin/views/metabox-templates.php:45
+msgid "Button text set above (default: “Learn more”, translated)."
+msgstr "Texte du bouton réglé ci-dessus (par défaut : « En savoir plus », traduit)."

@@ -4,7 +4,7 @@ Tags: acf, custom post type, taxonomy, slider, grid
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,12 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-display-pos
 4. Copy the generated shortcode and paste it into any page or post.
 
 == Changelog ==
+
+= 1.4.1 =
+* Fix: the grid no longer overflows horizontally on small screens when its minimum column width is wider than the screen.
+* Fix: a block's cache is now cleared when one of its settings is changed outside its settings screen (update_post_meta, import, WP-CLI).
+* New "Button text" setting and {button_text} placeholder. Left empty, it shows "Learn more", translated. With Polylang, the text is translatable in Languages > Translations.
+* Polylang: the block cache is now kept per language, so each language gets its own posts and texts.
 
 = 1.4.0 =
 * New placeholder {acf_image:field} and {acf_image:field:size} — renders an ACF image field with wp_get_attachment_image() (srcset, sizes, dimensions, lazy loading), whatever its return format (ID, array or URL). Default size: large.
